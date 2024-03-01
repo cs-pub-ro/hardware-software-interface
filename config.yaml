@@ -62,6 +62,43 @@ docusaurus:
                           subsections:
                             - Length and Equality with Bitwise Operations/: len-xor/
                             - Mirror/: mirror/
+      - Lab 2 - Memory Operations. Introduction to GDB:
+          - Memory Operations:
+              path: chapters/memory-layout/memory-operations/
+              extra:
+                - media/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - "Array vs. Pointer/": array_vs_pointer/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Iterating through an Integer Array/: iterate/
+                            - Deleting the First Occurrence of a Pattern from a String/: delete_first/
+                            - Pixels/: pixels/
+                            - Find Maximum in Array/: find_max/
+                            - "Bonus: Pointers/": pointers/
+          - Introduction to GDB:
+              path: chapters/memory-layout/introduction-to-GDB/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - "GDB Tutorial: Debugging a Segfault/": segfault/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Data Inspection/: inspect/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
