@@ -2,14 +2,14 @@
 
 #include <stdio.h>
 
-void rotate_left(int *number, int bits)
+void rotate_left(unsigned int *number, int bits)
 {
 	/* TODO */
 	(void) number;
 	(void) bits;
 }
 
-void rotate_right(int *number, int bits)
+void rotate_right(unsigned int *number, int bits)
 {
 	/* TODO */
 	(void) number;
