@@ -36,7 +36,7 @@ p.b = 0.11 * p.b;
 > **Hint:** For simplicity, you can use the following macro:
 >
 > ```c
-> #define GET_PIXEL(a, i ,j) (*(*(a + i) + j))
+> #define GET_PIXEL(a, i ,j) (*(*((a) + (i)) + (j)))
 > ```
 
 If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#structures-and-pointers-to-structures) reading material.
