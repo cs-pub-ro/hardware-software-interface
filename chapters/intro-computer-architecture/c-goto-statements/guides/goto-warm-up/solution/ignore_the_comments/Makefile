@@ -1,0 +1,1 @@
+../../support/ignore_the_comments/Makefile

@@ -99,6 +99,38 @@ docusaurus:
                           path: tasks/
                           subsections:
                             - Data Inspection/: inspect/
+      - Lab 4 - Toolchain. GOTO:
+          - GOTO statements in C:
+              path: chapters/intro-computer-architecture/c-goto-statements/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - GOTO Warm-up/: goto-warm-up/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Algorithms Using GOTO/: goto-algs/
+          - Toolchain for Reverse Engineering:
+              path: chapters/memory-security/reverse-engineering/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Compiler Explorer Tutorial/: compiler-explorer-tutorial/
+                      - Ghidra Tutorial/: ghidra-tutorial/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Old Hits/: old-hits/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
