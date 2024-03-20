@@ -131,6 +131,34 @@ docusaurus:
                           path: tasks/
                           subsections:
                             - Old Hits/: old-hits/
+      - Lab 5 - Introduction to Assembly Language:
+          - Introduction:
+              path: chapters/hardware-software-interface/introduction/
+              subsections:
+                - Reading/: reading/
+          - x86 Architecture Family:
+              path: chapters/hardware-software-interface/x86-architecture-family/
+              extra:
+                - media/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - First look at assembly instructions/: instructions/
+                      - Discovering Assembly/: discovering-assembly/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Conditional Jumps/: conditional-jumps/
+                            - Grumpy Jumps/: grumpy-jumps/
+                            - Sets/: sets/
+                            - Min/: min/
+                            - Fibonacci/: fibonacci/
+                            - Carry Flag - Overflow Flag/: cf-of/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
