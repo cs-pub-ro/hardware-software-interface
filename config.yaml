@@ -159,6 +159,45 @@ docusaurus:
                             - Min/: min/
                             - Fibonacci/: fibonacci/
                             - Carry Flag - Overflow Flag/: cf-of/
+      - Lab 6 - Registers and Memory Addressing:
+            - Registers:
+                path: chapters/hardware-software-interface/registers/
+                extra:
+                  - media/
+                subsections:
+                  - Reading/: reading/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Multiply and Divide/: multiply-divide/
+                        - Floating Point Exception/: floating-point-exception/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Divide/: div/
+                              - Multiply/: mul/
+                              - Sum of first N numbers squared/: sum-squared/
+            - Memory Addressing:
+                path: chapters/hardware-software-interface/memory-addressing/
+                subsections:
+                  - Reading/: reading/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Addressing Arrays/: addressing-arrays/
+                        - Declarations/: declarations/
+                        - Loop/: loop/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Sum Elements of Array/: sum-array/
+                              - Count Elements of Array/: vec-count-if/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
