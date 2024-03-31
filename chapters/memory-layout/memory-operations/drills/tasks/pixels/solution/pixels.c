@@ -34,7 +34,7 @@ void reverse_pic(struct picture *pic)
 {
 	for (int i = 0; i < pic->height / 2; ++i)
 		swap_rows(pic->pix_array[i], pic->pix_array[pic->height - 1 - i],
-				pic->height);
+				pic->width);
 }
 
 int main(void)
