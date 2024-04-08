@@ -198,6 +198,41 @@ docusaurus:
                             subsections:
                               - Sum Elements of Array/: sum-array/
                               - Count Elements of Array/: vec-count-if/
+      - Lab 7 - Structures, vectors and strings:
+            - Structures:
+                path: chapters/hardware-software-interface/structures/
+                subsections:
+                  - Reading/: reading/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Students/: students/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Fibonacci Sum/: fibonacci/
+                              - Print Structure/: print-structure/
+                              - Getters and Setters/: getters-setters/
+            - Arrays:
+                path: chapters/hardware-software-interface/arrays/
+                subsections:
+                  - Reading/: reading/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Max/: max/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Find Substring/: find-substring/
+                              - Mul Arrays/: mul-arrays/
+                              - Courses/: courses/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
