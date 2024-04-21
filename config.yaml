@@ -94,6 +94,17 @@ lab_structure:
       - reading/stack.md
       - guides/stack-operations.md
       - guides/stack-addressing.md
+  - title: Lab 9 - Functions
+    filename: lab9.md
+    content:
+      - tasks/string-print.md
+      - tasks/string-print-len.md
+      - tasks/print-rev-string.md
+      - tasks/to-upper.md
+      - tasks/rot13.md
+      - reading/functions.md
+      - guides/hello-world.md
+      - guides/disassembling-c.md
   - title: Lab 10 - The C - Assembly Interaction
     filename: lab10.md
     content:
@@ -200,6 +211,7 @@ docusaurus:
             - Lab 6 - Registers and Memory Addressing: lab6.md
             - Lab 7 - Structures, Vectors and Strings: lab7.md
             - Lab 8 - The Stack: lab8.md
+            - Lab 9 - Functions: lab9.md
             - Lab 10 - The C - Assembly Interaction: lab10.md
             - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
             - Lab 12 - Linking: lab12.md
