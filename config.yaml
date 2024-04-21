@@ -233,6 +233,29 @@ docusaurus:
                               - Find Substring/: find-substring/
                               - Mul Arrays/: mul-arrays/
                               - Courses/: courses/
+      - Lab 9 - Functions:
+          - Functions:
+              path: chapters/stack/functions/
+              extra:
+                - media/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Hello World/: hello_world/
+                      - Disassemblying a C program/: disassembling_c/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Printing a String/: string_print/
+                            - Printing the length of a String/: string_print_len/
+                            - Printing a String in Reverse/: print_rev_string/
+                            - To Upper/: to_upper/
+                            - Rot13/: rot13/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
