@@ -70,7 +70,7 @@ lab_structure:
       - guides/addressing-arrays.md
       - guides/declarations.md
       - guides/loop.md
-  - title: Lab 7 - Structures, vectors and strings
+  - title: Lab 7 - Structures, Vectors and Strings
     filename: lab7.md
     content:
       - tasks/fibonacci.md
@@ -83,6 +83,17 @@ lab_structure:
       - guides/students.md
       - reading/arrays.md
       - guides/max.md
+  - title: Lab 8 - The Stack
+    filename: lab8.md
+    content:
+      - tasks/max.md
+      - tasks/reverse-array.md
+      - tasks/stack-addressing.md
+      - tasks/local-var.md
+      - tasks/gcd.md
+      - reading/stack.md
+      - guides/stack-operations.md
+      - guides/stack-addressing.md
   - title: Lab 11 - Buffer Management. Buffer Overflow
     filename: lab11.md
     content:
@@ -147,7 +158,8 @@ docusaurus:
             - Lab 4 - Toolchain. GOTO: lab4.md
             - Lab 5 - Introduction to Assembly Language: lab5.md
             - Lab 6 - Registers and Memory Addressing: lab6.md
-            - Lab 7 - Structures, vectors and strings: lab7.md
+            - Lab 7 - Structures, Vectors and Strings: lab7.md
+            - Lab 8 - The Stack: lab8.md
             - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
 
     # static_assets:
