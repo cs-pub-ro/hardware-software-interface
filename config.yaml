@@ -233,6 +233,34 @@ docusaurus:
                               - Find Substring/: find-substring/
                               - Mul Arrays/: mul-arrays/
                               - Courses/: courses/
+      - Lab 11 - Buffer Management. Buffer Overflow:
+            - Introduction to Buffers:
+                path: chapters/memory-security/buffers-intro/
+                subsections:
+                  - Reading/: reading/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Data Buffer/: data-buffer/
+                              - Stack Buffer/: stack-buffer/
+                              - Read Using gets/: read-stdin-gets/
+                              - Read Using fgets/: read-stdin-fgets/
+            - Buffer Overflow Vulnerabilities:
+                path: chapters/memory-security/overflow-vuln/
+                subsections:
+                  - Reading/: reading/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Overflow in C/: overflow-in-c/
+                              - Overwrite Return Address/: overwrite-ret-addr/
+                              - Overflow for Binary File/: overflow-for-binary/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
