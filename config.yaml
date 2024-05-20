@@ -94,6 +94,19 @@ lab_structure:
       - reading/stack.md
       - guides/stack-operations.md
       - guides/stack-addressing.md
+  - title: Lab 10 - The C - Assembly Interaction
+    filename: lab10.md
+    content:
+      - tasks/max-c-calls.md
+      - tasks/stack-frame.md
+      - tasks/max-assembly-calls.md
+      - tasks/regs-preserve.md
+      - tasks/include-fix.md
+      - tasks/export-fix.md
+      - tasks/max-c-calls-x64.md
+      - tasks/max-assembly-calls-x64.md
+      - reading/memory-layout-c-asm.md
+      - reading/stack-c-asm.md
   - title: Lab 11 - Buffer Management. Buffer Overflow
     filename: lab11.md
     content:
@@ -187,6 +200,7 @@ docusaurus:
             - Lab 6 - Registers and Memory Addressing: lab6.md
             - Lab 7 - Structures, Vectors and Strings: lab7.md
             - Lab 8 - The Stack: lab8.md
+            - Lab 10 - The C - Assembly Interaction: lab10.md
             - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
             - Lab 12 - Linking: lab12.md
             - Lab 13 - CTF: lab13.md
