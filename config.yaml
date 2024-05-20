@@ -233,6 +233,43 @@ docusaurus:
                               - Find Substring/: find-substring/
                               - Mul Arrays/: mul-arrays/
                               - Courses/: courses/
+      - Lab 10 - C - Assembly Interaction:
+            - Memory layout:
+                path: chapters/memory-layout/c-assembly-interaction
+                subsections:
+                  - Reading/: readings/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Students/: students/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Cpp Obs/: cpp-obs/
+                              - Export Fix/: export-fix/
+                              - Include Fix/: include-fix/
+                              - Registers Preserve/: regs-preserve/
+            - Stack:
+                path: chapters/stack/c-assembly-interaction
+                subsections:
+                  - Reading/: readings/
+                  - Guides:
+                      path: guides/
+                      subsections:
+                        - Students/: students/
+                  - Drills:
+                      path: drills/
+                      subsections:
+                        - Tasks:
+                            path: tasks/
+                            subsections:
+                              - Max C Calls/: max-c-calls/
+                              - Max Assembly Calls/: max-assembly-calls/
+                              - Max C Calls x64/: max-c-calls-x64/
+                              - Stack Frame/: stack-frame/
     # static_assets:
     #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
     config_meta:
