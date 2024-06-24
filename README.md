@@ -14,7 +14,7 @@ Content is located in the `chapters/` folder.
 It currently consists of 5 chapters:
 
 - [Memory Layout](chapters/memory-layout/)
-- [Introduction to Computer Architecture](content/intro-computer-architecture/)
+- [Introduction to Computer Architecture](chapters/intro-computer-architecture/)
 - [Hardware-Software Interface](chapters/hardware-software-interface)
 - [Stack](chapters/stack/)
 - [Memory Security](chapters/memory-security/)
