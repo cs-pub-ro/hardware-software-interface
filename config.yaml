@@ -233,6 +233,29 @@ docusaurus:
                               - Find Substring/: find-substring/
                               - Mul Arrays/: mul-arrays/
                               - Courses/: courses/
+      - Lab 8 - The Stack:
+          - Introduction:
+              path: chapters/stack/intro/
+              extra:
+                - media/
+              subsections:
+                - Reading/: reading/
+                - Guides:
+                    path: guides/
+                    subsections:
+                      - Stack Operations/: stack-operations/
+                      - Stack Addressing/: stack-addressing/
+                - Drills:
+                    path: drills/
+                    subsections:
+                      - Tasks:
+                          path: tasks/
+                          subsections:
+                            - Max/: max/
+                            - Reverse Array/: reverse-array/
+                            - Stack Addressing/: stack-addressing/
+                            - Local Var/: local-var/
+                            - Bonus - GCD/: gcd/
       - Lab 11 - Buffer Management. Buffer Overflow:
             - Introduction to Buffers:
                 path: chapters/memory-security/buffers-intro/
