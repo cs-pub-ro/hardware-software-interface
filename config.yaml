@@ -106,6 +106,19 @@ lab_structure:
       - tasks/overflow-for-binary.md
       - reading/buffers-intro.md
       - reading/overflow-vuln.md
+  - title: Lab 12 - CTF
+    filename: lab12.md
+    content:
+      - tasks/hidden-in-plain-sight-1.md
+      - tasks/hidden-in-plain-sight-2.md
+      - tasks/look-at-him-go.md
+      - tasks/playing-god.md
+      - tasks/indirect-business.md
+      - tasks/rip-my-buffers-off.md
+      - tasks/feeling-chained.md
+      - tasks/rop.md
+      - reading/rop.md                   
+
 # make_assets:
 #   plugin: command
 #   options:
@@ -161,6 +174,7 @@ docusaurus:
             - Lab 7 - Structures, Vectors and Strings: lab7.md
             - Lab 8 - The Stack: lab8.md
             - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
+            - Lab 12 - CTF: lab12.md
 
     # static_assets:
     # - slides/Hardware-Software-Interface: /build/make_assets/chapters/hardware-software-interface
