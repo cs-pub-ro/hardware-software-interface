@@ -106,8 +106,22 @@ lab_structure:
       - tasks/overflow-for-binary.md
       - reading/buffers-intro.md
       - reading/overflow-vuln.md
-  - title: Lab 12 - CTF
+  - title: Lab 12 - Linking
     filename: lab12.md
+    content:
+      - tasks/single-link.md
+      - tasks/multiple-link.md
+      - tasks/entry-fix-1.md
+      - tasks/entry-fix-2.md
+      - tasks/include-fix.md
+      - tasks/export-fix.md
+      - tasks/var-func-fix.md
+      - tasks/lib-fix.md
+      - tasks/obj-link-dev.md
+      - reading/linking.md
+      - guides/cpp-obs.md
+  - title: Lab 13 - CTF
+    filename: lab13.md
     content:
       - tasks/hidden-in-plain-sight-1.md
       - tasks/hidden-in-plain-sight-2.md
@@ -174,7 +188,8 @@ docusaurus:
             - Lab 7 - Structures, Vectors and Strings: lab7.md
             - Lab 8 - The Stack: lab8.md
             - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
-            - Lab 12 - CTF: lab12.md
+            - Lab 12 - Linking: lab12.md
+            - Lab 13 - CTF: lab13.md
 
     # static_assets:
     # - slides/Hardware-Software-Interface: /build/make_assets/chapters/hardware-software-interface
