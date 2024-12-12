@@ -47,4 +47,4 @@ Starting from the program in the previous exercise, calculate the sum of squares
 >
 > the sum of squares will be 2704560839.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](/reading/memory-addressing.md) reading material.

@@ -3,7 +3,7 @@
 To follow this guide, you will need to use the `instructions.asm` file located in the `guides/instructions/support` directory.
 
 Diving right into the demo, we can see one of the most important instructions that helps us, programmers, work with the stack and that is `push`.
-We discussed what the `push` instruction does in the [reading section](../../reading/README.md#data-movement-instructions).
+We discussed what the `push` instruction does in the [reading section](../../reading/x86-architecture-family.md).
 Considering its call, we can understand that it takes the `0` value(as a `DWORD`, a number stored on `4` bytes) and moves it onto the "top" of the stack.
 
 That `push` is followed by a new instruction:
@@ -25,7 +25,7 @@ jnc mystery_label
 
 Moving on, we can see that the `0` value is set to the `eax` register using the `mov` instruction.
 Can you give example of another two ways of setting the value in `eax` to `0` without using `mov` ?
-> **HINT**: Think about the [logical operators](../../reading/README.md#arithmetic-and-logic-instructions).
+> **HINT**: Think about the [logical operators](../../reading/x86-architecture-family.md).
 
 Next, by using the `test` instruction we can set the `flags` based on the output of the `logical and` between `eax` and itself.
 

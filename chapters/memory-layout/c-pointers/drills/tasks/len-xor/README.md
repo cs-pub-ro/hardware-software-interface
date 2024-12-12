@@ -36,4 +36,4 @@ Use pointer operations and bitwise operations as much as possible!
 >
 >**The above addresses are illustrative!**
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/c-pointers.md) reading material.

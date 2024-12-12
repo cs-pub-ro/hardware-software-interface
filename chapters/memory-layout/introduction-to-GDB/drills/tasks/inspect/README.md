@@ -32,4 +32,4 @@ For this task, you will use the `print` and `examine` commands.
 > - To display the value of a variable in hexadecimal, use `p/x variable_name`
 > - To display the value from a pointer, use `p *pointer_name`, and to inspect the data at a memory address, use `x memory_address`.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#inspecting-memory) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/introduction-to-GDB.md) reading material.

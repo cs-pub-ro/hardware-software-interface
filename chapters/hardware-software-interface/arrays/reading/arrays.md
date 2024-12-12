@@ -1,4 +1,4 @@
-# Structured Data (Structures, Arrays and String Operations)
+# Structured Data - Arrays
 
 ## Arrays
 

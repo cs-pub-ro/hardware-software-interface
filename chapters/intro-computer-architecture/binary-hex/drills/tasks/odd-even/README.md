@@ -16,4 +16,4 @@ Traverse an array of 32-bit integers using pointer operations and display the ev
 > 0b01010110
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#logical-shifts) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/binary-hex.md) reading material.

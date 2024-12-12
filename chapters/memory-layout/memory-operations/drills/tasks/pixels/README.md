@@ -39,4 +39,4 @@ p.b = 0.11 * p.b;
 > #define GET_PIXEL(a, i ,j) (*(*((a) + (i)) + (j)))
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#structures-and-pointers-to-structures) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/memory-operations.md) reading material.

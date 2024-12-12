@@ -57,3 +57,5 @@ _site/
 
 # Builder output folder
 /.output/
+
+.view/

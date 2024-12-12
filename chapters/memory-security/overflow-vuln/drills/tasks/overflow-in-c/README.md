@@ -91,4 +91,4 @@ Not quite there. Try again!
 Aborted (core dumped)
 ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#How-Do-We-Protect-Against-Buffer-Overflow-Attacks?) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/overflow-vuln.md) reading material.

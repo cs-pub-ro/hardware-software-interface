@@ -22,4 +22,4 @@ d. From binary to hexadecimal:
 - `0b01111101`
 - `0b1000110000011111`
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#conversion-between-binary-and-hexadecimal) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/binary-hex.md) reading material.

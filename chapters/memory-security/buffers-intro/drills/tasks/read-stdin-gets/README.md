@@ -58,4 +58,4 @@ If done correctly, you will see:
 var is 0x574F4C46
 ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#How-to-make-a-Buffer-Overflow?) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/buffers-intro.md) reading material.

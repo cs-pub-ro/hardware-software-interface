@@ -63,7 +63,7 @@ printf("%ld", p - s); /** It will display 22, the length of the string
 ### Interpreting Data in Memory
 
 On most modern computers, the smallest unit of data that can be addressed is the `byte` (8 bits), meaning that we can view data in memory as a sequence of bytes, each with its own address.
-As mentioned in the [previous lab](../../../intro-computer-architecture/binary-hex/reading), when we want to store information represented by multiple bytes, we need to consider the order imposed by the system architecture, called [endianness](https://en.wikipedia.org/wiki/Endianness).
+As mentioned in the [previous lab](../../../intro-computer-architecture/binary-hex/reading/binary-hex.md), when we want to store information represented by multiple bytes, we need to consider the order imposed by the system architecture, called [endianness](https://en.wikipedia.org/wiki/Endianness).
 Below is the mechanism for extracting data from memory on a **little-endian** architecture:
 
 ```c

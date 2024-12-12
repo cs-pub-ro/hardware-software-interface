@@ -36,12 +36,12 @@ We say that a flag is set if its value is `1`. The ones commonly used by program
 
 Name | Expanded Name         | Description
 ---- | --------------------- | -----------
-`CF` |	Carry Flag           | Set if the result exceeds the maximum (or minimum) unsigned integer value
-`PF` |	Parity Flag          |	Set if the low byte of the result contains an even number of 1 bits
-`AF` |	Auxiliary Carry Flag |	Used in BCD arithmetic; set if bit 3 generates a carry or borrow
-`ZF` |	Zero Flag            |	Set if the result of the previous instruction is 0
-`SF` |	Sign Flag            |	Has the same value as the sign bit of the result (1 negative, 0 positive)
-`OF` |	Overflow Flag        |	Set if the result exceeds the maximum (or minimum) signed integer value
+`CF` | Carry Flag            | Set if the result exceeds the maximum (or minimum) unsigned integer value
+`PF` | Parity Flag           | Set if the low byte of the result contains an even number of 1 bits
+`AF` | Auxiliary Carry Flag  | Used in BCD arithmetic; set if bit 3 generates a carry or borrow
+`ZF` | Zero Flag             | Set if the result of the previous instruction is 0
+`SF` | Sign Flag             | Has the same value as the sign bit of the result (1 negative, 0 positive)
+`OF` | Overflow Flag         | Set if the result exceeds the maximum (or minimum) signed integer value
 
 >**NOTE**: If you follow the evolution of registers from 8086, you'll see that initially they were named `ax`, `bx`, `cx` etc., and were 16 bits in size.
 >From 80386, Intel extended these registers to 32 bits (i.e., "extended" `ax` → `eax`).
@@ -65,11 +65,11 @@ These instructions are used to transfer data between registers, between memory a
 
 Name   | Operands      | Description
 ------ |-------------- | -----------
-`mov`  | 	`dst, src` |    Moves the value from source to the destination(erasing what was in the destination before)
-`push` | 	`src`      |	Moves the value from the source onto the "top" of the stack
-`pop`  | 	`dst`      |	Moves the value from the "top" of the stack into the destination
-`lea`  | 	`dst, src` |	Loads the effective address of the source to the destination
-`xchg` | 	`dst, src` |	Swaps(Exchanges) the values between the source and the destination
+`mov`  |  `dst, src`   | Moves the value from source to the destination(erasing what was in the destination before)
+`push` |  `src`        | Moves the value from the source onto the "top" of the stack
+`pop`  |  `dst`        | Moves the value from the "top" of the stack into the destination
+`lea`  |  `dst, src`   | Loads the effective address of the source to the destination
+`xchg` |  `dst, src`   | Swaps (Exchanges) the values between the source and the destination
 
 ### Arithmetic and Logic Instructions
 
@@ -77,13 +77,13 @@ These instructions perform arithmetic and logic operations:
 
 Name   | Operands          | Description
 ------ |------------------ | -----------
-`add`  | 	`dst, src`     |    Adds the source and the destination, storing the result in the destination
-`sub`  | 	`dst, src`     |	Subtracts the source from the destination, storing the result in the destination
-`and`  | 	`dst, src`     |	Calculates logical AND between the source and the destination, storing the result in the destination
-`or`   | 	`dst, src`     |    Calculates logical OR between the source and the destination, storing the result in the destination
-`xor`  | 	`dst, src`     |    Calculates logical XOR between the source and the destination, storing the result in the destination
-`test` | 	`dst, src`     |	Calculates logical AND between the source and the destination without storing the result
-`shl`  | 	`dst, <const>` |    Calculates the logical shifted value from the destination with a constant number of positions, storing the result in the destination
+`add`  |  `dst, src`       | Adds the source and the destination, storing the result in the destination
+`sub`  |  `dst, src`       | Subtracts the source from the destination, storing the result in the destination
+`and`  |  `dst, src`       | Calculates logical AND between the source and the destination, storing the result in the destination
+`or`   |  `dst, src`       | Calculates logical OR between the source and the destination, storing the result in the destination
+`xor`  |  `dst, src`       | Calculates logical XOR between the source and the destination, storing the result in the destination
+`test` |  `dst, src`       | Calculates logical AND between the source and the destination without storing the result
+`shl`  |  `dst, <const>`   | Calculates the logical shifted value from the destination with a constant number of positions, storing the result in the destination
 
 ### Program Control Instructions
 
@@ -91,10 +91,10 @@ These instructions are used to control the flow of programs:
 
 Name    | Operands      | Description
 ------- |-------------- | -----------
-`jmp`   | 	`<address>` |   Jumps unconditionally to the specified address(directly, by register, by labels)
-`cmp`   | 	`dst, src`  |   Compares the source with the destination(more details below)
-j`cond` | 	`<address>` |	Jumps conditionally to the specified address depending on the state of the flag(set/not set)/condition variable
-call    | 	`<address>` |	Calls the subroutine located at the specified address
+`jmp`   |  `<address>`  | Jumps unconditionally to the specified address(directly, by register, by labels)
+`cmp`   |  `dst, src`   | Compares the source with the destination(more details below)
+j`cond` |  `<address>`  | Jumps conditionally to the specified address depending on the state of the flag(set/not set)/condition variable
+call    |  `<address>`  | Calls the subroutine located at the specified address
 
 >**NOTE**: [The 'cmp dest, src' instruction](https://www.felixcloutier.com/x86/cmp) effectively calculates `dest - src` behind the scenes(as in subtracting the source from the destination).
 We are talking about an unsigned subtraction, without storing the result.

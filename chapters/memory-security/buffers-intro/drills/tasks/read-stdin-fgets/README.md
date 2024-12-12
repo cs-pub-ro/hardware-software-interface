@@ -1,6 +1,6 @@
 # Buffer Overflow with Data from Standard Input and `fgets()`
 
-As mentioned in the [**Read Using gets** task](../read-stdin-gets/README.md), the `gets()` function is prohibited in current programs.
+As mentioned in the [**Read Using gets** task](../../tasks/read-stdin-gets/README.md), the `gets()` function is prohibited in current programs.
 Instead, the `fgets()` function can be used.
 Open the source code file `read_stdin_fgets.asm` from the `drills/tasks/read-stdin-fgets/support/`.
 In the `read_stdin_fgets.asm` source file, follow **TODO 1** and change the `gets()` function call to the `fgets()` function call.
@@ -41,4 +41,4 @@ The result should be the same like in the *read_stdin_gets* task.
 What happens if you push *buffer_length - 1*, instead of *buffer_length*.
 Why *var is 0x004F4C46* now?
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#How-to-make-a-Buffer-Overflow?) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/buffers-intro.md) reading material.

@@ -32,4 +32,4 @@ The divisor is passed as an argument to the `div` mnemonic.
 > **TIP**: If the program gives you a `SIGFPE`.
 Arithmetic exception," you most likely forgot to initialize the upper part of the dividend (`ah`, `dx`, or `edx`).
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/registers.md) reading material.

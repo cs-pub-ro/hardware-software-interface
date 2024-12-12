@@ -17,4 +17,4 @@ The `mirror` function should perform an **in-place** reversal of the characters 
 > mirror("qwerty") = "ytrewq"
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/c-pointers.md) reading material.

@@ -24,4 +24,4 @@ Your program should display the number of even and odd values from an array.
 
 For negative numbers, sign extension should be performed; it would work without it because we are only interested in the remainder, but let's be rigorous :-)
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](/reading/memory-addressing.md) reading material.

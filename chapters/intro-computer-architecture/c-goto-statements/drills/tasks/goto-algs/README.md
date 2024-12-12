@@ -22,4 +22,4 @@ The skeleton for the code is in `support/binary_search/binary_search.c`.
 > **WARNING**: We reiterate that the use cases of the goto statement are limited.
 > These exercises have educational value to get you accustomed to jump instructions that we will use in assembly language development.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#syntax) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/c-goto-statements.md) reading material.

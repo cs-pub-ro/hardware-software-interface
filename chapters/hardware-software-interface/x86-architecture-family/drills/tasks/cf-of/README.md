@@ -10,4 +10,4 @@ Using the `add` instruction on the `al` register:
 
 1. Set both flags simultaneously.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/x86-architecture-family.md) reading material.

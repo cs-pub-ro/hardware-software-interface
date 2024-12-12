@@ -29,4 +29,4 @@ Iterate through the addresses in `v` byte by byte, two bytes at a time, and four
 >printf("%p -> 0x%x\n", char_ptr, *char_ptr);
 >```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#pointers-to-arrays) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/memory-operations.md) reading material.

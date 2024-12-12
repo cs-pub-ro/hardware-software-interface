@@ -14,4 +14,4 @@ which calculates the maximum element from an array based on a given comparison f
 compare(const void *a, const void *b)
 ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#pointers-in-functions-and-function-pointers) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/memory-operations.md) reading material.

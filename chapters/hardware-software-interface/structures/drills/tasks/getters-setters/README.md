@@ -22,4 +22,4 @@ string_s: Are you sure?
 
 Follow the comments marked with **TODO**.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/structures.md) reading material.

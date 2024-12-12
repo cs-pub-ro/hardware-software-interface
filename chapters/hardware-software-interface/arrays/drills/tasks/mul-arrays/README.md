@@ -16,4 +16,4 @@ Follow the comments marked with **TODO**.
 **IMPORTANT**: The product should be computed between two one-byte numbers.
 Therefore, the result is stored on two bytes.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/arrays.md) reading material.

@@ -15,4 +15,4 @@ You need to add at the beginning of the `main` function, in the place marked wit
 Do not modify the structure in the `.data` section, you need to use code to modify the structure.
 >**TIP**: For modifying the group, you will need to change the third byte/character of the `group` field (i.e., the byte/character with index 2).
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/structures.md) reading material.

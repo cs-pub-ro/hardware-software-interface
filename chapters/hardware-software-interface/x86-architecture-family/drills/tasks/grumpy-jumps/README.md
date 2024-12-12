@@ -10,4 +10,4 @@ Modify the source so that the wrong message is not displayed anymore.
 
 > **TIP**: To determine the necessary values for the `eax` and `ebx` registers, we recommend using GDB.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/x86-architecture-family.md) reading material.

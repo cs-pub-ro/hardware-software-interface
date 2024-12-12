@@ -125,7 +125,7 @@ Depending on the architecture, each processor can access a maximum number of bit
 The sizes of common data types used in C are dependent on both the processor and the platform on which the program was compiled (operating system, compiler).
 The table below presents the sizes of data types on a 32-bit architecture processor, when the program is compiled using gcc under Linux.
 
-On the left side of the image [above](#use-of-base-16-representation), we have memory addresses where data is located.
+On the left side of the image [above](../media/hex-view.png), we have memory addresses where data is located.
 At address `0x0009FA08`, the first 4 bytes starting from offset `0x02` are `0x01` `0x00`, `0xFF`, `0xFF`.
 These can represent a 4-byte integer, 4 characters, or 2 integers on 2 bytes.
 By using base 16, we can interpret the data and infer what they might represent.

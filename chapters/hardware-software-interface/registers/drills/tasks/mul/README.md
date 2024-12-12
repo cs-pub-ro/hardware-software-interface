@@ -39,4 +39,4 @@ Update the area marked with `TODO` in the file `multiply.asm` to allow multiplic
 > - Registers `dx` and `ax` for multiplying word numbers.
 > - Registers `edx` and `eax` for multiplying dword numbers.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/registers.md) reading material.

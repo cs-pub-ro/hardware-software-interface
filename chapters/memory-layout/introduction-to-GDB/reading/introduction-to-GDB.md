@@ -61,7 +61,7 @@ where:
 - f is the display format (x for hex, d for decimal, s for string, and i for instructions)
 - u is the size of each element (b for 1 byte, h for 2, w for 4, and g for 8 bytes)
 
-We recommend the article [Debugging](https://developers.redhat.com/articles/the-gdb-developers-gnu-debugger-tutorial-part-1-getting-started-with-the-debugger#why_another_gdb_tutorial_) for further understanding of how to use GDB both in the CLI and through an IDE.
+We recommend the article [Debugging](https://developers.redhat.com/articles/the-gdb-developers-gnu-debugger-tutorial-part-1-getting-started-with-the-debugger) for further understanding of how to use GDB both in the CLI and through an IDE.
 
 ## pwndbg
 

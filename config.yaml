@@ -1,28 +1,133 @@
 stages:
-  # - make_assets
-  - embed_reveal
+  #- make_assets
+  - prepare_view
+  #- embed_reveal
   - docusaurus
 
 build_dir: /build
 output_type: last
 output_dir: /output
 
-make_assets:
+lab_structure:
+  - title: Lab 1 - Number Representation
+    filename: lab1.md
+    content:
+      - tasks/conversions.md
+      - tasks/rotations.md
+      - tasks/odd-even.md
+      - tasks/len-xor.md
+      - tasks/mirror.md
+      - reading/binary-hex.md
+      - reading/c-pointers.md
+  - title: Lab 2 - Memory Operations. Introduction to GDB
+    filename: lab2.md
+    content:
+      - tasks/iterate.md
+      - tasks/delete_first.md
+      - tasks/pixels.md
+      - tasks/find_max.md
+      - tasks/pointers.md
+      - tasks/inspect.md
+      - reading/memory-operations.md
+      - guides/array_vs_pointer.md
+      - reading/introduction-to-GDB.md
+      - guides/segfault.md
+  - title: Lab 4 - Toolchain. GOTO
+    filename: lab4.md
+    content:
+      - tasks/goto-algs.md
+      - tasks/old-hits.md
+      - reading/c-goto-statements.md
+      - guides/goto-warm-up.md
+      - reading/reverse-engineering.md
+      - guides/compiler-explorer-tutorial.md
+      - guides/ghidra-tutorial.md
+  - title: Lab 5 - Introduction to Assembly Language
+    filename: lab5.md
+    content:
+      - tasks/conditional-jumps.md
+      - tasks/grumpy-jumps.md
+      - tasks/sets.md
+      - tasks/min.md
+      - tasks/fibonacci.md
+      - tasks/cf-of.md
+      - reading/introduction.md
+      - reading/x86-architecture-family.md
+      - guides/instructions.md
+      - guides/discovering-assembly.md
+  - title: Lab 6 - Registers and Memory Addressing
+    filename: lab6.md
+    content:
+      - tasks/div.md
+      - tasks/mul.md
+      - tasks/sum-squared.md
+      - tasks/sum-array.md
+      - tasks/vec-count-if.md
+      - reading/registers.md
+      - guides/multiply-divide.md
+      - guides/floating-point-exception.md
+      - reading/memory-addressing.md
+      - guides/addressing-arrays.md
+      - guides/declarations.md
+      - guides/loop.md
+  - title: Lab 7 - Structures, vectors and strings
+    filename: lab7.md
+    content:
+      - tasks/fibonacci.md
+      - tasks/print-structure.md
+      - tasks/getters-setters.md
+      - tasks/find-substring.md
+      - tasks/mul-arrays.md
+      - tasks/courses.md
+      - reading/structures.md
+      - guides/students.md
+      - reading/arrays.md
+      - guides/max.md
+  - title: Lab 11 - Buffer Management. Buffer Overflow
+    filename: lab11.md
+    content:
+      - tasks/data-buffer.md
+      - tasks/stack-buffer.md
+      - tasks/read-stdin-gets.md
+      - tasks/read-stdin-fgets.md
+      - tasks/overflow-in-c.md
+      - tasks/overwrite-ret-addr.md
+      - tasks/overflow-for-binary.md
+      - reading/buffers-intro.md
+      - reading/overflow-vuln.md
+# make_assets:
+#   plugin: command
+#   options:
+#     command: make
+#     locations:
+#       - chapters/template-chapter/template-topic/slides
+#       - chapters/hardware-software-interface
+#       - chapters/intro-computer-architecture
+#       - chapters/memory-layout
+#       - chapters/memory-security
+#     args:
+#       - all
+
+prepare_view:
   plugin: command
   options:
-    command: make
+    command: python
     locations:
-      - chapters/template-chapter/template-topic/slides
+      - .
     args:
-      - all
+      - gen-view.py
+# embed_reveal:
+#   plugin: reveal_embed
+#   options:
+#     target: docusaurus
+#     extension: mdx
+#     build:
+#       - template-chapter-template-topic: template-chapter-template-topic
 
-embed_reveal:
-  plugin: reveal_embed
-  options:
-    target: docusaurus
-    extension: mdx
-    build:
-      template-chapter-template-topic: template-chapter-template-topic
+#       Hardware-Software-Interface: slides/Hardware-Software-Interface
+#       Intro-Computer-Architecture: slides/Intro-Computer-Architecture
+#       Memory-Layout: slides/Memory-Layout
+#       Memory-Security: slides/Memory-Security
 
 docusaurus:
   plugin: docusaurus
@@ -31,238 +136,25 @@ docusaurus:
     math: true
     sidebar: js
     structure:
-      - Introduction: chapters/landing-page/README.md
-      - Lab 1 - Number Representation:
-          - Binary and Hexadecimal:
-              path: chapters/intro-computer-architecture/binary-hex/
-              extra:
-                - media/
-              subsections:
-                - Reading/: reading/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Conversions/: conversions/
-                            - Rotations/: rotations/
-                            - Binary Even and Hexadecimal Odd/: odd-even/
-          - Pointers in C:
-              path: chapters/memory-layout/c-pointers/
-              extra:
-                - media/
-              subsections:
-                - Reading/: reading/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Length and Equality with Bitwise Operations/: len-xor/
-                            - Mirror/: mirror/
-      - Lab 2 - Memory Operations. Introduction to GDB:
-          - Memory Operations:
-              path: chapters/memory-layout/memory-operations/
-              extra:
-                - media/
-              subsections:
-                - Reading/: reading/
-                - Guides:
-                    path: guides/
-                    subsections:
-                      - Array vs Pointer/: array_vs_pointer/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Iterating through an Integer Array/: iterate/
-                            - Deleting the First Occurrence of a Pattern from a String/: delete_first/
-                            - Pixels/: pixels/
-                            - Find Maximum in Array/: find_max/
-                            - Bonus - Pointers/: pointers/
-          - Introduction to GDB:
-              path: chapters/memory-layout/introduction-to-GDB/
-              subsections:
-                - Reading/: reading/
-                - Guides:
-                    path: guides/
-                    subsections:
-                      - GDB Tutorial - Debugging a Segfault/: segfault/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Data Inspection/: inspect/
-      - Lab 4 - Toolchain. GOTO:
-          - GOTO statements in C:
-              path: chapters/intro-computer-architecture/c-goto-statements/
-              subsections:
-                - Reading/: reading/
-                - Guides:
-                    path: guides/
-                    subsections:
-                      - GOTO Warm-up/: goto-warm-up/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Algorithms Using GOTO/: goto-algs/
-          - Toolchain for Reverse Engineering:
-              path: chapters/memory-security/reverse-engineering/
-              subsections:
-                - Reading/: reading/
-                - Guides:
-                    path: guides/
-                    subsections:
-                      - Compiler Explorer Tutorial/: compiler-explorer-tutorial/
-                      - Ghidra Tutorial/: ghidra-tutorial/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Old Hits/: old-hits/
-      - Lab 5 - Introduction to Assembly Language:
-          - Introduction:
-              path: chapters/hardware-software-interface/introduction/
-              subsections:
-                - Reading/: reading/
-          - x86 Architecture Family:
-              path: chapters/hardware-software-interface/x86-architecture-family/
-              extra:
-                - media/
-              subsections:
-                - Reading/: reading/
-                - Guides:
-                    path: guides/
-                    subsections:
-                      - First look at assembly instructions/: instructions/
-                      - Discovering Assembly/: discovering-assembly/
-                - Drills:
-                    path: drills/
-                    subsections:
-                      - Tasks:
-                          path: tasks/
-                          subsections:
-                            - Conditional Jumps/: conditional-jumps/
-                            - Grumpy Jumps/: grumpy-jumps/
-                            - Sets/: sets/
-                            - Min/: min/
-                            - Fibonacci/: fibonacci/
-                            - Carry Flag - Overflow Flag/: cf-of/
-      - Lab 6 - Registers and Memory Addressing:
-            - Registers:
-                path: chapters/hardware-software-interface/registers/
-                extra:
-                  - media/
-                subsections:
-                  - Reading/: reading/
-                  - Guides:
-                      path: guides/
-                      subsections:
-                        - Multiply and Divide/: multiply-divide/
-                        - Floating Point Exception/: floating-point-exception/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Divide/: div/
-                              - Multiply/: mul/
-                              - Sum of first N numbers squared/: sum-squared/
-            - Memory Addressing:
-                path: chapters/hardware-software-interface/memory-addressing/
-                subsections:
-                  - Reading/: reading/
-                  - Guides:
-                      path: guides/
-                      subsections:
-                        - Addressing Arrays/: addressing-arrays/
-                        - Declarations/: declarations/
-                        - Loop/: loop/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Sum Elements of Array/: sum-array/
-                              - Count Elements of Array/: vec-count-if/
-      - Lab 7 - Structures, vectors and strings:
-            - Structures:
-                path: chapters/hardware-software-interface/structures/
-                subsections:
-                  - Reading/: reading/
-                  - Guides:
-                      path: guides/
-                      subsections:
-                        - Students/: students/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Fibonacci Sum/: fibonacci/
-                              - Print Structure/: print-structure/
-                              - Getters and Setters/: getters-setters/
-            - Arrays:
-                path: chapters/hardware-software-interface/arrays/
-                subsections:
-                  - Reading/: reading/
-                  - Guides:
-                      path: guides/
-                      subsections:
-                        - Max/: max/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Find Substring/: find-substring/
-                              - Mul Arrays/: mul-arrays/
-                              - Courses/: courses/
-      - Lab 11 - Buffer Management. Buffer Overflow:
-            - Introduction to Buffers:
-                path: chapters/memory-security/buffers-intro/
-                subsections:
-                  - Reading/: reading/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Data Buffer/: data-buffer/
-                              - Stack Buffer/: stack-buffer/
-                              - Read Using gets/: read-stdin-gets/
-                              - Read Using fgets/: read-stdin-fgets/
-            - Buffer Overflow Vulnerabilities:
-                path: chapters/memory-security/overflow-vuln/
-                subsections:
-                  - Reading/: reading/
-                  - Drills:
-                      path: drills/
-                      subsections:
-                        - Tasks:
-                            path: tasks/
-                            subsections:
-                              - Overflow in C/: overflow-in-c/
-                              - Overwrite Return Address/: overwrite-ret-addr/
-                              - Overflow for Binary File/: overflow-for-binary/
+      - Introduction: /build/prepare_view/.view/landing-page.md
+      - Labs:
+          path: /build/prepare_view/.view
+          extra:
+            - media
+          subsections:
+            - Lab 1 - Number Representation: lab1.md
+            - Lab 2 - Memory Operations. Introduction to GDB: lab2.md
+            - Lab 4 - Toolchain. GOTO: lab4.md
+            - Lab 5 - Introduction to Assembly Language: lab5.md
+            - Lab 6 - Registers and Memory Addressing: lab6.md
+            - Lab 7 - Structures, vectors and strings: lab7.md
+            - Lab 11 - Buffer Management. Buffer Overflow: lab11.md
+
     # static_assets:
-    #   - template-chapter-template-topic: /build/make_assets/chapters/template-chapter/template-topic/slides/_site
+    # - slides/Hardware-Software-Interface: /build/make_assets/chapters/hardware-software-interface
+    # - slides/Intro-Computer-Architecture: /build/make_assets/chapters/intro-computer-architecture
+    # - slides/Memory-Layout: /build/make_assets/chapters/memory-layout
+    # - slides/Memory-Security: /build/make_assets/chapters/memory-security
     config_meta:
       title: Hardware Software Interface
       url: http://localhost/

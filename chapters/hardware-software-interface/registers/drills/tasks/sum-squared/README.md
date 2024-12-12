@@ -20,4 +20,4 @@ Therefore, you cannot easily use the `eax` register to store the sum of squares.
 >
 > **NOTE**: For verification, the sum of squares of the first 100 natural numbers is `338350`.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/registers.md) reading material.

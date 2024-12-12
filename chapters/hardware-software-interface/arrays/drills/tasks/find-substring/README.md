@@ -17,4 +17,4 @@ Substring found at index: <N>
 > - call the `printf` function
 > - clean up the parameters added earlier from the stack by adding the value 8 to the `esp` register (each parameter is 4 bytes).
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/arrays.md) reading material.

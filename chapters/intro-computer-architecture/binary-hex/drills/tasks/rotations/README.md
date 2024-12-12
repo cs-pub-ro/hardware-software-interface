@@ -17,4 +17,4 @@ Implement left and right rotations for 32-bit integers in C.
 > rotate_right(0x00000001, 16) = 65536
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#logical-shifts) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/binary-hex.md) reading material.

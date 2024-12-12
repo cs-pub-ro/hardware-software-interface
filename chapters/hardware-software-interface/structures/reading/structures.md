@@ -1,4 +1,4 @@
-# Structured Data (Structures, Arrays and String Operations)
+# Structured Data - Structures
 
 We will introduce the concept of structures in assembly language and work with specialized operations on strings.
 

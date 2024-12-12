@@ -61,4 +61,4 @@ mov byte [ebx + TODO], TODO
 
 With a correct solution to this exercise, the program will display the `0xDEADBEEF` value for the local variable.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#What-is-a-Buffer-Overflow?) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/buffers-intro.md) reading material.

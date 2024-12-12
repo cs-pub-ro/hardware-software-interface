@@ -36,4 +36,4 @@ Perform the union of the two sets.
 > PRINTF32 `%u\n\x0`, `EAX`
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/x86-architecture-family.md) reading material.

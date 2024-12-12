@@ -13,4 +13,4 @@ Given a string and a pattern, implement the `delete_first(char *s, char *pattern
 > char s[] = "Ana are mere"; // allocates the string in a read-write memory area (modifiable content)
 > ```
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#pointer-operations-and-pointer-arithmetic) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/memory-operations.md) reading material.

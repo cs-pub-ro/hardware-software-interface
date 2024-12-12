@@ -4,4 +4,4 @@ You will solve this exercise starting from the `min.asm` file located in the `dr
 
 Calculate the minimum of the numbers in 2 registers (`eax` and `ebx`) using a comparison instruction, a jump instruction, and the `xchg` instruction.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/x86-architecture-family.md) reading material.

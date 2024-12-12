@@ -146,4 +146,4 @@ In the improved version, if an error occurs, a cleanup part is also performed: t
 >Thinking in terms of goto statements and including them in our code prepares us for working in assembly language.
 >
 >**WARNING**: In any other situation, this form of programming should be avoided as much as possible.
->![goto.png]( https://imgs.xkcd.com/comics/goto.png)
+>![goto.png](https://imgs.xkcd.com/comics/goto.png)

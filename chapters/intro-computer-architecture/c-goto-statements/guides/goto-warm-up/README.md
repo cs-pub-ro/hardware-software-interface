@@ -13,6 +13,6 @@ There is no code on the same line as the label.
 The code should be indented in the same way whether there are labels or not.
 - Leave a blank line before the line containing a label.
 
->**NOTE**: [Situation](https://stackoverflow.com/questions/3517726/what-is-wrong-with-using-goto/3517765#3517765) where `goto` may be useful.
+>**NOTE**: [Situation](https://stackoverflow.com/questions/3517726/what-is-wrong-with-using-goto/3517765) where `goto` may be useful.
 
-If you're having difficulties solving this exercise, go through [this](../../reading/README.md#syntax) reading material.
+If you're having difficulties solving this exercise, go through [this](../../reading/c-goto-statements.md) reading material.

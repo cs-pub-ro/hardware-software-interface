@@ -12,7 +12,7 @@ Using `ghidra` or `gdb` for investigation, discover how to exploit the buffer ov
 > Identify the comparison condition you want to trigger.
 > Then build the corresponding payload and deliver it in the appropriate format to the program.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/overflow-vuln.md) reading material.
 
 > **WARNING** If you try using a payload generated with python and it doesn't work, try simply copying its content in the terminal
 

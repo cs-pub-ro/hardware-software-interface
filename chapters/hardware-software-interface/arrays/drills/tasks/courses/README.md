@@ -17,4 +17,4 @@ Kate ---- Student unassigned :(
 
 Follow the comments marked with **TODO**.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/arrays.md) reading material.

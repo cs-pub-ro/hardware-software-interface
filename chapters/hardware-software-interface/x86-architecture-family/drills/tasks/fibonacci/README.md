@@ -8,4 +8,4 @@ Calculate the Nth Fibonacci number, where N is given through the `eax` register.
 >
 >**TIP**: For example, if the value stored in `eax` is equal to `5`, a correct solution will display `3` and for `7`, it will display `8`.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/x86-architecture-family.md) reading material.

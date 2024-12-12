@@ -22,4 +22,4 @@ objdump -M intel -d break_this
 > Also, `fgets()` will read a maximum of `n - 1` characters;
 > `n` can be set to a value larger than the actual length of the input string.
 
-If you're having difficulties solving this exercise, go through [this](../../../reading/README.md#How-is-Buffer-Overflow-Used?) reading material.
+If you're having difficulties solving this exercise, go through [this](../../../reading/overflow-vuln.md) reading material.
