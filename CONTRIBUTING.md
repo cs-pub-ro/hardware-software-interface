@@ -1,3 +1,7 @@
+---
+nav_order: 3
+---
+
 # Contributing to Hardware Software Interface OER
 
 These are recommendations when contributing to the contents of the Hardware Software Interface OER repository.

@@ -1,23 +1,17 @@
-FROM ghcr.io/open-education-hub/openedu-builder:0.5.1
+FROM ruby:3.0
 
-# Install tools.
-RUN apt-get update && \
-  apt-get install -yqq ffmpeg curl make
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install MarkdownPP using pip.
-RUN pip install MarkdownPP
+WORKDIR /usr/src/app
 
-# Install node LTS (16)
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
-  apt-get update && \
-  apt-get install -yqq nodejs
+COPY . .
 
-# Install reveal-md using npm.
-RUN npm install -g reveal-md
+RUN gem install bundler
+RUN bundle install
 
-# Install Docusaurus.
-RUN npm install create-docusaurus@2.1.0
+EXPOSE 4000
 
-WORKDIR /content
-
-ENTRYPOINT ["oe_builder"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0"]

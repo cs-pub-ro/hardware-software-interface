@@ -1,17 +1,39 @@
-topic/hardware-software-interface:
-  - chapters/hardware-software-interface/**/*
+labs/lab-01:
+  - labs/lab-01/**/*
 
-topic/intro-computer-architecture:
-  - chapters/intro-computer-architecture/**/*
+labs/lab-02:
+  - labs/lab-02/**/*
 
-topic/memory-layout:
-  - chapters/memory-layout/**/*
+labs/lab-03:
+  - labs/lab-03/**/*
 
-topic/memory-security:
-  - chapters/memory-security/**/*
+labs/lab-04:
+  - labs/lab-04/**/*
 
-topic/stack:
-  - chapters/stack/**/*
+# labels for labs 5 to 12
+labs/lab-05:
+  - labs/lab-05/**/*
+
+labs/lab-06:
+  - labs/lab-06/**/*
+
+labs/lab-07:
+  - labs/lab-07/**/*
+
+labs/lab-08:
+  - labs/lab-08/**/*
+
+labs/lab-09:
+  - labs/lab-09/**/*
+
+labs/lab-10:
+  - labs/lab-10/**/*
+
+labs/lab-11:
+  - labs/lab-11/**/*
+
+labs/lab-12:
+  - labs/lab-12/**/*
 
 area/reading:
   - '**/reading/*'
