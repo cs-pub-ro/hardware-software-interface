@@ -84,9 +84,9 @@ final_print:
     mov edx, ecx ; save the index value in edx
     imul edx, student_t_size ; multiply the index with the size of the student_t structure
     add ebx, edx ; this addition save into ebx the address of the structure from an index in the students array
-    mov eax, ebx ; move this address into ebx to use ebx for something else and to have the addrss saved in eax
+    mov eax, ebx ; move this address into ebx to use ebx for something else and to have the address saved in eax
     add ebx, name ; add to ebx `name` so that to get the name of the student
-    ; it is possible to add name because in ebx is saved the address of start of an elememt from students array
+    ; it is possible to add name because in ebx is saved the address of start of an element from students array
     ; and student_t structure contains name field
     PRINTF32 `%s ----\x0`, ebx
 

@@ -41,7 +41,7 @@ main:
     call printf
     add esp, 4
 
-    ; The buffer has only 64 bytes of memmory allocated
+    ; The buffer has only 64 bytes of memory allocated
     ; The last one is for null terminator
     ; So, with 64 + 1 + 4 = 69
     ; There can still be a full overflow of local var
