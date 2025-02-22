@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall
 LDFLAGS =
 
-TARGET_EXEC = len_xor
+TARGET_EXEC = main len_xor
 
 SRCS := $(shell find $(SRC_DIRS) -name "*.c")
 OBJS := $(SRCS:.c=.o)

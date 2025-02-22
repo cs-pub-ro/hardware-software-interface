@@ -6,8 +6,9 @@
 
 #include "mirror.h"
 
-void mirror(char *s)
+int main(void)
 {
-	/* TODO */
-	(void) s;
+	/* TODO: Test function */
+
+	return 0;
 }

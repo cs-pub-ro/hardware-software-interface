@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall
 LDFLAGS =
 
-TARGET_EXEC = rotations
+TARGET_EXEC = main rotate
 
 SRCS := $(shell find $(SRC_DIRS) -name "*.c")
 OBJS := $(SRCS:.c=.o)

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall
 LDFLAGS =
 
-TARGET_EXEC = odd_even
+TARGET_EXEC = main odd_even
 
 SRCS := $(shell find $(SRC_DIRS) -name "*.c")
 OBJS := $(SRCS:.c=.o)

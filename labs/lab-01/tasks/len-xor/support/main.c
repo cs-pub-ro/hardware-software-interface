@@ -4,10 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "mirror.h"
+#include "len_xor.h"
 
-void mirror(char *s)
+int main(void)
 {
-	/* TODO */
-	(void) s;
+	/* TODO: Test functions */
+
+	return 0;
 }

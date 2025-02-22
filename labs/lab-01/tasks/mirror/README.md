@@ -22,4 +22,21 @@ The `mirror` function should perform an **in-place** reversal of the characters 
 > mirror("qwerty") = "ytrewq"
 > ```
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_small_string             ........................ passed ...  33
+test_medium_string            ........................ passed ...  33
+test_big_string               ........................ passed ...  34
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/c-pointers.md) reading material.

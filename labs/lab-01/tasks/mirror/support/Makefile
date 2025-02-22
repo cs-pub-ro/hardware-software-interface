@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall
 LDFLAGS =
 
-TARGET_EXEC = mirror
+TARGET_EXEC = main mirror
 
 SRCS := $(shell find $(SRC_DIRS) -name "*.c")
 OBJS := $(SRCS:.c=.o)

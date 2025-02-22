@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STR_SIZE 512
+#include "len_xor.h"
 
 char *new_string(const char *cont_str)
 {
@@ -26,7 +26,7 @@ int my_strlen(const char *str)
 	return res;
 }
 
-void xor_check(const char *str)
+void equality_check(const char *str)
 {
 	int i, n;
 	char curr_char, check_char;
@@ -39,19 +39,4 @@ void xor_check(const char *str)
 			printf("Address of %c: %p\n", curr_char, str + i);
 	}
 	printf("\n");
-}
-
-int main(void)
-{
-	char *str;
-
-	str = new_string("ababababacccbacbacbacbacbabc");
-
-	printf("len(\"%s\") = %d\n", str, my_strlen(str));
-	xor_check(str);
-
-	// free memory
-	free(str);
-
-	return 0;
 }

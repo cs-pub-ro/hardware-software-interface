@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <errno.h>
 
+#include "odd_even.h"
+
 void print_binary(int number, int nr_bits)
 {
 	int   i;
@@ -39,29 +41,4 @@ void check_parity(int *numbers, int n)
 		else
 			print_binary(curr_nr, 8);
 	}
-}
-
-int main(void)
-{
-	int *numbers, i, n;
-
-	printf("Size of array: "); scanf("%d", &n);
-
-	numbers = malloc(sizeof(*numbers) * n);
-
-	if (numbers == NULL) {
-		perror("malloc() failed while allocating `numbers`");
-		exit(errno);
-	}
-
-	for (i = 0; i < n; ++i) {
-		printf("Number %d: ", i + 1);
-		scanf("%d", numbers + i);
-	}
-
-	check_parity(numbers, n);
-
-	free(numbers);
-
-	return EXIT_SUCCESS;
 }

@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "rotate.h"
+
 void rotate_left(unsigned int *number, int bits)
 {
 	unsigned int bit_mask = -1;
@@ -22,20 +24,4 @@ void rotate_right(unsigned int *number, int bits)
 	bit_mask <<= (sizeof(*number) * 8 - bits);
 	(*number) >>= bits;
 	(*number) |= bit_mask;
-}
-
-int main(void)
-{
-	unsigned int number;
-
-	number = 0x80000000;
-	rotate_left(&number, 1);
-	printf("After left rotation:   %d\n", number);
-
-	number = 0x00000001;
-	rotate_right(&number, 16);
-	printf("After right rotation:  %d\n", number);
-
-
-	return 0;
 }

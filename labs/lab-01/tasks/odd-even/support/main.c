@@ -2,12 +2,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-#include "mirror.h"
+#include "odd_even.h"
 
-void mirror(char *s)
+int main(void)
 {
-	/* TODO */
-	(void) s;
+	/* TODO: Test functions */
+
+	return 0;
 }

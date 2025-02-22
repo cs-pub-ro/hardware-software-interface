@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "rotate.h"
+
 void rotate_left(unsigned int *number, int bits)
 {
 	/* TODO */
@@ -15,11 +17,3 @@ void rotate_right(unsigned int *number, int bits)
 	(void) number;
 	(void) bits;
 }
-
-int main(void)
-{
-	/* TODO: Test functions */
-
-	return 0;
-}
-

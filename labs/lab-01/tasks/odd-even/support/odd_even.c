@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "odd_even.h"
+
 void print_binary(int number, int nr_bits)
 {
 	/* TODO */
@@ -16,11 +18,3 @@ void check_parity(int *numbers, int n)
 	(void) numbers;
 	(void) n;
 }
-
-int main(void)
-{
-	/* TODO: Test functions */
-
-	return 0;
-}
-

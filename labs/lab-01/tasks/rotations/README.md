@@ -22,4 +22,21 @@ Implement left and right rotations for 32-bit integers in C.
 > rotate_right(0x00000001, 16) = 65536
 > ```
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_rotate_left                 ........................ passed ...  33
+test_rotate_right                ........................ passed ...  33
+test_rotate_both                 ........................ passed ...  34
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/binary-hex.md) reading material.

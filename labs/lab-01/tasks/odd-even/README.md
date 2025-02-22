@@ -21,4 +21,21 @@ Traverse an array of 32-bit integers using pointer operations and display the ev
 > 0b01010110
 > ```
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_small_array              ........................ passed ...  33
+test_medium_array             ........................ passed ...  33
+test_big_array                ........................ passed ...  34
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/binary-hex.md) reading material.

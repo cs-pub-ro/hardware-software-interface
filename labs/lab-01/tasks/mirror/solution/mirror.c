@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STR_SIZE 512
+#include "mirror.h"
 
 char *new_string(const char *cont_str)
 {
@@ -39,32 +39,4 @@ void mirror(char *s)
 		*(s + i) = *(s + mirror_idx);
 		*(s + mirror_idx) = aux;
 	}
-}
-
-int main(void)
-{
-	char *s;
-
-	s = new_string("AnaAreMere");
-	printf("mirror(\"%s\") = ", s);
-	mirror(s);
-	printf("\"%s\"\n", s);
-	free(s);
-	s = NULL;
-
-	s = new_string("asdfghjl");
-	printf("mirror(\"%s\") = ", s);
-	mirror(s);
-	printf("\"%s\"\n", s);
-	free(s);
-	s = NULL;
-
-	s = new_string("qwerty");
-	printf("mirror(\"%s\") = ", s);
-	mirror(s);
-	printf("\"%s\"\n", s);
-	free(s);
-	s = NULL;
-
-	return 0;
 }
