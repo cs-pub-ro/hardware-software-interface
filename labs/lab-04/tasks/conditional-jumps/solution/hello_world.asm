@@ -4,6 +4,7 @@
 
 section .data
     myString: db "Hello, World!", 0
+    N: dd 6                         ; N = 6
     myGoodbyeString: db "Goodbye, World!", 0
 
 section .text
@@ -11,7 +12,9 @@ section .text
     extern printf
 
 main:
-    mov ecx, 6                      ; N = the value stored in ecx
+    mov ecx, DWORD [N]              ; N = the value stored in ecx
+    PRINTF32 `%d\n\x0`, ecx         ; DO NOT REMOVE/MODIFY THIS LINE
+
     mov eax, 2
     mov ebx, 1
     cmp eax, ebx

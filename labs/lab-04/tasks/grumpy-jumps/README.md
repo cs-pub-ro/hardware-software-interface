@@ -15,4 +15,17 @@ Modify the source so that the wrong message is not displayed anymore.
 
 > **TIP**: To determine the necessary values for the `eax` and `ebx` registers, we recommend using GDB.
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+./run_all_tests.sh
+
+test_display_right               ........................ passed ...  50
+test_display_only_right          ........................ passed ...  50
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/x86-architecture-family.md) reading material.

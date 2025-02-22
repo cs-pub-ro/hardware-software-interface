@@ -2,14 +2,18 @@
 
 %include "printf32.asm"
 
+section .data
+    FIRST_SET: dd 139   ; The first set
+    SECOND_SET: dd 169  ; The second set
+
 section .text
     global main
     extern printf
 
 main:
-    ; The two sets can be found in the registers eax and ebx
-    mov eax, 139
-    mov ebx, 169
+    ; The two sets can be found in the FIRST_SET and SECOND_SET variables
+    mov eax, DWORD [FIRST_SET]
+    mov ebx, DWORD [SECOND_SET]
     PRINTF32 `%u\n\x0`, eax ; print the first set
     PRINTF32 `%u\n\x0`, ebx ; print the second set
 

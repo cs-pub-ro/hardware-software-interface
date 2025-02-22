@@ -2,14 +2,18 @@
 
 %include "printf32.asm"
 
+section .data
+    FIRST_SET: dd 139   ; The first set
+    SECOND_SET: dd 169  ; The second set
+
 section .text
     global main
     extern printf
 
 main:
     ; The two sets can be found in the registers eax and ebx
-    mov eax, 139
-    mov ebx, 169
+    mov eax, DWORD [FIRST_SET]
+    mov ebx, DWORD [SECOND_SET]
     PRINTF32 `%u\n\x0`, eax ; print the first set
     PRINTF32 `%u\n\x0`, ebx ; print the second set
 
@@ -42,10 +46,6 @@ main:
     PRINTF32 `%u\n\x0`, eax
 
     ; TODO6: difference of two sets
-    ; We will calculate the difference between the two sets
-    ; stored in their original registers
-    mov eax, 139
-    mov ebx, 169
     not ebx
     and eax, ebx
     PRINTF32 `%u\n\x0`, eax

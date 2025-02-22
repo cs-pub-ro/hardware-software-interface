@@ -4,14 +4,17 @@
 
 section .data
     myString: db "Hello, World!", 0
+    N: dd 6                         ; N = 6
 
 section .text
     global main
     extern printf
 
 main:
-    mov ecx, 6                      ; N = the value stored in ecx
-    mov eax, 1
+    mov ecx, DWORD [N]              ; ecx will store the value of N
+    PRINTF32 `%d\n\x0`, ecx         ; DO NOT REMOVE/MODIFY THIS LINE
+
+    mov eax, 2
     mov ebx, 1
     cmp eax, ebx
     je print                        ; TODO1: eax > ebx?
