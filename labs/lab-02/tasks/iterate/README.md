@@ -34,4 +34,20 @@ Iterate through the addresses in `v` byte by byte, two bytes at a time, and four
 >printf("%p -> 0x%x\n", char_ptr, *char_ptr);
 >```
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_chars                       ........................ passed ...  33
+test_shorts                      ........................ passed ...  33
+test_ints                        ........................ passed ...  34
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/memory-operations.md) reading material.

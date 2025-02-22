@@ -3,10 +3,14 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <assert.h>
+
+#include "delete_first.h"
 
 char *delete_first(char *s, char *pattern)
 {
+	/**
+	 * TODO: Implement this function
+	 */
 	char *found = strstr(s, pattern);
 
 	/**
@@ -34,19 +38,4 @@ char *delete_first(char *s, char *pattern)
 	strcpy(result + nbefore, found + nremoved);
 
 	return result;
-}
-
-int main(void)
-{
-	/**
-	 * Replace *s with s[], because *s allocated the string in a
-	 * read-only memory area (.rodata), and the delete_first() function
-	 * needs to modify the string s
-	 */
-	char s[] = "Ana are mere";
-	char *pattern = "re";
-
-	printf("%s\n", delete_first(s, pattern));
-
-	return 0;
 }

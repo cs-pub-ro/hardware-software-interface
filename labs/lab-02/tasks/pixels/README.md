@@ -44,4 +44,19 @@ p.b = 0.11 * p.b;
 > #define GET_PIXEL(a, i ,j) (*(*((a) + (i)) + (j)))
 > ```
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_reverse                     ........................ passed ...  50
+test_color_to_gray               ........................ passed ...  50
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/memory-operations.md) reading material.

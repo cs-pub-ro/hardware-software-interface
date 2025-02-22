@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "find_max.h"
+
 void *find_max(void *arr, int n, size_t element_size,
 				int (*compare)(const void *, const void *))
 {
@@ -21,28 +23,4 @@ void *find_max(void *arr, int n, size_t element_size,
 int compare(const void *a, const void *b)
 {
 	return *(int *)a > *(int *)b ? 1 : 0;
-}
-
-int main(void)
-{
-	int n;
-
-	int *arr = malloc(n * sizeof(*arr));
-
-	if (arr == NULL) {
-		perror("malloc");
-		exit(1);
-	}
-
-	scanf("%d", &n);
-
-	for (int i = 0 ; i < n; i++)
-		scanf("%d", &arr[i]);
-
-	int *max_elem = (int *)find_max(arr, n, sizeof(*arr), compare);
-
-	printf("The maximum element is: %d\n", *max_elem);
-
-	free(arr);
-	return 0;
 }

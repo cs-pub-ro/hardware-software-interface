@@ -2,17 +2,35 @@
 
 #include <stdio.h>
 
-/**
- * Display the addresses of the elements in the "v" array
- * along with their values.
- * Traverse the addresses, one by one, byte by byte, then two by two bytes,
- * and then four by four.
- */
-int main(void)
-{
-	int v[] = {0xCAFEBABE, 0xDEADBEEF, 0x0B00B135, 0xBAADF00D, 0xDEADC0DE};
+#include "iterate.h"
+#include "array.h"
 
+void print_chars(void)
+{
+	/**
+	 * TODO: Implement function
+	 */
 	(void) v;
 
-	return 0;
+	printf("-------------------------------\n");
+}
+
+void print_shorts(void)
+{
+	/**
+	 * TODO: Implement function
+	 */
+	(void) v;
+
+	printf("-------------------------------\n");
+}
+
+void print_ints(void)
+{
+	/**
+	 * TODO: Implement function
+	 */
+	(void) v;
+
+	printf("-------------------------------\n");
 }
