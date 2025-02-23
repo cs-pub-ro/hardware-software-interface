@@ -17,7 +17,8 @@ Think about where you should start displaying and when you should stop.
 1. Print the vector allocated on the stack element by element.
 Think about where you should start displaying and what size each element has.
 
-> **NOTE:** After a successful implementation, the program should display something similar to the following output (it won't be exactly the same, stack memory addresses may differ):
+> **NOTE:** You should only push 10 elements on the stack.
+After a successful implementation, the program should display something similar to the following output (it won't be exactly the same, stack memory addresses may differ):
 >
 >```c
 >0xffcf071b: 65
@@ -25,15 +26,11 @@ Think about where you should start displaying and what size each element has.
 >0xffcf071d: 97
 >0xffcf071e: 32
 >0xffcf071f: 97
->...
 >0xffcf0734: 4
 >0xffcf0735: 0
 >0xffcf0736: 0
 >0xffcf0737: 0
 >0xffcf0738: 5
->0xffcf0739: 0
->0xffcf073a: 0
->0xffcf073b: 0
 >Bob has corn
 >1 2 3 4 5
 >```
@@ -46,3 +43,17 @@ Think about where you should start displaying and what size each element has.
 Remember the order in which the bytes of a larger number are stored: review the section **Order of representation of numbers larger than one byte** from Lab 01.
 
 If you're having difficulties solving this exercise, go through [this](../../reading/stack.md) reading material
+
+## Checker
+
+To run the checker, go into the `tests` directory located in `src`, then type `make check`.
+A successful output of the checker should look like this :
+
+```console
+student@os:~/.../lab-07/tasks/reverse-array/tests$ make && make check
+test_stack_addresing           .......................... passed ... 100
+
+========================================================================
+
+Total:                                                           100/100
+```

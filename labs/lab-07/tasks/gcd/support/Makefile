@@ -22,4 +22,4 @@ $(OBJS): $(SRCS)
 .PHONY: clean
 
 clean:
-	$(RM) -r *.o $(TARGET_EXEC)
+	$(RM) -f -r *.o $(TARGET_EXEC)
