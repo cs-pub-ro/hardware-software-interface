@@ -37,4 +37,24 @@ The divisor is passed as an argument to the `div` mnemonic.
 > **TIP**: If the program gives you a `SIGFPE`.
 Arithmetic exception," you most likely forgot to initialize the upper part of the dividend (`ah`, `dx`, or `edx`).
 
+## Testing
+
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_first_div                   ........................ passed ...  33
+test_second_div                  ........................ passed ...  33
+test_third_div                   ........................ passed ...  34
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/registers.md) reading material.
