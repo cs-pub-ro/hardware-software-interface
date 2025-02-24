@@ -25,4 +25,23 @@ Therefore, you cannot easily use the `eax` register to store the sum of squares.
 >
 > **NOTE**: For verification, the sum of squares of the first 100 natural numbers is `338350`.
 
+## Testing
+
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_sum_100                     ........................ passed ...  50
+test_sum_squares_100             ........................ passed ...  50
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/registers.md) reading material.
