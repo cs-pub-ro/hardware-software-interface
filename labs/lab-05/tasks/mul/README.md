@@ -44,4 +44,24 @@ Update the area marked with `TODO` in the file `multiply.asm` to allow multiplic
 > - Registers `dx` and `ax` for multiplying word numbers.
 > - Registers `edx` and `eax` for multiplying dword numbers.
 
+## Testing
+
+To test the implementation, enter the tests/ directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_byte_mul                    ........................ passed ...  33
+test_short_mul                   ........................ passed ...  33
+test_int_mul                     ........................ passed ...  34
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/registers.md) reading material.

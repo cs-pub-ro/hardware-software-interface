@@ -42,7 +42,7 @@ namely, the `word_array` and `dword_array`.
 
 Starting from the program in the previous exercise, calculate the sum of squares of elements in an array.
 
-> **NOTE**: You can use the `dword_array` array, ensuring that the sum of squares of the contained elements can be represented in 32 bits.
+> **NOTE**: You can use the `dword_array2` array, ensuring that the sum of squares of the contained elements can be represented in 32 bits.
 >
 > **NOTE**: If you use the construction below (array with 10 elements)
 >
@@ -51,5 +51,36 @@ Starting from the program in the previous exercise, calculate the sum of squares
 > ```
 >
 > the sum of squares will be 2704560839.
+
+## 64 Bits Sum of Squares
+
+Compute the sum of squares of the elements from `big_numbers_array`.
+
+> **NOTE**: The sum of the array can be represented on 64 bits, but we only have 32 bits registers.
+>
+> **HINT**: Split the sum in 2 variables (the mul operator for 32 bits multiplication).
+>
+> the sum of squares will be 1610691026282151079.
+
+## Testing
+
+To test the implementation, enter the tests/ directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+first_test                       ........................ passed ...  20
+second_test                      ........................ passed ...  20
+third_test                       ........................ passed ...  30
+fourth_test                      ........................ passed ...  30
+
+========================================================================
+
+Total:                                                           100/100
+```
 
 If you're having difficulties solving this exercise, go through [this](/reading/memory-addressing.md) reading material.
