@@ -27,4 +27,22 @@ string_s: Are you sure?
 
 Follow the comments marked with **TODO**.
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests
+
+test_getter_setter_printf        ........................ passed ... 100
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/structures.md) reading material.

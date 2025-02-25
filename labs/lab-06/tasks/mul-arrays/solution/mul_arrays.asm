@@ -6,8 +6,8 @@ section .bss
     array3: resw 10
 
 section .data
-    array1: db 27, 35, 46, 14, 17, 29, 37, 104, 135
-    array2: db 15, 38, 44, 20, 17, 33, 78, 143, 132
+    array1: db 27, 35, 46, 14, 17, 29, 37, 104, 135, 124
+    array2: db 15, 38, 44, 20, 17, 33, 78, 143, 132, 16
 
 section .text
 extern printf
@@ -35,7 +35,7 @@ iterate_arrays:
     xor ecx, ecx
     xor eax, eax
 display:
-    mov ax, word[array3 + ecx]
+    mov ax, word[array3 + ecx * 2]
     PRINTF32 `%hu \x0`, eax
     inc ecx
     cmp ecx, 10

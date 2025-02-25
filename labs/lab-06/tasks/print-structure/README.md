@@ -20,4 +20,22 @@ You need to add at the beginning of the `main` function, in the place marked wit
 Do not modify the structure in the `.data` section, you need to use code to modify the structure.
 >**TIP**: For modifying the group, you will need to change the third byte/character of the `group` field (i.e., the byte/character with index 2).
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests
+
+test_print_structure             ........................ passed ... 100
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/structures.md) reading material.

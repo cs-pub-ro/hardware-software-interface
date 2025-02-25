@@ -22,4 +22,25 @@ Substring found at index: <N>
 > - call the `printf` function
 > - clean up the parameters added earlier from the stack by adding the value 8 to the `esp` register (each parameter is 4 bytes).
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+
+test_find_substring_sample       ........................ passed ...  25
+test_find_substring_no_occurence ........................ passed ...  25
+test_find_substring_small        ........................ passed ...  25
+test_find_substring_large        ........................ passed ...  25
+
+========================================================================
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/arrays.md) reading material.

@@ -3,7 +3,8 @@
 %include "printf32.asm"
 
 section .data
-    N dd 9 ; compute the sum of the first N fibonacci numbers
+    N dd 9 ; DO NOT MOFIDY THIS LINE EXCEPT FOR THE VALUE OF N!
+           ; compute the sum of the first N fibonacci numbers
     sum_print_format db "Sum first %d fibonacci numbers is %d", 10, 0
 
 section .text
