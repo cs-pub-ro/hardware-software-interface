@@ -40,6 +40,17 @@ print_stack:
     lea esi, [esp]
     PRINTF32 `%s\n\x0`, esi
 
+    ; Print the array.
+    add esp, 16
+    mov eax, esp
+print_array:
+    PRINTF32 `%d \x0`, [eax]
+
+    add eax, 4
+    cmp eax, ebp
+    jl print_array
+    PRINTF32 `\n\x0`
+
     ; Restore the previous value of the EBP (Base Pointer).
     mov esp, ebp
 

@@ -21,3 +21,17 @@ Building on the `reverse-array.asm` exercise, implement the `TODO`s without usin
 >```
 
 If you're having difficulties solving this exercise, go through [this](../../reading/stack.md) reading material
+
+## Checker
+
+To run the checker, go into the `tests` directory located in `src`, then type `make check`.
+A successful output of the checker should look like this :
+
+```console
+student@os:~/.../lab-07/tasks/reverse-array/tests$ make && make check
+test_reverse_array            ........................... passed ... 100
+
+========================================================================
+
+Total:                                                           100/100
+```
