@@ -2,11 +2,15 @@
 
 #include <stdio.h>
 
-int main(void)
+#include "vector_max.h"
+
+int vector_max(int *v, int len)
 {
-	int v[] = {4, 1, 2, -17, 15, 22, 6, 2};
 	int max;
 	unsigned int i;
+	/**
+	 * TODO: Implement finding the maximum value in the vector
+	 */
 
 	i = 0;
 	max = v[0];
@@ -21,10 +25,8 @@ loop:
 smaller:
 	i++;
 
-	if (i < sizeof(v) / sizeof(int))
+	if (i < len)
 		goto loop;
 
-	printf("Max is %d\n", max);
-
-	return 0;
+	return max;
 }

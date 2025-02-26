@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 LDFLAGS =
 
-TARGET_EXEC = binary-search
+TARGET_EXEC = main
 
 SRCS := $(shell find $(SRC_DIRS) -name "*.c")
 OBJS := $(SRCS:.c=.o)
