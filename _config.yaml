@@ -11,3 +11,11 @@ exclude:
 plugins:
   - jekyll-titles-from-headings
   - jekyll-seo-tag
+
+callouts:
+  warning:
+    title: warning
+    color: yellow
+  tip:
+    title: tip
+    color: green
