@@ -15,7 +15,7 @@ The `mirror` function should perform an **in-place** reversal of the characters 
 > **TIP**:
 >
 > ```c
-> mirror("AnaAreMere") = "ereMerAanA"
+> mirror("LoremIpsum") = "muspImeroL"
 >
 > mirror("asdfghjl") = "ljhgfdsa"
 >

@@ -130,8 +130,8 @@ static int test_medium_string(void)
 
 static int test_big_string(void)
 {
-	char *src = strdup("Triedru tridreptunghic in triunghiuri triughiulare triangula un tiedru tridreptunghic.");
-	char *dest = strdup("Triedru tridreptunghic in triunghiuri triughiulare triangula un tiedru tridreptunghic.");
+	char *src = strdup("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce odio.");
+	char *dest = strdup("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce odio.");
 	int rc;
 
 	my_strrev(src);

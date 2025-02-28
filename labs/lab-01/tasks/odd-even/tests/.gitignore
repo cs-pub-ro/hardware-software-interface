@@ -1,1 +1,4 @@
 .gdb_history
+*.ref
+*.out
+test_odd_even

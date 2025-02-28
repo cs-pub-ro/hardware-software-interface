@@ -11,15 +11,17 @@ Traverse an array of 32-bit integers using pointer operations and display the ev
 
 >**NOTE**: Use bitwise operations wherever possible in your solution!
 >
->**NOTE**: For the array `[214, 71, 84, 134, 86]`, the program will display:
+>**NOTE**: For the array `[214, 77, 84, 134, 86]`, the program will display:
 >
 > ```text
 > 0b11010110
-> 0x00000047
+> 0x0000004D
 > 0b01010100
 > 0b10000110
 > 0b01010110
 > ```
+>
+> Use capital letters when printing hexadecimal numbers (use the `%08X` format string for `printf()`).
 
 To test the implementation, enter the `tests/` directory and run:
 

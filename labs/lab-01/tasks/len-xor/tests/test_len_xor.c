@@ -98,7 +98,6 @@ static void xor_check(const char *str)
 		if (!(curr_char ^ check_char))
 			printf("Address of %c: %p\n", curr_char, str + i);
 	}
-	printf("\n");
 }
 
 static int my_diff(char *file1, char *file2)

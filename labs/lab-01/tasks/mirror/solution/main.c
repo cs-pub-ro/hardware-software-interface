@@ -10,7 +10,7 @@ int main(void)
 {
 	char *s;
 
-	s = new_string("AnaAreMere");
+	s = new_string("LoremIpsum");
 	printf("mirror(\"%s\") = ", s);
 	mirror(s);
 	printf("\"%s\"\n", s);

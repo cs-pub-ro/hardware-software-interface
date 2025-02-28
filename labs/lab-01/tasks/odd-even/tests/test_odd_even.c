@@ -59,7 +59,6 @@ static void parity_result(char *buf, int *numbers, int n)
 
 	for (i = 0; i < n; ++i) {
 		curr_nr = *(numbers + i);
-		sprintf(buf + len, "%5d: ", curr_nr);
 		len = strlen(buf);
 		if (curr_nr & 1)
 			sprintf(buf + len, "0x%08X\n", curr_nr);

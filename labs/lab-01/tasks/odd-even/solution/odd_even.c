@@ -35,7 +35,6 @@ void check_parity(int *numbers, int n)
 
 	for (i = 0; i < n; ++i) {
 		curr_nr = *(numbers + i);
-		printf("%5d: ", curr_nr);
 		if (curr_nr & 1)
 			printf("0x%08X\n", curr_nr);
 		else
