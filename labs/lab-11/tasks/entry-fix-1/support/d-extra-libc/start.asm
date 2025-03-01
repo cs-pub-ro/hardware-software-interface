@@ -1,7 +1,5 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-extern __libc_csu_init
-extern __libc_csu_fini
 extern __libc_start_main
 extern my_main
 
@@ -23,11 +21,9 @@ _start:
     push esp
     push edx
 
-    push __libc_csu_fini
-    push __libc_csu_init
     push ecx
     push esi
-    push my_main
+    push main
     call __libc_start_main
 
     hlt

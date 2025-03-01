@@ -11,5 +11,5 @@ main: main.o shop.o
 main.o: main.c
 
 clean:
-	-rm -f main *.o
+	-rm -f main *[!shop].o
 	-rm -f *~

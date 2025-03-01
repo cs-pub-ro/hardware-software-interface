@@ -16,6 +16,7 @@ hidden.o: hidden.c
 
 plain.o: plain.c
 
+
 clean:
-	-rm -f main *.o
+	-rm -f main *[!checker].o
 	-rm -f *~
