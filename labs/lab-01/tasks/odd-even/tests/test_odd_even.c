@@ -137,7 +137,7 @@ static int test_small_array(void)
 {
 	int numbers[] = {214, 71, 84, 134, 86};
 	int n = 5;
-	char *src = malloc(BUFSIZ);
+	char *src = calloc(BUFSIZ, 1);
 
 	parity_result(src, numbers, n);
 
@@ -167,7 +167,7 @@ static int test_medium_array(void)
 {
 	int numbers[] = {214, 71, 84, 134, 86, 90, 7, 254, 255, 60};
 	int n = 10;
-	char *src = malloc(BUFSIZ);
+	char *src = calloc(BUFSIZ, 1);
 
 	parity_result(src, numbers, n);
 
@@ -198,7 +198,7 @@ static int test_big_array(void)
 	int numbers[] = {49, 2, 254, 255, 78, 99, 40, 127, 128, 33,
 					32, 181, 64, 7, 16, 67, 200, 15, 100, 4};
 	int n = 20;
-	char *src = malloc(BUFSIZ);
+	char *src = calloc(BUFSIZ, 1);
 
 	parity_result(src, numbers, n);
 
