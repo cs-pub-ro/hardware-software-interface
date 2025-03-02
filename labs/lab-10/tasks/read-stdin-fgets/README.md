@@ -46,4 +46,19 @@ The result should be the same like in the *read_stdin_gets* task.
 What happens if you push *buffer_length - 1*, instead of *buffer_length*.
 Why *var is 0x004F4C46* now?
 
+## Checking Your Solution
+
+In order to verify your exploit, please complete the `exploit.py` TODOs.
+Run it using `python3 exploit.py`.
+
+Afterwards, navigate to the `tests` directory and run:
+
+```Bash
+make check
+test........................................passed
+Total:                                      100/100
+```
+
+If your solution is correct, you will receive a `100/100` result.
+
 If you're having difficulties solving this exercise, go through [this](../../reading/buffers-intro.md) reading material.

@@ -27,4 +27,25 @@ objdump -M intel -d break_this
 > Also, `fgets()` will read a maximum of `n - 1` characters;
 > `n` can be set to a value larger than the actual length of the input string.
 
+## Checking Your Solution
+
+In order to verify your exploit, please complete the `exploit.py` TODOs.
+You can test it using this command:
+
+```console
+student@hsi:/.../overwrite-ret-addr/support python3 exploit.py | ./break_this
+[...]
+```
+
+Afterwards, navigate to the `tests` directory and run:
+
+```console
+student@hsi:/.../overwrite-ret-addr/tests make check
+
+test........................................passed
+Total:                                      100/100
+```
+
+If your solution is correct, you will receive a `100/100` result.
+
 If you're having difficulties solving this exercise, go through [this](../../reading/overflow-vuln.md) reading material.

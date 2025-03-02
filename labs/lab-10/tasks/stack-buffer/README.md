@@ -66,4 +66,20 @@ mov byte [ebx + TODO], TODO
 
 With a correct solution to this exercise, the program will display the `0xDEADBEEF` value for the local variable.
 
+## Checking Your Solution
+
+Test your solution in the `support/` folder.
+
+Afterwards, navigate to the `tests` directory and run:
+
+```Bash
+make check
+test_part2........................................passed
+test_part3........................................passed
+
+Total:                                      100/100
+```
+
+If your solution is correct, you will receive a `100/100` result.
+
 If you're having difficulties solving this exercise, go through [this](../../reading/buffers-intro.md) reading material.
