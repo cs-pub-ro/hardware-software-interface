@@ -63,4 +63,14 @@ If done correctly, you will see:
 var is 0x574F4C46
 ```
 
+## Checking Your Solution
+
+In order to verify your exploit, please complete the `exploit.py` TODOs. Afterwards, navigate to the `tests` directory and run:
+
+```Bash
+make check
+```
+
+If your solution is correct, you will receive a `100/100` result.
+
 If you're having difficulties solving this exercise, go through [this](../../reading/buffers-intro.md) reading material.

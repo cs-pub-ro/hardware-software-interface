@@ -66,4 +66,14 @@ mov byte [ebx + TODO], TODO
 
 With a correct solution to this exercise, the program will display the `0xDEADBEEF` value for the local variable.
 
+## Checking Your Solution
+
+In order to verify your exploit, please complete the `exploit.py` TODOs. Afterwards, navigate to the `tests` directory and run:
+
+```Bash
+make check
+```
+
+If your solution is correct, you will receive a `100/100` result.
+
 If you're having difficulties solving this exercise, go through [this](../../reading/buffers-intro.md) reading material.
