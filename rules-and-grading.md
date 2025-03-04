@@ -8,6 +8,7 @@ has_children: false
 ## Grading
 
 To pass this course you need to obtain **5 points** from a total of **10 points**:
+You need a minimum of **2.5 points** from the semester (midterm exam, assignments, laboratory sessions and lecture quizzes) in order to be able to take the final exam.
 
 * 5 points for the [final exam](#final-exam)
 * 2 points for the [midterm exam](#midterm-exam)
