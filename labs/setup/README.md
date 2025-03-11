@@ -107,3 +107,84 @@ Use the following tutorial to import the virtual machine in UTM:
 >
 >After starting the VM (it may take up to 2 minutes), you can find its IP address by running `ip a s`.
 >![IP](./media/13_get_ip.png)
+
+## VSCode - GDB Integration
+
+### Configuration
+
+#### Extensions to Install and their IDs
+
+- Makefile tools (microsoft) `ms-vscode.makefile-tools`
+
+- x86 and x86_64 Assembly (`13xforever`);
+`language-x86-64-assembly`
+
+- GDB Debug (`DamianKoper`);
+`gdb-debug`
+
+- From vscode menu: `Terminal/Configure Default Build Task` edit `.vscode/tasks.json`, and set the command to `make all`
+
+    ```json
+    "command": "make",
+    "args": [
+        "all",
+        ""
+    ],
+    "options": {
+        "cwd": "${fileDirname}"
+    },
+    "group": {
+        "kind": "build",
+        "isDefault": true
+    }
+    ```
+
+- Press Ctrl-Shift-B to run the make all command.
+In the terminal, you can use Ctrl-Click on the filename with an error to navigate to it.
+
+- Either press F5 to start debugging, or directly edit `.vscode/launch.json`.
+It should contain:
+
+    ```json
+    "stopAtEntry": true,
+    "cwd": "/tmp/01-hello-world",
+    "program": "/tmp/01-hello-world/hello",
+    "miDebuggerPath": "gdb",
+    //"args": ["<", "1.in"], // If during debugging we want stdin from a file 1.in
+    ```
+
+- When pressing F5, the debugger should start and stop at the first instruction.
+Use Ctrl-Shift-D to activate the debug window.
+
+- If you have C modules, a right-click inside those modules will show the option 'Disassembly window'.
+
+### Operation
+
+- You can set breakpoints by right-clicking in the left column next to the line number.
+
+- In the debug window (Ctrl-Shift-D), it is recommended to activate Variables, Watch, and Call Stack.
+
+- Variables/Locals: Displays variables from C functions.
+
+- Variables/Registers/CPU: Displays 32-bit registers.
+
+- Watch/+: Add `` `print $eflags`` to see the updated flags (extra backtick required, see below).
+
+- In debug mode, right-click in the source code to open 'Open disassembly view'.
+
+- In disassembly mode, you can set breakpoints in the left column next to the addresses.
+F10, F11, and Shift-F11 work here.
+
+- In the Terminal window, the program's `stdout` and `stdin` are displayed.
+
+- In the Debug Console, the GDB prompt appears.
+    **All commands at the GDB prompt must be preceded by a backtick/backquote**
+  > Example: @ vscode prompt: `` `p/t $eax`` instead of plain `p/t $eax` inside standalone gdb.
+
+### Hotkeys
+
+- `Ctrl-Shift-D` Open debug window.
+- `F5` Start debugging and continue.
+- `F10` Step over - execute the entire function.
+- `F11` Step into - enter functions.
+- `Shift-F11` Step out - exit the current call.
