@@ -122,7 +122,8 @@ Use the following tutorial to import the virtual machine in UTM:
 - GDB Debug (`DamianKoper`);
 `gdb-debug`
 
-- From vscode menu: `Terminal/Configure Default Build Task` edit `.vscode/tasks.json`, and set the command to `make all`
+- From vscode menu: `Terminal/Configure Default Build Task` edit
+  [.vscode/tasks.json](https://github.com/iocla/.vscode/blob/main/tasks.json), and set the command to `make all`
 
     ```json
     "command": "make",
@@ -142,7 +143,8 @@ Use the following tutorial to import the virtual machine in UTM:
 - Press Ctrl-Shift-B to run the make all command.
 In the terminal, you can use Ctrl-Click on the filename with an error to navigate to it.
 
-- Either press F5 to start debugging, or directly edit `.vscode/launch.json`.
+- Either press F5 to start debugging, or directly
+  edit [.vscode/launch.json](https://github.com/iocla/.vscode/blob/main/launch.json).
 It should contain:
 
     ```json
