@@ -3,7 +3,7 @@ parent: Lab 2 - Memory Operations. Introduction to GDB
 nav_order: 1
 ---
 
-# Task: Task: Iterating through an Integer Array
+# Task: Iterating through an Integer Array
 
 You will solve this exercise starting from the `iterate.c` file located in the `tasks/iterate/support` directory.
 
