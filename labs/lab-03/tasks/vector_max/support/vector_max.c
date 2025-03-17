@@ -19,5 +19,6 @@ int vector_max(int *v, int len)
 	if (i < len)
 		goto check_max;
 
+		
 	return max;
 }

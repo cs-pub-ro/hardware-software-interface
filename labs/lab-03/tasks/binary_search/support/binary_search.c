@@ -29,7 +29,8 @@ int binary_search(int *v, int len, int dest)
 			goto search_right;
 		if (*(v + middle) > dest)
 			goto search_left;
-		
+
+			
 	dest_found:
 		return middle;
 	dest_not_found:
