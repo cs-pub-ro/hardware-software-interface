@@ -9,7 +9,6 @@ int binary_search(int *v, int len, int dest)
 	int start = 0;
 	int end = len - 1;
 	int middle;
-
 	goto binary_search;
 
 	search_right:

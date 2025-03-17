@@ -16,7 +16,6 @@ int vector_max(int *v, int len)
 		if (*(v + i) > max)
 			goto modify_max;
 		i++;
-
 	if (i < len)
 		goto check_max;
 
