@@ -16,7 +16,7 @@ mkdir -p "$LOG_DIR"
 FIRST_LINE=$(head -n 1 "$LOG_DIR/result.txt")
 NR_LINES=$(wc -l < "$LOG_DIR/result.txt")
 
-test_display_right()
+test_correct_message()
 {
     if [ "$FIRST_LINE" = "Well done!" ]; then
         exit 0
@@ -25,7 +25,7 @@ test_display_right()
     fi
 }
 
-test_display_only_right()
+test_only_correct_message()
 {
     if [ "$NR_LINES" -eq 1 ]; then
         if [ "$FIRST_LINE" = "Well done!" ]; then
