@@ -5,7 +5,7 @@ RM = rm
 SRCS := $(shell find . -name "*.asm")
 OBJS := $(SRCS:.asm=.o)
 
-UTILSDIR := ..utils/
+UTILSDIR := ../utils/
 
 ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
