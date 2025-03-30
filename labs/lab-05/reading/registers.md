@@ -21,7 +21,7 @@ For these situations, x86 processors offer us the possibility to work with subse
 
 The image below represents the registers, their subsections, and their sizes.
 
-![x86_32 Registers](media/registers.svg)
+![x86_32 Registers](../media/registers.png)
 
 >**WARNING**: Subsections are part of registers, which means that if we modify a register, we implicitly modify the value of the subsection.
 >
@@ -29,7 +29,7 @@ The image below represents the registers, their subsections, and their sizes.
 >
 >**NOTE**: Besides the basic registers, there are also six segment registers corresponding to certain areas as seen in the image:
 >
->![Segment Registers](media/segments.svg)
+>![Segment Registers](../media/segments.png)
 
 ## Static Memory Region Declarations
 
