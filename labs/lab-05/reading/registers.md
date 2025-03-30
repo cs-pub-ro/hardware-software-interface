@@ -21,7 +21,7 @@ For these situations, x86 processors offer us the possibility to work with subse
 
 The image below represents the registers, their subsections, and their sizes.
 
-![x86_32 Registers](media/registers.svg)
+![x86_32 Registers](../media/registers.svg)
 
 >**WARNING**: Subsections are part of registers, which means that if we modify a register, we implicitly modify the value of the subsection.
 >
@@ -29,7 +29,7 @@ The image below represents the registers, their subsections, and their sizes.
 >
 >**NOTE**: Besides the basic registers, there are also six segment registers corresponding to certain areas as seen in the image:
 >
->![Segment Registers](media/segments.svg)
+>![Segment Registers](../media/segments.svg)
 
 ## Static Memory Region Declarations
 
@@ -62,7 +62,7 @@ Names can be attached to the declared memory portions through a label to easily 
 >
 > **NOTE**: There are multiple types of memory regions as can be seen in the image below:
 >
-> ![Memory Sections](media/sections.jpg)
+> ![Memory Sections](../media/sections.jpg)
 
 The last declaration in the above example represents the declaration of an array.
 Unlike higher-level languages, where arrays can have multiple dimensions and their elements are accessed by indices, in assembly language, arrays are represented as a number of cells located in a contiguous area of memory.
