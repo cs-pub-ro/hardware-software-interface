@@ -14,7 +14,7 @@ section .bss
 
     ; the structure for a course
     struc course_t
-        id:             resd    1       ; id bautura = index in courses (the list of courses)
+        id:             resd    1       ; id = index in courses (the list of courses)
         name_course:    resb    15      ; char[10] - the name of the course
     endstruc
 

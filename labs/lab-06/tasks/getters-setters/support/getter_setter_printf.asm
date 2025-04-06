@@ -28,15 +28,15 @@ main:
     push ebp
     mov ebp, esp
 
-    ; Print all three values (int_x, char_y, string_s) from simple_obj.
+    ; Print all three values (int_x, char_y, string_s) from sample_obj.
     ; Hint: use "lea reg, [base + offset]" to save the result of
     ; "base + offset" into register "reg".
 
-    ; TODO: write the equivalent of "simple_obj->int_x = new_int".
+    ; TODO: write the equivalent of "sample_obj->int_x = new_int".
 
-    ; TODO: write the equivalent of "simple_obj->char_y = new_char".
+    ; TODO: write the equivalent of "sample_obj->char_y = new_char".
 
-    ; TODO: write the equivalent of "strcpy(simple_obj->string_s, new_string)".
+    ; TODO: write the equivalent of "strcpy(sample_obj->string_s, new_string)".
 
     ; TODO: print all three values again to validate the results of the
     ; three set operations above.
