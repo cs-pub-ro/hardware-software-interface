@@ -41,7 +41,7 @@ main:
 
     xor ebx, ebx
     mov bx, ax
-    PRINTF32 `Quotient: %hhu\n\x0`, ebx
+    PRINTF32 `Quotient: %hu\n\x0`, ebx
 
     xor ebx, ebx
     mov bx, dx

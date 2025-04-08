@@ -25,8 +25,9 @@ main:
     mul bl
 
     ; Print result in hexa
-    xor ebx, ebx
-    mov bx, ax
+    ; NOTE: The `%hx` format specifier tells printf to print only the lower half
+    ; (lower 16 bits) of eax - i.e., the ax register - by treating the value as
+    ; a 16-bit unsigned short.
     PRINTF32 `Result is: 0x%hx\n\x0`, eax
 
 
@@ -36,10 +37,8 @@ main:
     mul bx
 
     ; Print result in hexa
-    xor ebx, ebx
-    mov bx, dx
-    xor ebx, ebx
-    mov bx, ax
+    ; NOTE: The `%hx` format specifier is used in the same way as in the
+    ; previous PRINTF32 statement, only now for both dx and ax registers
     PRINTF32 `Result is: 0x%hx%hx\n\x0`, edx, eax
 
 
