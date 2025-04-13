@@ -9,7 +9,7 @@ global main
 main:
     mov ebp, esp
 
-    ; TODO 1: replace every push by an equivalent sequence of commands (use direct addressing of memory. Hint: esp)
+    ; TODO 1: replace every "push" instruction by an equivalent sequence of commands (use direct addressing of memory. Hint: esp)
     mov ecx, NUM
 push_nums:
     push ecx

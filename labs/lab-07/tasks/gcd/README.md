@@ -12,7 +12,7 @@ The code calculates the greatest common divisor (GCD) of two numbers given as pa
 1. Within the `print` label, display the result in the following format:
 
 ```c
-gcd(49,28) = 7
+gcd(49, 28) = 7
 ```
 
 If you're having difficulties solving this exercise, go through [this](../../reading/stack.md) reading material
