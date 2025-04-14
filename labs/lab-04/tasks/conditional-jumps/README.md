@@ -7,12 +7,12 @@ nav_order: 1
 
 You will solve the exercises starting from the `hello_world.asm` file located in the `tasks/conditional-jumps` directory.
 
-1. Modify the program so that the message is displayed only if the content of the `eax` register is greater than that of `ebx`.
+1. Modify the program so that the message is displayed only if the content of the `rax` register is greater than that of `r8`.
 Also, modify the values of the registers to continue displaying the message `"Hello, World!"`.
 
 1. Modify the program to also display `"Goodbye, World!"` at the end.
 
-1. Using jump instructions, modify the program to display `"Hello, World!"` N times, where N is given through the `ecx` register.
+1. Using jump instructions, modify the program to display `"Hello, World!"` N times, where N is given through the `rcx` register.
 Avoid infinite looping.
 
 > **TIP**: After a successful completion (with `N = 6`), the program should display:

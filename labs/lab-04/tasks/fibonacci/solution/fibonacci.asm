@@ -1,31 +1,36 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .data
-    N: dd 7          ; N-th fibonacci number to calculate
+    N: dq 7          ; N-th fibonacci number to calculate
 
 section .text
     global main
     extern printf
 
 main:
-    mov ecx, DWORD [N]       ; we want to find the N-th fibonacci number; N = ECX = 7
-    ; TODO: calculate the N-th fibonacci number (f(0) = 0, f(1) = 1)
-    PRINTF32 `%d\n\x0`, ecx  ; DO NOT REMOVE/MODIFY THIS LINE
+    push rbp
+    mov rbp, rsp
 
-    mov eax, 0
-    mov ebx, 1
+    mov rcx, QWORD [N]       ; we want to find the N-th fibonacci number; N = RCX = 7
+    ; TODO: calculate the N-th fibonacci number (f(0) = 0, f(1) = 1)
+    PRINTF64 `%d\n\x0`, rcx  ; DO NOT REMOVE/MODIFY THIS LINE
+
+    mov rax, 0
+    mov r9, 1
 
 fibonacci:
-    dec ecx
-    test ecx, ecx
+    dec rcx
+    test rcx, rcx
     je print
-    add eax, ebx
-    xchg eax, ebx
+    add rax, r9
+    xchg rax, r9
     jmp fibonacci
 
 print:
-    PRINTF32 `%d\n\x0`, ebx
-    xor eax, eax
+    PRINTF64 `%d\n\x0`, r9
+    xor rax, rax
+
+    leave
     ret
