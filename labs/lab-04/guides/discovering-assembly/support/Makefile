@@ -5,11 +5,11 @@ RM = rm
 SRCS := $(shell find . -name "*.asm")
 OBJS := $(SRCS:.asm=.o)
 
-UTILSDIR := ..utils/
+UTILSDIR := ../utils/
 
-ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
+ASFLAGS ?= -f elf64 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+LDFLAGS ?= -no-pie
 
 all: ex1 ex2 ex3 ex4
 

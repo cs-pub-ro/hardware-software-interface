@@ -1,22 +1,26 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
     global main
     extern printf
 
 main:
-    mov eax, 4
-    PRINTF32 `%d\n\x0`, eax
+    push rbp
+    mov rbp, rsp
+
+    mov r9, 4
+    PRINTF64 `%d\n\x0`, r9
 
 jump_incoming:
     jmp exit                    ; unconditional jump to the "exit" label
 
-    mov eax, 7                  ; this code is unreachable, therefore not executed
-    mov ebx, 8
-    add eax, ebx
-    PRINTF32 `%d\n\x0`, eax
+    mov r9, 7                  ; this code is unreachable, therefore not executed
+    mov rbx, 8
+    add r9, rbx
+    PRINTF64 `%d\n\x0`, r9
 
 exit:
+    leave
     ret
