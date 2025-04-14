@@ -21,7 +21,12 @@ The usual operations with the stack are:
 - `pop` - get the element from the top of the stack **and remove it**
 - `peek` or `top` - get the element from the top of the stack **without removing it**
 
-![An image showing a stack data structure at different stages. The empty stack gains the element labeled "1" after the instruction "push 1" is applied to it. After the instruction "push 2", the stack has two items, element 1 being below element 2. Finally, the "pop" instruction makes the stack lose element 2](../media/the-stack.svg)
+The image below shows a stack data structure at different stages.
+The empty stack gains the element labeled "1" after the instruction "push 1" is applied to it.
+After the instruction "push 2", the stack has two items, element 1 being below element 2.
+Finally, the "pop" instruction makes the stack lose element 2.
+
+![Stack Stages](../media/the-stack.svg)
 
 As the above image suggests, the order in which items are inserted and removed from a stack is represented by the phrase "first in, last out".
 
@@ -101,7 +106,7 @@ CMAIN:
 > **Note that the stack grows from higher addresses to lower addresses.**
 > This is why memory allocation on the stack is done using the `sub` instruction, and deallocation is done using the `add` instruction.
 
-![stack_image](../media/the-stack-growth.svg)
+![Stack Growth](../media/the-stack-growth.svg)
 
 Some processors do not have support for stack operations: for example, MIPS processors do not have `push` and `pop` instructions and do not have a special register for the stack pointer.
 Thus, if we want to implement stack operations on a MIPS processor, we would do it exactly as in the example above, but we can choose any register to keep track of the stack pointer.
@@ -131,7 +136,7 @@ A process's address space, or more precisely, a process's virtual address space,
 Each process has its own address space.
 Even in situations where two processes share a memory region, the virtual space is distinct, but it maps to the same physical memory region.
 
-![stack_image](../media/process_address_space.jpg)
+![Process Address Space](../media/process_address_space.jpg)
 
 In the figure above, a typical process's address space is presented.
 
