@@ -33,8 +33,8 @@ Most assembly languages provide a direct correspondence between instructions. Fo
 
 ```assembly
 mov al, 12 <-> '\xB0\x0C'
-xor dx, dx <-> '\x67\x31\xD2'
-jmp esp    <-> '\xFF\xE4'
+xor dx, dx <-> '\x66\x31\xD2'
+jmp rsp    <-> '\xFF\xE4'
 ```
 
 > **NOTE**: Because assembly language depends on architecture, it is generally not portable.

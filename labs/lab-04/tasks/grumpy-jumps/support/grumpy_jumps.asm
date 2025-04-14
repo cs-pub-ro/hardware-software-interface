@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .data
     wrong: db 'Not today, son.',0
@@ -11,20 +11,30 @@ section .text
     extern printf
 
 main:
-    mov eax, 0xdeadc0de         ; TODO3.1: modify eax register
-    mov ebx, 0x1337ca5e         ; TODO3.1: modify ebx register
-    mov ecx, 0x5                ; hardcoded; DO NOT change
-    cmp eax, ebx
+    push rbp
+    mov rbp, rsp
+
+    mov rax, 0xdeadc0de         ; TODO3.1: modify rax register
+    mov rbx, 0x1337ca5e         ; TODO3.1: modify rbx register
+    mov rcx, 0x5                ; hardcoded; DO NOT change
+    cmp rax, rbx
     jns bad
-    cmp ecx, ebx
+    cmp rcx, rbx
     jb bad
-    add eax, ebx
-    xor eax, ecx
+    add rax, rbx
+    xor rax, rcx
     jnz bad
 
 good:
-    PRINTF32 `%s\n\x0`, right
+    PRINTF64 `%s\n\x0`, right
+    xor rax, rax
+
+    leave
+    ret
 
 bad:
-    PRINTF32 `%s\n\x0`, wrong
+    PRINTF64 `%s\n\x0`, wrong
+    xor rax, rax
+
+    leave
     ret

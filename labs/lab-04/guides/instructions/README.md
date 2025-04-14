@@ -28,13 +28,13 @@ Having in mind what the `popf` instruction does, try to guess what would adding 
 jnc mystery_label
 ```
 
-Moving on, we can see that the `0` value is set to the `eax` register using the `mov` instruction.
-Can you give example of another two ways of setting the value in `eax` to `0` without using `mov` ?
+Moving on, we can see that the `0` value is set to the `r9` register using the `mov` instruction.
+Can you give example of another two ways of setting the value in `r9` to `0` without using `mov` ?
 > **HINT**: Think about the [logical operators](../../reading/x86-architecture-family.md).
 
-Next, by using the `test` instruction we can set the `flags` based on the output of the `logical and` between `eax` and itself.
+Next, by using the `test` instruction we can set the `flags` based on the output of the `logical and` between `r9` and itself.
 
-After resetting the flags, we store `0xffffffff` in the `ebx` register(which is actually the largest number it can store before setting the carry flag) and then use the `test` instruction yet again.
+After resetting the flags, we store `0xffffffffffffffff` in the `rbx` register(which is actually the largest number it can store before setting the carry flag) and then use the `test` instruction yet again.
 Similarly, what do you think adding the following line of code after the `test` instruction would produce ?
 
 ```assembly
@@ -42,12 +42,12 @@ jnz mystery_label
 ```
 
 We reset the flags once again and now we take a look at working with the smaller portions of the `eax` register.
-Can you guess the output of the following command, put right under the `add al, bl` instruction ?
+Can you guess the output of the following command, put right under the `add r9b, bl` instruction ?
 What about the flags ?
 Which flag has been set ?
 
 ```assembly
-PRINTF32 `%d\n\x0`, eax
+PRINTF64 `%d\n\x0`, r9
 ```
 
 Similarly, try to answer the same questions from above, but considering the next portions of the code.

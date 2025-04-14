@@ -1,21 +1,27 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
     global main
     extern printf
 
 main:
+    push rbp
+    mov rbp, rsp
+
     mov al, 0xFF
-    PRINTF32 `the Carry Flag is not active\n\x0`
+    PRINTF64 `the Carry Flag is not active\n\x0`
     test al, al
     add al, 1
     jc carry_flag
     jmp end
 
 carry_flag:
-    PRINTF32 `the Carry Flag is active\n\x0`
+    PRINTF64 `the Carry Flag is active\n\x0`
 
 end:
+    xor rax, rax
+
+    leave
     ret

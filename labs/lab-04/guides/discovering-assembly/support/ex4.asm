@@ -1,19 +1,26 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
     global main
     extern printf
 
 main:
-    mov eax, 1
-    mov ebx, 1
-    cmp eax, ebx
-    add ecx, 1                  ; Comment out this line
+    push rbp
+    mov rbp, rsp
+
+    mov rax, 1
+    mov rbx, 1
+    cmp rax, rbx
+    add r15, 1                  ; Comment out this line
     je print
+
+    leave
     ret
 
 print:
-    PRINTF32 `%d\n\x0`, eax
+    PRINTF64 `%d\n\x0`, rax
+
+    leave
     ret
