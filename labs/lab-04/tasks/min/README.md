@@ -7,7 +7,7 @@ nav_order: 4
 
 You will solve this exercise starting from the `min.asm` file located in the `tasks/min` directory.
 
-Calculate the minimum of the numbers in 2 registers (`eax` and `ebx`) using a comparison instruction, a jump instruction, and the `xchg` instruction.
+Calculate the minimum of the numbers in 2 registers (`r9` and `r10`) using a comparison instruction, a jump instruction, and the `xchg` instruction.
 
 To test the implementation, enter the `tests/` directory and run:
 

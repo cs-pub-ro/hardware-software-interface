@@ -17,26 +17,27 @@ These processors are highly backward compatible, with most instructions unchange
 The basic working units for x86 processors are registers.
 These are a suite of locations within the processor through which it interacts with memory, I/O, etc.
 
-x86 processors have 8 such 32-bit registers.
+x86 processors have 16 such 64-bit registers.
 Although any of these can be used in operations, for historical reasons, each register has a specific role.
 
 Name  | Role
 ----- | ---
-`eax` | accumulator; system calls, I/O, arithmetic
-`ebx` | base register; used for memory-based addressing
-`ecx` | counter in loop instructions
-`edx` | data register, used for I/O, arithmetic, interrupt values; can extend eax to 64 bits
-`esi` | source in string operations
-`edi` | destination in string operations
-`ebp` | base or frame pointer; points to the current stack frame
-`esp` | stack pointer; points to the top of the stack
+`rax` | accumulator; system calls, I/O, arithmetic
+`rbx` | base register; used for memory-based addressing
+`rcx` | counter in loop instructions
+`rdx` | data register, used for I/O, arithmetic, interrupt values; can extend rax to 128 bits
+`rsi` | source in string operations
+`rdi` | destination in string operations
+`rbp` | base or frame pointer; points to the current stack frame
+`rsp` | stack pointer; points to the top of the stack
+`r8-15` | general purpose registers
 
-In addition to these, there are some special registers that cannot be directly accessed by the programmer, such as `eflags` and `eip` (Instruction Pointer).
+In addition to these, there are some special registers that cannot be directly accessed by the programmer, such as `rflags` and `rip` (Instruction Pointer).
 
-`eip` is a register that holds the address of the current instruction to be executed.
+`rip` is a register that holds the address of the current instruction to be executed.
 It cannot be directly modified, programmatically, but indirectly through jump, call, and ret instructions.
 
-The `eflags` register contains `32` bits used as status indicators or condition variables.
+The `rflags` register contains `64` bits used as status indicators or condition variables.
 We say that a flag is set if its value is `1`. The ones commonly used by programmers are:
 
 Name | Expanded Name         | Description
@@ -49,12 +50,9 @@ Name | Expanded Name         | Description
 `OF` | Overflow Flag         | Set if the result exceeds the maximum (or minimum) signed integer value
 
 >**NOTE**: If you follow the evolution of registers from 8086, you'll see that initially they were named `ax`, `bx`, `cx` etc., and were 16 bits in size.
->From 80386, Intel extended these registers to 32 bits (i.e., "extended" `ax` → `eax`).
+>From 80386, Intel extended these registers to 32 bits (i.e., "extended" `ax` → `eax`), and again with the release of "Prescott" and "Nocona" processors.
 
 ## Instruction Classes
-
-Although the current set of instructions for Intel processors has [hundreds of instructions](https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-instruction-set-reference-manual-325383.pdf), we will only look at a [small portion of them](http://css.csail.mit.edu/6.858/2015/readings/i386.pdf).
-More precisely, some of the 80386 instructions.
 
 All x86 processors instructions can fit into 3 categories :
 
@@ -107,16 +105,16 @@ We are talking about an unsigned subtraction, without storing the result.
 Therefore, when talking about the code:
 
 > ```assembly
->   cmp eax, 0
+>   cmp rax, 0
 >   jl negative
 > ```
 
 The jump to the `negative` label will be made only if the value in eax is less than `0`.
-The `eax - 0` subtraction is evaluated and if the result is negative(and so, eax is negative), the jump will be made.\
+The `rax - 0` subtraction is evaluated and if the result is negative (and so, rax is negative), the jump will be made.\
 When have comparisons with `0`, the same thing can be done more efficiently using the `test` instruction:
 
 > ```assembly
->   test eax, eax
+>   test rax, rax
 >   jl negative
 >```
 
