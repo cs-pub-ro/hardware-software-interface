@@ -8,11 +8,9 @@ get_max:
     push rbp
     mov rbp, rsp
 
-    ; [rbp+16] is array pointer
-    ; [rbp+24] is array length
+    mov rbx, rdi ; first argument
+	mov rcx, rsi ; second argument
 
-    mov rbx, [rbp+16]
-    mov rcx, [rbp+24]
     xor rax, rax
 
 compare:

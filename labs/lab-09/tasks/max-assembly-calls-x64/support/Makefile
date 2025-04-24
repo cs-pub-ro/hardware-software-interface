@@ -1,6 +1,7 @@
-CFLAGS = -Wall -g
+ASMFLAGS := -f elf64
+LDFLAGS := -no-pie
+CFLAGS := -g -Wall -Wextra -Werror -fno-pic -masm=intel
 ASM = nasm
-ASMFLAGS = -f elf64
 
 .DEFAULT_GOAL: all
 

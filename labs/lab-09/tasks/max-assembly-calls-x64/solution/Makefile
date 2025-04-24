@@ -1,4 +1,4 @@
-ASFLAGS  := -f elf64
+ASMFLAGS  := -f elf64
 LDFLAGS  := -no-pie
 CFLAGS   := -g -Wall -Wextra -Werror -fno-pic -masm=intel
 ASM = nasm
