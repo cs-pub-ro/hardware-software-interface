@@ -1,17 +1,17 @@
-// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-License-Identifier: BSD-3-Clause labs/
 
 #include <stdio.h>
 
-unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos);
+int get_max(unsigned int *arr, unsigned int size, unsigned int *max);
 
 int main(void)
 {
 	unsigned int arr[] = { 19, 7, 129, 87, 54, 218, 67, 12, 19, 99 };
-	unsigned int pos;
+	unsigned int max, pos;
 
-	get_max(arr, 10, &pos);
+	max = get_max(arr, sizeof(arr) / sizeof(arr[0]), &pos);
 
-	printf("max: %u\n", arr[pos]);
+	printf("max: %u on position: %u\n", max, pos);
 
 	return 0;
 }

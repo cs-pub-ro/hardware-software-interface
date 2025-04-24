@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-License-Identifier: BSD-3-Clause labs/
 
 #include <stdio.h>
 
@@ -12,6 +12,5 @@ unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos)
 			max = arr[i];
 			*pos = i;
 		}
-
 	return max;
 }

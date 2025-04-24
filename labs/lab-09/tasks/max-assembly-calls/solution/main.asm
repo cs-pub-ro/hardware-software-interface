@@ -24,11 +24,11 @@ main:
     mov eax, len
     shr eax, 2
 
-    push pos
-    push eax
-    push arr
+    push dword pos ; pointer to position
+    push eax ; length of the array
+    push arr ; pointer to the array
     call get_max
-    add esp, 12
+    add esp, 16
 
     ; Print max.
     push dword [pos]

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror -fno-pic -masm=intel
 ASFLAGS = -f elf64
 LDFLAGS = -no-pie
-PROGNAME = mainmax
+PROGNAME = main
 
 ASM = nasm
 
@@ -13,7 +13,7 @@ ASM = nasm
 all: $(PROGNAME)
 
 $(PROGNAME): main.o max.o
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $^
 
 max.o: max.asm
 	$(ASM) $(ASFLAGS) -o $@ $<
