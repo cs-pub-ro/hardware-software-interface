@@ -12,11 +12,14 @@ In the file `print_rev_string.asm`, add the `reverse_string()` function so that 
 ```Assembly
 [...]
 section .text
-global main
+extern printf
+extern puts
+global print_reverse_string
 
 reverse_string:
     push ebp
     mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
 
     mov eax, [ebp + 8]
     mov ecx, [ebp + 12]
@@ -34,16 +37,17 @@ copy_one_byte:
     inc edx
     mov byte [edx], 0
 
+    pop ebx                 ; restore ebx
     leave
     ret
 
-main:
+print_reverse_string:
     push ebp
     mov ebp, esp
 [...]
 ```
 
-> **IMPORTANT:**  When copying the `reverse_string()` function into your program, remember that the function starts at the `reverse_string()` label and ends at the `main` label.
+> **IMPORTANT:**  When copying the `reverse_string()` function into your program, remember that the function starts at the `reverse_string()` label and ends at the `print_reverse_string` label.
 > The `copy_one_byte` label is part of the `reverse_string()` function.
 
 The `reverse_string()` function reverses a string and has the following signature: `void reverse_string(const char *src, size_t len, char *dst);`.

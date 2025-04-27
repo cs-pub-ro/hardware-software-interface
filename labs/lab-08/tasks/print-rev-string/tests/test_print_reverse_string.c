@@ -4,36 +4,51 @@
 #include <stdio.h>
 #include "graded_test.h"
 
-extern void print_reverse_string(const char *src, int len, char *dest);
+extern void print_reverse_string(const char *src, size_t len);
+
+#define OUTPUT_BUFFER_SIZE 1024
+
+static int check_print_output(const char *input, const char *expected_output)
+{
+	char buffer[OUTPUT_BUFFER_SIZE] = {0};
+	FILE *original_stdout = stdout;
+
+	// Redirect stdout to a buffer using a temporary file
+	FILE *temp = tmpfile();
+
+	if (!temp)
+		return 0;
+
+	fflush(stdout);
+	stdout = temp;
+
+	print_reverse_string(input, strlen(input));
+
+	fflush(stdout);
+	fseek(temp, 0, SEEK_SET);
+	fread(buffer, 1, OUTPUT_BUFFER_SIZE - 1, temp);
+
+	fclose(temp);
+	stdout = original_stdout;
+
+	buffer[strcspn(buffer, "\n")] = 0;
+
+	return strcmp(buffer, expected_output) == 0;
+}
 
 static int test_reverse_simple(void)
 {
-	char src[] = "abc";
-	char dest[10] = {0};
-
-	print_reverse_string(src, strlen(src), dest);
-
-	return strcmp(dest, "cba") == 0;
+	return check_print_output("abc", "cba");
 }
 
 static int test_reverse_special(void)
 {
-	char src[] = "abc!@#";
-	char dest[10] = {0};
-
-	print_reverse_string(src, strlen(src), dest);
-
-	return strcmp(dest, "#@!cba") == 0;
+	return check_print_output("abc!@#", "#@!cba");
 }
 
 static int test_reverse_long(void)
 {
-	char src[] = "reverseme!";
-	char dest[32] = {0};
-
-	print_reverse_string(src, strlen(src), dest);
-
-	return strcmp(dest, "!emesrever") == 0;
+	return check_print_output("reverseme!", "!emesrever");
 }
 
 static struct graded_test all_tests[] = {

@@ -1,5 +1,3 @@
-%include "../utils/printf32.asm"
-
 section .data
     mystring db "This is my string", 0
     fmt_str db "[before]: %s\n[after]: ", 0
@@ -30,9 +28,10 @@ out:
     call printf
     add esp, 8
 
+    push ecx
     push mystring
     call print_reverse_string
-    add esp, 4
+    add esp, 8
 
     leave
     ret

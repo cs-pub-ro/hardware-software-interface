@@ -1,11 +1,9 @@
 section .data
     mystring db "This is my string", 0
     print_format db "String length is %d", 10, 0
-    store_string times 64 db 0
 
 section .text
 
-extern puts
 extern printf
 extern print_reverse_string
 global main
@@ -35,15 +33,10 @@ out:
 
     pop ecx
 
-    push store_string
     push ecx
     push mystring
     call print_reverse_string
-    add esp, 12
-
-    push store_string
-    call puts
-    add esp, 4
+    add esp, 8
 
     leave
     ret

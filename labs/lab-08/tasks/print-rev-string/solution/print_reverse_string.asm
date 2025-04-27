@@ -1,7 +1,12 @@
+section .data
+    store_string times 64 db 0
+
 section .text
+extern printf
+extern puts
 global print_reverse_string
 
-print_reverse_string:
+reverse_string:
     push ebp
     mov ebp, esp
     push ebx                ; preserve ebx as required by cdecl
@@ -28,5 +33,27 @@ done:
     mov byte [edx], 0       ; null-terminate the destination string
 
     pop ebx                 ; restore ebx
+    leave
+    ret
+
+print_reverse_string:
+    push ebp
+    mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
+
+    mov eax, [ebp + 8]      ; get the address of the string
+    mov ecx, [ebp + 12]     ; get the length of the string
+
+    push store_string
+    push ecx
+    push eax
+    call reverse_string
+    add esp, 12
+
+    push store_string
+    call puts
+    add esp, 4
+
+    pop ebx
     leave
     ret
