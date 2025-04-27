@@ -13,6 +13,7 @@ int main(void)
 	print_chars_ref();
 	print_shorts_ref();
 	print_ints_ref();
+	print_long_longs_ref();
 
 	return 0;
 }

@@ -6,5 +6,6 @@
 void print_chars(void);
 void print_shorts(void);
 void print_ints(void);
+void print_long_longs(void);
 
 #endif // ITERATE_H
