@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .bss
     array3: resw 10
@@ -14,34 +14,33 @@ extern printf
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    xor ecx, ecx
+    xor rcx, rcx
 iterate_arrays:
-    xor eax, eax
-    xor ebx, ebx
-    xor edx, edx
-    mov al, byte[array1 + ecx]
-    mov bl, byte[array2 + ecx]
+    xor rax, rax
+    xor rbx, rbx
+    xor rdx, rdx
+    mov al, [array1 + rcx]
+    mov bl, [array2 + rcx]
     mul bl
-    mov word[array3 + ecx * 2], ax
-    inc ecx
-    cmp ecx, 10
+    mov word[array3 + rcx * 2], ax
+    inc rcx
+    cmp rcx, 10
     jl iterate_arrays
 
-    PRINTF32 `The array that results from the product of the corresponding elements in array1 and array2 is:\n\x0`
+    PRINTF64 `The array that results from the product of the corresponding elements in array1 and array2 is:\n\x0`
 
-    xor ecx, ecx
-    xor eax, eax
+    xor rcx, rcx
+    xor rax, rax
 display:
-    mov ax, word[array3 + ecx * 2]
-    PRINTF32 `%hu \x0`, eax
-    inc ecx
-    cmp ecx, 10
+    PRINTF64 `%hu \x0`, qword [array3 + rcx * 2]
+    inc rcx
+    cmp rcx, 10
     jl display
 
-    PRINTF32 `\n\x0`
+    PRINTF64 `\n\x0`
 
     leave
     ret

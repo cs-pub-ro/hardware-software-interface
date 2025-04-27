@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 struc my_struct
     int_x: resb 4
@@ -25,33 +25,33 @@ extern printf
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    PRINTF32 `int_x: %d\n\x0`, [sample_obj + int_x]
-    PRINTF32 `char_y: %c\n\x0`, [sample_obj + char_y]
-    lea eax, [sample_obj + string_s]
-    PRINTF32 `string_s: %s\n\x0`, eax
+    PRINTF64 `int_x: %d\n\x0`, qword [sample_obj + int_x]
+    PRINTF64 `char_y: %c\n\x0`, qword [sample_obj + char_y]
+    lea rax, [sample_obj + string_s]
+    PRINTF64 `string_s: %s\n\x0`, rax
 
-    mov eax, [new_int]
-    mov [sample_obj + int_x], eax
+    mov rax, [new_int]
+    mov [sample_obj + int_x], rax
 
     mov al, [new_char]
     mov [sample_obj + char_y], al
 
-    mov ecx, 0
+    mov rcx, 0
 copy:
-    mov bl, [new_string + ecx]
-    mov [sample_obj + string_s + ecx], bl
-    inc ecx
+    mov bl, [new_string + rcx]
+    mov [sample_obj + string_s + rcx], bl
+    inc rcx
     cmp bl, 0
     jnz copy
 
-    PRINTF32 `int_x: %d\n\x0`, [sample_obj + int_x]
-    PRINTF32 `char_y: %c\n\x0`, [sample_obj + char_y]
-    lea eax, [sample_obj + string_s]
-    PRINTF32 `string_s: %s\n\x0`, eax
+    PRINTF64 `int_x: %d\n\x0`, qword [sample_obj + int_x]
+    PRINTF64 `char_y: %c\n\x0`, qword [sample_obj + char_y]
+    lea rax, [sample_obj + string_s]
+    PRINTF64 `string_s: %s\n\x0`, rax
 
-    xor eax, eax
+    xor rax, rax
     leave
     ret

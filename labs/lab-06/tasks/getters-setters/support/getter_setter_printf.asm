@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 struc my_struct
     int_x: resb 4
@@ -25,8 +25,8 @@ extern printf
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; Print all three values (int_x, char_y, string_s) from sample_obj.
     ; Hint: use "lea reg, [base + offset]" to save the result of
@@ -41,6 +41,6 @@ main:
     ; TODO: print all three values again to validate the results of the
     ; three set operations above.
 
-    xor eax, eax
+    xor rax, rax
     leave
     ret
