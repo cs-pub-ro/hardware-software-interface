@@ -77,19 +77,20 @@ section .bss
 As mentioned before, to access a field of an element in an array, we need to use normal addressing (particularly "based-indexed with scale" addressing).
 The formula to find the address of the element is `base_of_array + i * size_of_struct`.
 
-Assuming we have the start address of the array in the `ebx` register and the index of the element we want to access in the `eax` register, the following example demonstrates printing the value of the y field of this element.
+Assuming we have the start address of the array in the `rbx` register and the index of the element we want to access in the `rax` register, the following example demonstrates printing the value of the y field of this element.
 
 ```Assembly
-mov ebx, point_array                         	; Move the start address of the array into ebx
-mov eax, 13                                 	; Assume we want the 14th element
-mov edx, [ebx + point_size * eax + point.y] 	; Calculate the address of the desired field between []
-                                            	; and then transfer the value from that address
-                                                ; into the edx register
+mov rbx, point_array                         	    ; Move the start address of the array into rbx
+mov rax, 13                                 	    ; Assume we want the 14th element
+xor rax, rax                                        ; Clear the rax register
+mov rdx, dword [rbx + point_size * rax + point.y] 	; Calculate the address of the desired field between []
+                                            	    ; and then transfer the value from that address
+                                                    ; into the rdx register
 
-PRINTF32 `%u\n\x0`, edx
+PRINTF64 `%lu\n\x0`, rdx
 ```
 
-We traverse the array, having the current index in the eax register at each iteration.
+We traverse the array, having the current index in the rax register at each iteration.
 We can print the values from both fields of each element in the array with the following program:
 
 ```Assembly
@@ -105,21 +106,21 @@ section .text
     global CMAIN
 
 CMAIN:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    xor edx, edx
-    xor eax, eax
+    xor rdx, rdx
+    xor rax, rax
 
 label:
-    mov edx, [point_array + point_size * eax + point.x] ; access x member
-    PRINTF32 `%u\n\x0`, edx
+    mov edx, dword [point_array + point_size * rax + point.x] ; access x member
+    PRINTF64 `%lu\n\x0`, rdx
 
-    mov edx, [point_array + point_size * eax + point.y] ; access y member
-    PRINTF32 `%u\n\x0`, edx
+    mov edx, dword [point_array + point_size * rax + point.y] ; access y member
+    PRINTF64 `%lu\n\x0`, rdx
 
-    inc eax ; increment input index
-    cmp eax, 100
+    inc rax ; increment input index
+    cmp rax, 100
     jl label
 
     leave

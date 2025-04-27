@@ -20,7 +20,7 @@ test_fibo_sum()
     SOL=$2
 
     # Modify the assembly code's N value
-    sed -i "s/N dd [0-9]\+/N dd $N/w sedlog" "$SRC_PATH"/fibo_sum.asm
+    sed -i "s/N dq [0-9]\+/N dq $N/w sedlog" "$SRC_PATH"/fibo_sum.asm
     if ! [ -s sedlog ] ; then
         return 2
     fi
@@ -71,7 +71,7 @@ run_test "test_fibo_sum_1_0" 25
 run_test "test_fibo_sum_40_165580140" 25
 
 if [ $? -eq 2 ] ; then
-    printf "\nERROR: Make sure the declaration of variable N in section .data follows the format \"N dd <value>\"\n"
+    printf "\nERROR: Make sure the declaration of variable N in section .data follows the format \"N dq <value>\"\n"
 fi
 
 mv ./fibo_sum.asm "$SRC_PATH"
