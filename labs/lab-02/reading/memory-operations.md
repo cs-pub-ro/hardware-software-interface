@@ -44,10 +44,12 @@ For example:
 char *char_ptr = 1000;
 short *short_ptr = 2000;
 int *int_ptr = 3000;
+long long *long_long_ptr = 4000;
 
 ++char_ptr; /* char_ptr will point to address 1001 */
 ++short_ptr; /* short_ptr points to address 2002 */
 ++int_ptr; /* int_ptr points to address 3004 */
+++long_long_ptr; /* long_long_ptr points to address 4008 */
 ```
 
 ![A diagram which visualizes arithmetic operations on pointers](../media/arit.svg)
