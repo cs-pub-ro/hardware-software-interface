@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 struc stud_struct
     name: resb 32
@@ -33,49 +33,37 @@ section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; TODO: Update name, surname, birth_year, gender and age such that:
     ; birth_year is 1993
     ; age is 22
     ; group is '323CA'
 
-    lea eax, [sample_student + name]
-    push eax
-    push format_name
+    lea rsi, [sample_student + name]
+    mov rdi, format_name
     call printf
-    add esp, 8
 
-    lea eax, [sample_student + surname]
-    push eax
-    push format_surname
+    lea rsi, [sample_student + surname]
+    mov rdi, format_surname
     call printf
-    add esp, 8
 
-    movzx eax, byte [sample_student + age]
-    push eax
-    push format_age
+    movzx rsi, byte [sample_student + age]
+    mov rdi, format_age
     call printf
-    add esp, 8
 
-    lea eax, [sample_student + group]
-    push eax
-    push format_group
+    lea rsi, [sample_student + group]
+    mov rdi, format_group
     call printf
-    add esp, 8
 
-    movzx eax, byte [sample_student + gender]
-    push eax
-    push format_gender
+    movzx rsi, byte [sample_student + gender]
+    mov rdi, format_gender
     call printf
-    add esp, 8
 
-    movzx eax, word [sample_student + birth_year]
-    push eax
-    push format_year
+    movzx rsi, word [sample_student + birth_year]
+    mov rdi, format_year
     call printf
-    add esp, 8
 
     leave
     ret

@@ -1,9 +1,9 @@
 NASM = nasm
 AFILES = max.asm
 OBJS = $(AFILES:.asm=.o)
-ASM_FLAGS = -f elf32 -g
+ASM_FLAGS = -f elf64 -g
 LD=gcc
-LDFLAGS = -m32 -g
+LDFLAGS = -g -no-pie
 BINARIES = max
 
 all : $(BINARIES)
