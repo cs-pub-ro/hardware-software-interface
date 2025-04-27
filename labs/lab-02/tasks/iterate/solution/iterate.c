@@ -53,3 +53,18 @@ void print_ints_ref(void)
 	}
 	printf("-------------------------------\n");
 }
+
+void print_long_longs_ref(void)
+{
+	unsigned long long *long_long_ptr = (unsigned long long *) &v;
+	unsigned long long i;
+	/**
+	 * Iterate through 8 bytes at a time, we have only a quarter of the steps because we are
+	 * displaying 8 bytes at each step.
+	 */
+	for (i = 0 ; i < sizeof(v) / sizeof((*long_long_ptr)); ++i) {
+		printf("%p -> %p\n", long_long_ptr, *long_long_ptr);
+		++long_long_ptr;
+	}
+	printf("-------------------------------\n");
+}
