@@ -3,6 +3,6 @@
 #ifndef ARRAY_H
 #define ARRAY_H 1
 
-extern int v[5];
+extern int v[6];
 
 #endif // ARRAY_H

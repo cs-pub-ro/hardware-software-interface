@@ -14,9 +14,11 @@
 #define CHAR_OUTPUT "char.out"
 #define SHORT_OUTPUT "short.out"
 #define INT_OUTPUT "int.out"
+#define LONG_LONG_OUTPUT "long_long.out"
 #define CHAR_REF "char.ref"
 #define SHORT_REF "short.ref"
 #define INT_REF "int.ref"
+#define LONG_LONG_REF "long_long.ref"
 
 static int fd, stdout_fd;
 
@@ -120,10 +122,29 @@ static int test_ints(void)
 	return status == 0 ? 1 : 0;
 }
 
+static int test_ints(void)
+{
+	int status;
+
+	prep_io(LONG_LONG_OUTPUT);
+	print_long_longs();
+	fflush(stdout);
+	restore_io();
+
+	prep_io(LONG_LONG_REF);
+	print_long_longs_ref();
+	fflush(stdout);
+	restore_io();
+
+	status = system("diff -q " LONG_LONG_OUTPUT " " LONG_LONG_REF);
+	return status == 0 ? 1 : 0;
+}
+
 static struct graded_test all_tests[] = {
-	{ test_chars, "test_chars", 33 },
-	{ test_shorts, "test_shorts", 33},
-	{ test_ints, "test_ints", 34},
+	{ test_chars, "test_chars", 25 },
+	{ test_shorts, "test_shorts", 25},
+	{ test_ints, "test_ints", 25},
+	{ test_long_longs, "test_long_long", 25},
 };
 
 int main(void)

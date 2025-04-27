@@ -34,3 +34,13 @@ void print_ints(void)
 
 	printf("-------------------------------\n");
 }
+
+void print_long_longs(void)
+{
+	/**
+	 * TODO: Implement function
+	 */
+	(void) v;
+
+	printf("-------------------------------\n");
+}
