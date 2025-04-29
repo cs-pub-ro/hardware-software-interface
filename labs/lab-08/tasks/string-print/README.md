@@ -13,7 +13,7 @@ In the file `print_string.asm`, displaying a string using the `PRINTF32` macro i
 
 Following the example of the `hello_world.asm` file, implement string display using `puts` as well.
 
-If you're having difficulties solving this exercise, take a peek at [hello_world.asm](../../../guides/hello_world/).
+If you're having difficulties solving this exercise, take a peek at [hello_world.asm](../../guides/hello_world/).
 
 To test the implementation, enter the `tests/` directory and run:
 
