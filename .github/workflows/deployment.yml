@@ -1,0 +1,35 @@
+name: OpenEduHub - Github Page
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Jekyll site
+        run: |
+          # GitHub-specific config
+          echo "url: https://${{ github.repository_owner }}.github.io" >> _config.yaml
+          echo "baseurl: /hardware-software-interface" >> _config.yaml
+
+          # Build Docker image for Jekyll
+          docker build -t jekyll-image .
+
+          # Build Jekyll site
+          docker run --rm \
+            -v ${{ github.workspace }}:/usr/src/app \
+            jekyll-image bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
+          publish_branch: gh-pages
+          enable_jekyll: true
