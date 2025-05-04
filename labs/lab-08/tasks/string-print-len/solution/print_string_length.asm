@@ -7,17 +7,20 @@ extern printf
 global print_string_length
 
 print_string_length:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
 
-    mov ecx, [ebp + 8]      ; get the string length from the stack
+    sub rsp, 8              ; align the stack
+    push rcx                ; save the string length
 
-    push ecx
-    push print_format
+    mov rcx, rdi            ; get the string length from the stack
+
+    mov rdi, print_format
+    mov rsi, rcx
     call printf
-    add esp, 8
 
-    pop ebx
+    pop rcx                 ; restore the string length
+    add rsp, 8              ; restore the stack pointer
+
     leave
     ret

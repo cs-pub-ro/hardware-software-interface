@@ -1,7 +1,7 @@
 CC = gcc
 
-CFLAGS  ?= -m32 -g -Wall -Wextra -Werror -fno-pic -masm=intel
-LDFLAGS ?= -m32 -no-pie
+CFLAGS  ?= -g -Wall -Wextra -Werror -fno-pic -masm=intel
+LDFLAGS ?= -fno-PIC -no-pie
 
 all: test
 

@@ -10,19 +10,21 @@ extern rot13
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov eax, [length]
-    push eax
+    mov rax, [length]
+
+    sub rsp, 8          ; align the stack
     push mystring
+    mov rdi, mystring
+    mov rsi, rax
     call rot13
-    add esp, 8
+    add rsp, 8
 
-    push mystring
-    push after_fmt
+    mov rdi, after_fmt
+    mov rsi, mystring
     call printf
-    add esp, 8
 
     leave
     ret

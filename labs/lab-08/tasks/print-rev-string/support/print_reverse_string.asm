@@ -6,12 +6,14 @@ global print_reverse_string
 ; TODO: add the reverse_string() function
 
 print_reverse_string:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
+
+    ; TODO: save the used registers and align the stack, if needed
 
     ; TODO: call the reverse_string() function and print the reversed string
 
-    pop ebx
+    ; TODO: restore the used registers and the stack pointer, if altered
+
     leave
     ret

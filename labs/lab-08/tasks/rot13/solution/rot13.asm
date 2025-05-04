@@ -2,18 +2,17 @@ section .text
 global rot13
 
 rot13:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
 
-    mov esi, [ebp + 8]      ; pointer to input string
-    mov ecx, [ebp + 12]     ; length of the buffer
+    mov rcx, rsi            ; length of the buffer
+    mov rsi, rdi            ; pointer to the input string
 
 loop:
-    cmp ecx, 0              ; Check if there are more characters to process
+    cmp rcx, 0              ; Check if there are more characters to process
     je done                 ; If no, we are done
 
-    mov al, [esi]           ; Load the current byte into AL register
+    mov al, [rsi]           ; Load the current byte into AL register
     cmp al, 0               ; Check if it's the null terminator
     je handle_null          ; If it's a null terminator, handle it
 
@@ -30,7 +29,7 @@ loop:
 
 lower_store:
     add al, 'a'             ; Convert back to ASCII
-    mov [esi], al           ; Store the transformed character back
+    mov [rsi], al           ; Store the transformed character back
     jmp next
 
 check_upper:
@@ -47,25 +46,25 @@ check_upper:
 
 upper_store:
     add al, 'A'             ; Convert back to ASCII
-    mov [esi], al           ; Store the transformed character back
+    mov [rsi], al           ; Store the transformed character back
 
 next:
-    inc esi                 ; Move to the next byte in the string
-    dec ecx                 ; Decrement the length counter
+    inc rsi                 ; Move to the next byte in the string
+    dec rcx                 ; Decrement the length counter
     jmp loop                ; Repeat the loop
 
 handle_null:
     ; We are at a null terminator, check if it's the last null terminator
     ; If so, just leave it and terminate the string
-    cmp byte [esi + 1], 0   ; Check if the next byte is also a null terminator
+    cmp byte [rsi + 1], 0   ; Check if the next byte is also a null terminator
     je done                 ; If yes, don't replace with a space
 
     ; Otherwise, replace null terminator with space
-    mov byte [esi], ' '
-    inc esi                 ; Move to the next byte
+    mov byte [rsi], ' '
+    inc rsi                 ; Move to the next byte
     jmp loop
 
 done:
-    pop ebx                 ; Restore the preserved register
+
     leave                   ; Clean up the stack frame
     ret                     ; Return from the function

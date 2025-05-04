@@ -1,6 +1,6 @@
 section .data
     mystring db "This is my string", 0
-    print_format db "String length is %d", 10, 0
+    fmt_str db "[before]: %s", 10, "[after]: ", 0
 
 section .text
 
@@ -9,34 +9,37 @@ extern print_reverse_string
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov eax, mystring
-    xor ecx, ecx
+    mov rax, mystring
+    xor rcx, rcx
+
 test_one_byte:
-    mov bl, [eax]
+    mov bl, [rax]
     test bl, bl
     je out
-    inc eax
-    inc ecx
+    inc rax
+    inc rcx
     jmp test_one_byte
 
 out:
-    ; save ecx's value since it can be changed by printf
-    push ecx
+    ; save rcx's value since it can be changed by printf
+    push rcx
+    ; align the stack
+    sub rsp, 8
 
-    push ecx
-    push print_format
+    mov rdi, fmt_str
+    mov rsi, mystring
     call printf
-    add esp, 8
 
-    pop ecx
+    add rsp, 8
+    ; restore rcx's value
+    pop rcx
 
-    push ecx
-    push mystring
+    mov rdi, mystring
+    mov rsi, rcx
     call print_reverse_string
-    add esp, 8
 
     leave
     ret
