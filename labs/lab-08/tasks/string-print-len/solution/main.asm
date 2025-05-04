@@ -1,4 +1,4 @@
-%include "../utils/printf32.asm"
+%include "../utils/printf64.asm"
 
 section .data
     mystring db "This is my string", 0
@@ -10,25 +10,24 @@ extern print_string_length
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov eax, mystring
-    xor ecx, ecx
+    mov rax, mystring
+    xor rcx, rcx
 test_one_byte:
-    mov bl, [eax]
+    mov bl, [rax]
     test bl, bl
     je out
-    inc eax
-    inc ecx
+    inc rax
+    inc rcx
     jmp test_one_byte
 
 out:
-    PRINTF32 `[PRINTF32]: %d\n[printf]: \x0`, ecx
+    PRINTF64 `[PRINTF64]: %d\n[printf]: \x0`, rcx
 
-    push ecx
+    mov rdi, rcx
     call print_string_length
-    add esp, 4
 
     leave
     ret

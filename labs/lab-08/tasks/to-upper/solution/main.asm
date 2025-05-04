@@ -10,22 +10,19 @@ extern to_upper
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push mystring
-    push before_format
+    mov rdi, before_format
+    mov rsi, mystring
     call printf
-    add esp, 8
 
-    push mystring
+    mov rdi, mystring
     call to_upper
-    add esp, 4
 
-    push mystring
-    push after_format
+    mov rdi, after_format
+    mov rsi, mystring
     call printf
-    add esp, 8
 
     leave
     ret

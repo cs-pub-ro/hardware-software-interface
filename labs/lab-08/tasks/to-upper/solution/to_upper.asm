@@ -3,21 +3,33 @@ section .text
 global to_upper
 
 to_upper:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
 
-    mov eax, [ebp + 8]
+    sub rsp, 8              ; leave room in order to align the stack
+    push rbx                ; preserve rbx, r12-r15 as required by cdecl
+    push r12
+    push r13
+    push r14
+    push r15
+
+    mov rax, rdi
 check_one_byte:
-    mov bl, [eax]
+    mov bl, [rax]
     test bl, bl
     je out
     sub bl, 0x20
-    mov [eax], bl
-    inc eax
+    mov [rax], bl
+    inc rax
     jmp check_one_byte
 
 out:
-    pop ebx
+    pop r15
+    pop r14
+    pop r13
+    pop r12
+    pop rbx                ; restore rbx, r12-r15
+    add rsp, 8
+
     leave
     ret
