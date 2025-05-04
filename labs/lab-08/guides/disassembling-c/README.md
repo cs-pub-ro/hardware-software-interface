@@ -23,7 +23,7 @@ We'll use the `test.c` program from the lab archive.
 1. Use the command:
 
 ```Bash
-gcc -m32 -o <exec> <sourcefile>
+gcc -fno-PIC -o <exec> <sourcefile>
 ```
 
 where `<sourcefile>` is the name of the source file (`test.c`) and `<exec>` is the name of the result executable.
@@ -31,7 +31,7 @@ where `<sourcefile>` is the name of the source file (`test.c`) and `<exec>` is t
 If you **only** want to compile (**without** linking it), use:
 
 ```Bash
-gcc -m32 -c -o <objfile> <sourcefile>
+gcc -fno-PIC -c -o <objfile> <sourcefile>
 ```
 
 where `<sourcefile>` is the name of the source file and `<objfile>` is the name of the desired output object file.
@@ -39,7 +39,7 @@ where `<sourcefile>` is the name of the source file and `<objfile>` is the name 
 Since we want to transform `test.c` into an object file, we'll run:
 
 ```Bash
-gcc -m32 -c -o test.o test.c
+gcc -fno-PIC -c -o test.o test.c
 ```
 
 After running the above command, we should see a file named `test.o`.
@@ -47,7 +47,7 @@ After running the above command, we should see a file named `test.o`.
 Furthermore, we can use `gcc` to transform the `C` code in `Assembly` code:
 
 ```Bash
-gcc -m32 -masm=intel -S -o test.asm test.c
+gcc -fno-PIC -masm=intel -S -o test.asm test.c
 ```
 
 After running the above command we'll have a file called `test.asm`, which we can inspect using any text editor/reader, such as cat:
@@ -69,79 +69,63 @@ Afterwards, you'll see an output similar to the following:
 ```console
 $ objdump -M intel -d test.o
 
-test.o:     file format elf32-i386
+test.o:     file format elf64-x86-64
 
 
 Disassembly of section .text:
 
-00000000 <second_func>:
-   0:	55                   	push   ebp
-   1:	89 e5                	mov    ebp,esp
-   3:	e8 fc ff ff ff       	call   4 <second_func+0x4>
-   8:	05 01 00 00 00       	add    eax,0x1
-   d:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  10:	8b 10                	mov    edx,DWORD PTR [eax]
-  12:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
-  15:	01 c2                	add    edx,eax
-  17:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  1a:	89 10                	mov    DWORD PTR [eax],edx
-  1c:	90                   	nop
-  1d:	5d                   	pop    ebp
-  1e:	c3                   	ret
+0000000000000000 <second_func>:
+   0:   f3 0f 1e fa             endbr64
+   4:   55                      push   rbp
+   5:   48 89 e5                mov    rbp,rsp
+   8:   48 89 7d f8             mov    QWORD PTR [rbp-0x8],rdi
+   c:   89 75 f4                mov    DWORD PTR [rbp-0xc],esi
+   f:   48 8b 45 f8             mov    rax,QWORD PTR [rbp-0x8]
+  13:   8b 10                   mov    edx,DWORD PTR [rax]
+  15:   8b 45 f4                mov    eax,DWORD PTR [rbp-0xc]
+  18:   01 c2                   add    edx,eax
+  1a:   48 8b 45 f8             mov    rax,QWORD PTR [rbp-0x8]
+  1e:   89 10                   mov    DWORD PTR [rax],edx
+  20:   90                      nop
+  21:   5d                      pop    rbp
+  22:   c3                      ret
 
-0000001f <first_func>:
-  1f:	55                   	push   ebp
-  20:	89 e5                	mov    ebp,esp
-  22:	53                   	push   ebx
-  23:	83 ec 14             	sub    esp,0x14
-  26:	e8 fc ff ff ff       	call   27 <first_func+0x8>
-  2b:	05 01 00 00 00       	add    eax,0x1
-  30:	c7 45 f4 03 00 00 00 	mov    DWORD PTR [ebp-0xc],0x3
-  37:	83 ec 0c             	sub    esp,0xc
-  3a:	8d 90 00 00 00 00    	lea    edx,[eax+0x0]
-  40:	52                   	push   edx
-  41:	89 c3                	mov    ebx,eax
-  43:	e8 fc ff ff ff       	call   44 <first_func+0x25>
-  48:	83 c4 10             	add    esp,0x10
-  4b:	83 ec 08             	sub    esp,0x8
-  4e:	ff 75 f4             	push   DWORD PTR [ebp-0xc]
-  51:	8d 45 08             	lea    eax,[ebp+0x8]
-  54:	50                   	push   eax
-  55:	e8 a6 ff ff ff       	call   0 <second_func>
-  5a:	83 c4 10             	add    esp,0x10
-  5d:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  60:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  63:	c9                   	leave
-  64:	c3                   	ret
+0000000000000023 <first_func>:
+  23:   f3 0f 1e fa             endbr64
+  27:   55                      push   rbp
+  28:   48 89 e5                mov    rbp,rsp
+  2b:   48 83 ec 20             sub    rsp,0x20
+  2f:   89 7d ec                mov    DWORD PTR [rbp-0x14],edi
+  32:   c7 45 fc 03 00 00 00    mov    DWORD PTR [rbp-0x4],0x3
+  39:   bf 00 00 00 00          mov    edi,0x0
+  3e:   e8 00 00 00 00          call   43 <first_func+0x20>
+  43:   8b 55 fc                mov    edx,DWORD PTR [rbp-0x4]
+  46:   48 8d 45 ec             lea    rax,[rbp-0x14]
+  4a:   89 d6                   mov    esi,edx
+  4c:   48 89 c7                mov    rdi,rax
+  4f:   e8 ac ff ff ff          call   0 <second_func>
+  54:   8b 45 ec                mov    eax,DWORD PTR [rbp-0x14]
+  57:   c9                      leave
+  58:   c3                      ret
 
-00000065 <main>:
-  65:	8d 4c 24 04          	lea    ecx,[esp+0x4]
-  69:	83 e4 f0             	and    esp,0xfffffff0
-  6c:	ff 71 fc             	push   DWORD PTR [ecx-0x4]
-  6f:	55                   	push   ebp
-  70:	89 e5                	mov    ebp,esp
-  72:	53                   	push   ebx
-  73:	51                   	push   ecx
-  74:	e8 fc ff ff ff       	call   75 <main+0x10>
-  79:	81 c3 02 00 00 00    	add    ebx,0x2
-  7f:	83 ec 0c             	sub    esp,0xc
-  82:	6a 0f                	push   0xf
-  84:	e8 96 ff ff ff       	call   1f <first_func>
-  89:	83 c4 10             	add    esp,0x10
-  8c:	83 ec 08             	sub    esp,0x8
-  8f:	50                   	push   eax
-  90:	8d 83 0e 00 00 00    	lea    eax,[ebx+0xe]
-  96:	50                   	push   eax
-  97:	e8 fc ff ff ff       	call   98 <main+0x33>
-  9c:	83 c4 10             	add    esp,0x10
-  9f:	b8 00 00 00 00       	mov    eax,0x0
-  a4:	8d 65 f8             	lea    esp,[ebp-0x8]
-  a7:	59                   	pop    ecx
-  a8:	5b                   	pop    ebx
-  a9:	5d                   	pop    ebp
-  aa:	8d 61 fc             	lea    esp,[ecx-0x4]
-  ad:	c3                   	ret
+0000000000000059 <main>:
+  59:   f3 0f 1e fa             endbr64
+  5d:   55                      push   rbp
+  5e:   48 89 e5                mov    rbp,rsp
+  61:   bf 0f 00 00 00          mov    edi,0xf
+  66:   e8 b8 ff ff ff          call   23 <first_func>
+  6b:   89 c6                   mov    esi,eax
+  6d:   bf 00 00 00 00          mov    edi,0x0
+  72:   b8 00 00 00 00          mov    eax,0x0
+  77:   e8 00 00 00 00          call   7c <main+0x23>
+  7c:   b8 00 00 00 00          mov    eax,0x0
+  81:   5d                      pop    rbp
+  82:   c3                      ret
 ```
+
+You may notice the repeated occurrences of the `endbr64` instruction.
+It is part of `Intel's Control-Flow Enforcement Technology(CET)` and its purpose is to prevent malicious function executions (such as corrupting buffers and trying to alter the normal execution flow of the program).
+Detailed explanations about this instruction can be found in the [Buffer Management](https://cs-pub-ro.github.io/hardware-software-interface/labs/lab-10/README.html) lab.
 
 There are many other utilities that allow disassembly of object modules, most of them with a graphical interface and offering debugging support.
 `objdump` is a simple utility that can be quickly used from the command-line.

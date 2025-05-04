@@ -1,5 +1,5 @@
 ---
-nav_order: 4
+nav_order: 5
 parent: Lab 8 - Functions
 ---
 
@@ -30,7 +30,20 @@ there is no need for another string.
 
 Implement the `toupper()` function so that the transformation occurs only for lowercase characters, not uppercase letters or other types of characters.
 
-To test the implementation, enter the `tests/` directory and run:
+After you consider your implementation complete, it is recommended to first run it `manually` in order to assess its correctness.
+In order to do so, enter the `support/` directory and run:
+
+```console
+make
+```
+
+If your code successfully compiled, you can then run the binary like so:
+
+```console
+./to_upper
+```
+
+To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
 make check

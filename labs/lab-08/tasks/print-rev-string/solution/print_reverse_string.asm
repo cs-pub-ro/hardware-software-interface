@@ -7,53 +7,53 @@ extern puts
 global print_reverse_string
 
 reverse_string:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
 
-    mov eax, [ebp + 8]      ; get the address of the string
-    mov ecx, [ebp + 12]     ; get the length of the string
-    mov edx, [ebp + 16]     ; get the address of the buffer
+    sub rsp, 8              ; leave room in order to align the stack
+    push rbx                ; preserve rbx as required by the System V AMD64 ABI
 
-    test ecx, ecx           ; check if length is zero
+    mov rax, rdi            ; get the address of the string
+    mov rcx, rsi            ; get the length of the string
+                            ; the address of the buffer to store the reversed string is already in rdx
+
+    test rcx, rcx           ; check if length is zero
     jz done                 ; if zero, skip to null termination
 
-    add eax, ecx            ; point to one past the last character
-    dec eax                 ; point to the last character
+    add rax, rcx            ; point to one past the last character
+    dec rax                 ; point to the last character
 
 copy_loop:
-    mov bl, [eax]           ; get a byte from the source
-    mov [edx], bl           ; store it in the destination
-    dec eax                 ; move to previous character in source
-    inc edx                 ; move to next character in destination
-    dec ecx                 ; decrease counter
+    mov bl, [rax]           ; get a byte from the source
+    mov [rdx], bl           ; store it in the destination
+    dec rax                 ; move to previous character in source
+    inc rdx                 ; move to next character in destination
+    dec rcx                 ; decrease counter
     jnz copy_loop           ; if counter not zero, continue loop
 
 done:
-    mov byte [edx], 0       ; null-terminate the destination string
+    mov byte [rdx], 0       ; null-terminate the destination string
 
-    pop ebx                 ; restore ebx
+    pop rbx                ; restore rbx
+    add rsp, 8
+
     leave
     ret
 
 print_reverse_string:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
 
-    mov eax, [ebp + 8]      ; get the address of the string
-    mov ecx, [ebp + 12]     ; get the length of the string
+    mov rax, rdi            ; get the address of the string
+    mov rcx, rsi            ; get the length of the string
 
-    push store_string
-    push ecx
-    push eax
+    mov rdi, rax
+    mov rsi, rcx
+    mov rdx, store_string
     call reverse_string
-    add esp, 12
 
-    push store_string
+    mov rdi, store_string
     call puts
-    add esp, 4
 
-    pop ebx
     leave
     ret
