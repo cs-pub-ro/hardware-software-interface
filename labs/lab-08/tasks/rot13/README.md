@@ -1,5 +1,5 @@
 ---
-nav_order: 5
+nav_order: 6
 parent: Lab 8 - Functions
 ---
 
@@ -31,7 +31,20 @@ Thus, the initial string `lorem\0ipsum\0dolor\0` will translate to `yberz vcfhz 
 >
 > where you either store the total length of the string (from the beginning to the last `NULL` byte) or the number of strings in the array.
 
-To test the implementation, enter the `tests/` directory and run:
+After you consider your implementation complete, it is recommended to first run it `manually` in order to assess its correctness.
+In order to do so, enter the `support/` directory and run:
+
+```console
+make
+```
+
+If your code successfully compiled, you can then run the binary like so:
+
+```console
+./rot13
+```
+
+To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
 make check
