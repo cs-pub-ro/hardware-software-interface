@@ -1,4 +1,4 @@
-%include "../utils/printf32.asm"
+%include "../utils/printf64.asm"
 
 section .data
     msg db 'Hello, world!', 0
@@ -12,12 +12,11 @@ extern puts
 global main
 
 main:
-    push ebp		;  Since main is a function, it has to adhere to the same convention
-    mov ebp, esp
+    push rbp		;  Since main is a function, it has to adhere to the same convention
+    mov rbp, rsp
 
-    push msg
+    mov rdi, msg    ; store the address of the string in rdi
     call puts
-    add esp, 4      ; The pushed msg argument takes up 4 bytes on the stack
 
     leave
     ret

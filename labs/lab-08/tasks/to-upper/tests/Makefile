@@ -1,8 +1,8 @@
 SRC_PATH ?= ../support
 FULL_SRC_PATH = "$(realpath $(SRC_PATH))"
 CPPFLAGS = -I. -I$(FULL_SRC_PATH) -I../utils
-CFLAGS = -Wall -Wextra -m32
-LDFLAGS = -m32
+CFLAGS = -Wall -Wextra -m64
+LDFLAGS = -m64 -no-pie
 # Remove the line below to disable debugging support.
 CFLAGS += -g -O0
 
