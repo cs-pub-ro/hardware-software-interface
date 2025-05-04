@@ -2,12 +2,14 @@ section .text
 global rot13
 
 rot13:
-    push ebp
-    mov ebp, esp
-    push ebx                ; preserve ebx as required by cdecl
+    push rbp
+    mov rbp, rsp
+
+    ; TODO: save the used registers and align the stack, if needed
 
     ; TODO
 
-    pop ebx
+    ; TODO: restore the used registers and the stack pointer, if altered
+
     leave
     ret

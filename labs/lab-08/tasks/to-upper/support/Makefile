@@ -3,9 +3,9 @@ CC = gcc
 
 UTILSDIR := ../utils/
 
-ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
+ASFLAGS ?= -f elf64 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+LDFLAGS ?= -fno-PIC -no-pie
 
 TARGET := to_upper
 OBJS := main.o to_upper.o

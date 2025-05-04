@@ -38,13 +38,14 @@ When it comes to calling a function with parameters, there are two major options
 
 > **NOTE:** For **32-bit** architectures, the stack passing method is used, while for **64-bit** architectures, the register passing method is used for the first 6 arguments.
 > Starting from the 7th, the stack has to be used.
-> We will use the convention for 32-bit architecture.
+> We will use the convention for 64-bit architecture.
 
 ## Function Call
 
 When we call a function, the steps are as follows:
 
-- We put the arguments on the stack, pushing them in the reverse order in which they are sent as function arguments.
+- We put the first 6 arguments(if there are at least 6 arguments) in the following registers in left-to-right order: `rdi`, `rsi`, `rdx`, `rcx`, `r8` and `r9`.
+- We put the remaining arguments on the stack, pushing them in the reverse order in which they are sent as function arguments.
 - We call `call`.
 - We restore the stack at the end of the call.
 
@@ -56,32 +57,36 @@ As we know, stack operations fall into two types:
 - `pop reg/mem` where what is on the top of the stack is placed into a register or memory area
 
 When we `push`, we say that the stack **grows** (elements are added).
-For reasons that will be better explained later, the stack pointer (indicated by the `esp` register in 32-bit mode) decreases in value when the stack grows (on `push`).
+For reasons that will be better explained later, the stack pointer (indicated by the `rsp` register in 64-bit mode) decreases in value when the stack grows (on `push`).
 However, this contradiction in naming comes from the fact that the stack is typically represented vertically, with smaller values at the top and larger values at the bottom.
 
 Similarly, when we `pop`, we say that the stack **shrinks** (elements are removed).
-Now the stack pointer (indicated by the `esp` register in 32-bit mode) increases in value.
+Now the stack pointer (indicated by the `rsp` register in 64-bit mode) increases in value.
 
-A summary of this is explained very well [here](https://en.wikibooks.org/wiki/X86_Disassembly/The_Stack).
+A summary of this is explained very well [here](https://en.wikibooks.org/wiki/X86_Disassembly/The_Stack) and [here](https://medium.com/@_neerajpal/explained-difference-between-x86-x64-disassembly-49e9678e1ae2).
 
 For example, if we have the function `foo` with the following signature (in C language):
 
 ```C
-int foo(int a, int b, int c);
+long foo(long a, long b, long c, long d,
+        long e, long f, long g, long h);
 ```
 
 The call to this function will look like this:
 
 ```Assembly
-mov ecx, [c]     ; take the value of parameter c from a memory location
-mov ebx, [b]
-mov eax, [a]
+mov rdi, [a]     ; store the first 6 arguments in the assigned registers
+mov rsi, [b]
+mov rdx, [c]
+mov rcx, [d]
+mov r8, [e]
+mov r9, [f]
 
-push ecx         ; put parameters in reverse order, starting with c
-push ebx         ; then b
-push eax         ; then a
+push qword [h]   ; put the last 2 arguments onto the stack in reverse order, first h
+push qworg [g]   ; then g
+
 call foo         ; call the function
-add esp, 12      ; restore the stack
+add rsp, 16      ; restore the stack
 ```
 
 ## Caller and Callee
@@ -94,22 +99,24 @@ Until the `call` instruction, the stack contains the function's parameters.
 The `call` can be roughly equated to the following sequence:
 
 ```Assembly
-push eip
+push rip
 jmp function_name
 ```
 
 That is, even the `call` uses the stack and saves the address of the next instruction, the one after the `call`, also known as the **return address**.
 This is necessary for the callee to know where to return to in the caller.
 
-In the callee, at its beginning (called preamble), the frame pointer is saved (in the i386 architecture, this is the `ebp` register), with the frame pointer then referring to the current function stack frame.
+In the callee, at its beginning (called preamble), the frame pointer is saved (in the X86_64 architecture, this is the `rbp` register), with the frame pointer then referring to the current function stack frame.
 This is crucial for accessing parameters and local variables via an offset from the frame pointer.
 
 Although not mandatory, saving the frame pointer helps in debugging and is used in most cases.
+Also, in order to avoid any issues at runtime, it is imperative to keep the stack `16-byte aligned` by saving the `rbp` register in the preamble of the function.
+Not having the stack `16-byte aligned` may cause some `libc` functions (such as `printf`) to end up causing a `Segmentation Fault` for a program that, besides that misalignment, would be correct.
 For these reasons, any function call will generally have a preamble:
 
 ```Assembly
-push ebp
-mov ebp, esp
+push rbp
+mov rbp, rsp
 ```
 
 These modifications take place in the callee.
@@ -124,12 +131,12 @@ After this instruction, the stack is as it was at the beginning of the function 
 It is equivalent to the following code, which undoes the functions's preamble:
 
 ```Assembly
-mov esp, ebp
-pop ebp
+mov rsp, rbp
+pop rbp
 ```
 
 To conclude the function, it is necessary for the execution to return and continue from the instruction following the `call` that started the function.
-This involves influencing the `eip` register and putting back the value that was saved on the stack initially by the `call` instruction.
+This involves influencing the `rip` register and putting back the value that was saved on the stack initially by the `call` instruction.
 This is achieved using the instruction:
 
 ```Assembly
@@ -139,23 +146,27 @@ ret
 which is roughly equivalent to the instruction:
 
 ```Assembly
-pop eip
+pop rip
 ```
 
-For example, the definition and body of the function foo, which calculates the sum of 3 numbers, would look like this:
+For example, the definition and body of the function foo, which calculates the sum of 8 numbers, would look like this:
 
 ```Assembly
 
 foo:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov eax, [ebp + 8]
-    mov ebx, [ebp + 12]
-    mov ecx, [ebp + 16]
+    mov rax, [rbp + 16]  ; get the two arguments pushed onto the stack
+    mov rbx, [rbp + 24]
 
-    add eax, ebx
-    add eax, ecx
+    add rax, rdi
+    add rax, rsi
+    add rax, rdx
+    add rax, rcx
+    add rax, r8
+    add rax, r9
+    add rax, rbx         ; the result is stored in rax
 
     leave
     ret
@@ -172,19 +183,23 @@ foo:
 1. Note that during the execution of the function, what does not change is the position of the frame pointer.
 This is the reason for its name: it points to the current function's frame.
 Therefore, it is common to access a function's parameters through the frame pointer.
-Assuming a 32-bit system and processor word-sized parameters (32 bits, 4 bytes), we will have:
+Assuming a 64-bit system and processor word-sized parameters (64 bits, 8 bytes), we will have:
 
-   - the first argument is found at address `ebp+8`
-   - the second argument is found at address `ebp+12`
-   - the third argument is found at address `ebp+16`
+   - the first argument is found in the `rdi` register
+   - the second argument is found in the `rsi` register
+   - the third argument is found in the `rdx` register
+   - the fourth argument is found in the `rcx` register
+   - the fifth argument is found in the `r8` register
+   - the sixth argument is found in the `r9` register
+   - the seventh argument is found at address `rbp + 16`
+   - the eighth argument is found at address `rbp + 24`
    - etc.
 
-   This is why, to get the parameters of the foo function in the eax, ebx, ecx registers, we use the constructions:
+   This is why, to get the parameters of the foo function in the rax and rbx registers, we use the constructions:
 
     ```Assembly
-    mov eax, dword [ebp+8]   ; first argument in eax
-    mov ebx, dword [ebp+12]  ; second argument in ebx
-    mov ecx, dword [ebp+16]  ; third argument in ecx
+    mov rax, qword [rbp + 16]   ; seventh argument in rax
+    mov rbx, qword [rbp + 24]   ; eighth argument in rbx
     ```
 
 1. The return value of a function is placed in registers (generally in eax).
@@ -192,21 +207,25 @@ Assuming a 32-bit system and processor word-sized parameters (32 bits, 4 bytes),
    - If the return value is **8 bits**, the function's result is placed in `al`.
    - If the return value is **16 bits**, the function's result is placed in `ax`.
    - If the return value is **32 bits**, the function's result is placed in `eax`.
-   - If the return value is **64 bits**, the result is placed in the `edx` and `eax` registers.
-    The most significant 32 bits are placed in `edx`, and the rest in the `eax` register.
+   - If the return value is **64 bits**, the function's result is placed in `rax`.
+   - If the return value is **>= 128 bits**, the result is placed in the `rdx` and `rax` registers.
+   The most significant bits are placed in `rdx` and the rest in `rax`.
 
     _Additionally, in some cases, a memory address can be returned to the stack/heap (e.g. `malloc()`), or other memory areas, which refer to the desired object after the function call._
 
 1. A function uses the same hardware registers;
 therefore, when exiting the function, the values of the registers are no longer the same.
 To avoid this situation, some/all registers can be saved on the stack.
-You can push all registers to the stack using the [`pusha` instruction - "push all"](https://c9x.me/x86/html/file_module_x86_id_270.html).
-And you can pop them all in the same order using [`popa`](https://c9x.me/x86/html/file_module_x86_id_249.html).
+If we consider a 32-bit architecture, one can push all registers to the stack using the [`pusha` instruction - "push all"](https://c9x.me/x86/html/file_module_x86_id_270.html).
+And one can pop them all in the same order using [`popa`](https://c9x.me/x86/html/file_module_x86_id_249.html).
 The disadvantage of doing so is that writing all registers to the stack is going to be slower than only explicitly saving the registers used by the function.
-For this reason, the `cdecl` calling convention specifies that functions are allowed to change the values of the `eax`, `ecx` and `edx` registers.
+However, on a 64-bit architecture, those two instructions are not available and the preserving must be done by hand.
+More details on the behaviour of these functions on a 64-bit architecture can be found [here](https://www.felixcloutier.com/x86/pusha:pushad).
+For this reason, the `System V AMD64 ABI` calling convention specifies that functions  are allowed to change the values of the `rax`, `rcx`, `rdx`, `rsi`, `rdi` and `r8-r11` registers.
 
 > **NOTE:**  Since assembly languages offer more opportunities, there is a need for calling conventions in x86.
 > The difference between them may consist of the parameter order, how the parameters are passed to the function, which registers need to be preserved by the callee or whether the caller or callee handles stack preparation.
-> More details can be found [here](https://en.wikipedia.org/wiki/X86_calling_conventions) or [here](https://levelup.gitconnected.com/x86-calling-conventions-a34812afe097) if Wikipedia is too mainstream for you.
-> For us, the registers `eax`, `ecx`, `edx` are considered **clobbered** (or volatile), and the callee can do whatever it wants to them.
-> On the other hand, the callee has to ensure that `ebx` exits the function with the same value it has entered with.
+> More details can be found [here](https://en.wikipedia.org/wiki/X86_calling_conventions) or [here](https://aaronbloomfield.github.io/pdr/book/x86-64bit-ccc-chapter.pdf) and [here](https://learn.microsoft.com/en-us/cpp/build/x64-calling-convention?view=msvc-170) if Wikipedia is too mainstream for you.
+> For us, the registers `rax`, `rcx`, `rdx`, `rsi`, `rdi` and `r8-r11` are considered **clobbered** (or volatile), and the callee can do whatever it wants to them.
+> On the other hand, the callee has to ensure that `rbx` and `r12-r15` exit the function with the same value they have entered with.
+> If you want to read more about why the `stack alignment` is needed, you can check out [this](https://stackoverflow.com/questions/49391001/why-does-the-x86-64-amd64-system-v-abi-mandate-a-16-byte-stack-alignment).
