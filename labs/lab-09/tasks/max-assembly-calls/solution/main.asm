@@ -8,7 +8,7 @@ section .data
     len: equ $-arr
     pos: dd 0
 
-    print_format: db "max: %u on position: %u", 13, 10, 0
+    print_format: db "max: %u on position: %u", 10, 0
 
 section .text
 
@@ -28,7 +28,7 @@ main:
     push eax ; length of the array
     push arr ; pointer to the array
     call get_max
-    add esp, 16
+    add esp, 12
 
     ; Print max.
     push dword [pos]

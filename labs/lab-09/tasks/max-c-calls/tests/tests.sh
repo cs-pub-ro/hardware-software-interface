@@ -17,7 +17,7 @@ test_max_c_calls()
     OUTPUT=$($binary)
 
     # Calculate the expected output
-    EXPECTED_OUTPUT=$(printf "max: %u on position: %u" 218 5)
+    EXPECTED_OUTPUT=$(printf "max: %u on position: %u\n" 218 5)
 
     # Check if the output matches the expected output
     if [[ "$OUTPUT" == "$EXPECTED_OUTPUT" ]]; then

@@ -18,7 +18,7 @@ test_max_asm_calls()
     OUTPUT=$($binary)
 
     # Calculate the expected output
-    EXPECTED_OUTPUT=$(printf "max: %d on position: %d\r" 218 5)
+    EXPECTED_OUTPUT=$(printf "max: %d on position: %d\n" 218 5)
 
     # Check if the output matches the expected output
     if [[ "$OUTPUT" == "$EXPECTED_OUTPUT" ]]; then

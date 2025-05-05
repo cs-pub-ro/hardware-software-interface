@@ -21,7 +21,7 @@ make
 Then run the resulting executable:
 
 ```bash
-./mainmax
+./main
 ```
 
 > **IMPORTANT:**
@@ -49,5 +49,20 @@ The position in the vector on which the maximum is found will also be displayed 
 > ```C
 > max = get_max(arr, 10, &pos);
 > ```
+
+After finishing the exercise and testing it manually, run the checker script in the `max-c-calls/tests/` folder to validate the result:
+
+```console
+make check
+```
+
+The format of your output should be `"max: <max value> on position: <position>\n"`
+In case of a correct solution, you will get an output such as:
+
+```text
+test_max_c_calls    ........................ passed ...  100
+
+Total:                                                           100/100
+```
 
 If you're having difficulties solving this exercise, go through [this relevant section](../../readiing/stack-c-asm.md) reading material.
