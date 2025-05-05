@@ -27,4 +27,4 @@ Notice which of the registers used before and after the call are modified by thi
 
 Add the instructions for preserving and restoring the required registers to the assembly file.
 
-If you're having difficulties solving this exercise, go through [this relevant section](../../readiing/memory-layout-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through [this relevant section](../../reading/memory-layout-c-asm.md) reading material.
