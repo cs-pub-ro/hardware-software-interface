@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BSD-3-Clause labs/
+// SPDX-License-Identifier: BSD-3-Clause
 
 #include <stdio.h>
 

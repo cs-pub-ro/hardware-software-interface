@@ -23,4 +23,18 @@ Find the missing instruction and rerun the executable.
 > **TIP:**
 > In order to restore the stack to its state at the start of the current function, the `leave` statement relies on the function's pointer frame having been set.
 
+After finishing the exercise and testing it manually, run the checker script in the `stack-frame/tests/` folder to validate the result:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_stack_frame    ........................ passed ...  100
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this relevant section](../../reading/stack-c-asm.md) reading material.

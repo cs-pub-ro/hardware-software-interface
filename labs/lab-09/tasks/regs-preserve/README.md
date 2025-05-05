@@ -27,4 +27,18 @@ Notice which of the registers used before and after the call are modified by thi
 
 Add the instructions for preserving and restoring the required registers to the assembly file.
 
+After finishing the exercise and testing it manually, run the checker script in the `regs-preserve/tests/` folder to validate the result:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+test_regs_preserve    ........................ passed ...  100
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this relevant section](../../reading/memory-layout-c-asm.md) reading material.

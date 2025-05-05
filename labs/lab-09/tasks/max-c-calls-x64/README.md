@@ -10,6 +10,21 @@ Navigate to `tasks/max-c-calls-x64/support` and open `main.c`
 In this subdirectory you should have implemented the maximum assembly language calculation on a 64-bit system.
 Start the program from exercises 4 and 5 in such a way that you run it using a 64-bit system.
 
+After finishing the exercise and testing it manually, run the checker script in the `max-c-calls-x64/tests/` folder to validate the result:
+
+```console
+make check
+```
+
+The format of your output should be `"max: <max value> on position: <position>\n"`
+In case of a correct solution, you will get an output such as:
+
+```text
+test_max_c_calls_x64    ........................ passed ...  100
+
+Total:                                                           100/100
+```
+
 > **TIP:**
 > <https://en.wikipedia.org/wiki/X86_calling_conventions>.
 >

@@ -7,7 +7,7 @@ section .data
     len: equ $-arr
     pos: dd 0
 
-    print_format: db "max: %u on position: %u", 13, 10, 0
+    print_format: db "max: %u on position: %u", 10, 0
 
 section .text
 

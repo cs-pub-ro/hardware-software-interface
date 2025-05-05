@@ -35,4 +35,19 @@ The position in the vector on which the maximum is found will also be displayed 
 > For display modify the `print_format` string and the `printf()` call in the assembly file (`main.asm`) to allow two values to be displayed: maximum and position.
 >
 
+After finishing the exercise and testing it manually, run the checker script to validate the result:
+
+```console
+make check
+```
+
+The format of your output should be `"max: <max value> on position: <position>\n"`
+In case of a correct solution, you will get an output such as:
+
+```text
+test_max_asm_calls            ........................ passed ...  100
+
+Total:                                                           100/100
+```
+
 If you're having difficulties solving this exercise, go through [this relevant section](../../reading/stack-c-asm.md) reading material.

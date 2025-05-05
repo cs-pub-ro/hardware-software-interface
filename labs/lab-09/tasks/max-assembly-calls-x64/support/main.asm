@@ -6,7 +6,7 @@ section .data
     arr: dd 19, 7, 129, 87, 54, 218, 67, 12, 19, 99
     len: equ $-arr
 
-    print_format: db "max: %u", 13, 10, 0
+    print_format: db "max: %u", 10, 0
 
 section .text
 
