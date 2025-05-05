@@ -23,4 +23,4 @@ Find the missing instruction and rerun the executable.
 > **TIP:**
 > In order to restore the stack to its state at the start of the current function, the `leave` statement relies on the function's pointer frame having been set.
 
-If you're having difficulties solving this exercise, go through [this relevant section](../../readiing/stack-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through [this relevant section](../../reading/stack-c-asm.md) reading material.

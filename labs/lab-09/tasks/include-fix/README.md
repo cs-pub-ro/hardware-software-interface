@@ -14,4 +14,4 @@ Resolve this warning by editing the `support/hello.c` file.
 
 Resolve the warning without using the `#include` directive.
 
-If you're having difficulties solving this exercise, go through [this relevant section](../../readiing/memoy-layout-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through [this relevant section](../../reading/memoy-layout-c-asm.md) reading material.
