@@ -98,5 +98,5 @@ mov rax, 12345
 mov [mystruct + d], rax ; the address of field d is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
 
 mov rbx, [mystruct + d] ; putting the value from field d into the rbx register for display
-PRINTF64 `%d\n\x0`, rbx
+PRINTF64 `%ld\n\x0`, rbx
 ```
