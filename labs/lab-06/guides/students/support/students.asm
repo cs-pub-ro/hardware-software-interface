@@ -54,7 +54,7 @@ main:
 	mov rbp, rsp
 	PRINTF64 `The students list is:\n\x0`
 	xor rcx, rcx
-	afisare:
+	print:
 		mov rbx, students ; save the starting address of the vector in rbx
 		mov rdx, rcx ; save the index in rdx
 		imul rdx, student_t_size ; multiply the index by the size of the student_t structure
