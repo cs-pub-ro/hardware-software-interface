@@ -95,7 +95,7 @@ The following code sequence demonstrates setting a value in the `d` field of the
 
 ```Assembly
 mov rax, 12345
-mov qword [mystruct + d], rax ; the address of field b is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
+mov [mystruct + d], rax ; the address of field d is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
 
 mov rbx, qword [mystruct + d] ; putting the value from field b into the rbx register for display
 PRINTF64 `%d\n\x0`, rbx
