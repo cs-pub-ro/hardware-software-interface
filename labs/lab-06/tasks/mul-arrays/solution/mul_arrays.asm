@@ -22,8 +22,8 @@ iterate_arrays:
     xor rax, rax
     xor rbx, rbx
     xor rdx, rdx
-    mov al, byte[array1 + rcx]
-    mov bl, byte[array2 + rcx]
+    mov al, [array1 + rcx]
+    mov bl, [array2 + rcx]
     mul bl
     mov word[array3 + rcx * 2], ax
     inc rcx
