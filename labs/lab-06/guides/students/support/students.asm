@@ -52,7 +52,7 @@ global main
 main:
 	push rbp
 	mov rbp, rsp
-	PRINTF32 `The students list is:\n\x0`
+	PRINTF64 `The students list is:\n\x0`
 	xor rcx, rcx
 	afisare:
 		mov rbx, students ; save the starting address of the vector in rbx
