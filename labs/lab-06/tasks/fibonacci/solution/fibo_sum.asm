@@ -4,7 +4,7 @@
 
 section .data
     N dq 9 ; compute the sum of the first N fibonacci numbers
-    sum_print_format db "Sum first %d fibonacci numbers is %d", 10, 0
+    sum_print_format db "Sum first %ld fibonacci numbers is %ld", 10, 0
 
 section .text
 extern printf
