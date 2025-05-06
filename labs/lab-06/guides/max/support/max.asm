@@ -32,7 +32,7 @@ noaction:
     cmp rcx, len
     jb again
 
-    PRINTF64 `%lu\x0`, rdx
+    PRINTF64 `%lu\n\x0`, rdx
 
     xor rax, rax
     leave
