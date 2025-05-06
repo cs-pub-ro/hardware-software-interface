@@ -113,7 +113,7 @@ CMAIN:
     xor rax, rax
 
 label:
-    mov rdx, dword [point_array + point_size * rax + point.x] ; access x member
+    mov edx, dword [point_array + point_size * rax + point.x] ; access x member
     PRINTF64 `%lu\n\x0`, rdx
 
     mov rdx, dword [point_array + point_size * rax + point.y] ; access y member
