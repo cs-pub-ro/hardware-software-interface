@@ -1,6 +1,5 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-BITS 64
 extern printf
 extern get_max
 
@@ -9,35 +8,34 @@ section .data
     len: equ $-arr
     pos: dd 0
 
-    print_format: db "max: %u on position: %u", 13, 10, 0
+    print_format: db "max: %u on position: %u", 10, 0
 
 section .text
 
 global main
 
 main:
-    push rbp
-    mov rbp, rsp
+    push ebp
+    mov ebp, esp
 
     ; Compute length in eax.
     ; Divide by 4 (we are using integer data type of 4 bytes) by
     ; using shr 2 (shift right with 2 bits).
-    xor rax, rax
     mov eax, len
     shr eax, 2
 
-    mov rdi, arr
-    xor rsi, rsi
-    mov esi, eax
-    mov rdx, pos
+    push dword pos ; pointer to position
+    push eax ; length of the array
+    push arr ; pointer to the array
     call get_max
+    add esp, 12
 
     ; Print max.
-    mov rdi, print_format
-    xor rsi, rsi
-    mov esi, eax
-    mov rdx, [pos]
+    push dword [pos]
+    push eax
+    push print_format
     call printf
+    add esp, 12
 
     leave
     ret
