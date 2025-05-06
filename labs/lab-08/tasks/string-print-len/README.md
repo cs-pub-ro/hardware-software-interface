@@ -28,4 +28,21 @@ At the end, you will have the length of the string displayed twice: initially wi
 >
 > The length of the string is found in the `ecx` register.
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_length_zero                 ........................ passed ...  20
+test_length_small                ........................ passed ...  40
+test_length_large                ........................ passed ...  40
+
+Total:                                                           100/100
+```
+
 If you're having trouble solving this exercise, go through [this](../../reading/functions.md) reading material.

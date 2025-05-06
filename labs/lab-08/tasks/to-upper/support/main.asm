@@ -6,16 +6,8 @@ section .data
 section .text
 
 extern printf
+extern to_upper
 global main
-
-toupper:
-    push ebp
-    mov ebp, esp
-
-    ; TODO
-
-    leave
-    ret
 
 main:
     push ebp
@@ -27,7 +19,7 @@ main:
     add esp, 8
 
     push mystring
-    call toupper
+    call to_upper
     add esp, 4
 
     push mystring

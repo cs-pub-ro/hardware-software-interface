@@ -14,4 +14,4 @@ hello.o: hello.c
 
 clean:
 	-rm -f hello
-	-rm -f *~
+	-rm -f *.o

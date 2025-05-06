@@ -30,4 +30,21 @@ there is no need for another string.
 
 Implement the `toupper()` function so that the transformation occurs only for lowercase characters, not uppercase letters or other types of characters.
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_to_upper_1                  ........................ passed ...  33
+test_to_upper_2                  ........................ passed ...  33
+test_to_upper_3                  ........................ passed ...  34
+
+Total:                                                           100/100
+```
+
 If you're having trouble solving this exercise, go through [this](../../reading/functions.md) reading material.

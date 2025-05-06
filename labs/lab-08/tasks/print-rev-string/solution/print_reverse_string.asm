@@ -1,65 +1,52 @@
 section .data
-    mystring db "This is my string", 0
-    print_format db "String length is %d", 10, 0
     store_string times 64 db 0
 
 section .text
-
 extern printf
 extern puts
-global main
+global print_reverse_string
 
 reverse_string:
     push ebp
     mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
 
     mov eax, [ebp + 8]      ; get the address of the string
     mov ecx, [ebp + 12]     ; get the length of the string
-    add eax, ecx            ; point to the last character
-    dec eax
     mov edx, [ebp + 16]     ; get the address of the buffer
 
-copy_one_byte:
-    mov bl, [eax]
-    mov [edx], bl           ; transfer one byte from the end of the source string to the beginning of the destination
-    dec eax
-    inc edx
-    loopnz copy_one_byte
+    test ecx, ecx           ; check if length is zero
+    jz done                 ; if zero, skip to null termination
 
-    inc edx
-    mov byte [edx], 0
+    add eax, ecx            ; point to one past the last character
+    dec eax                 ; point to the last character
 
+copy_loop:
+    mov bl, [eax]           ; get a byte from the source
+    mov [edx], bl           ; store it in the destination
+    dec eax                 ; move to previous character in source
+    inc edx                 ; move to next character in destination
+    dec ecx                 ; decrease counter
+    jnz copy_loop           ; if counter not zero, continue loop
+
+done:
+    mov byte [edx], 0       ; null-terminate the destination string
+
+    pop ebx                 ; restore ebx
     leave
     ret
 
-main:
+print_reverse_string:
     push ebp
     mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
 
-    mov eax, mystring
-    xor ecx, ecx
-test_one_byte:
-    mov bl, [eax]
-    test bl, bl
-    jz out
-    inc eax
-    inc ecx
-    jmp test_one_byte
-
-out:
-    ; save ecx's value since it can be changed by printf
-    push ecx
-
-    push ecx
-    push print_format
-    call printf
-    add esp, 8
-
-    pop ecx
+    mov eax, [ebp + 8]      ; get the address of the string
+    mov ecx, [ebp + 12]     ; get the length of the string
 
     push store_string
     push ecx
-    push mystring
+    push eax
     call reverse_string
     add esp, 12
 
@@ -67,5 +54,6 @@ out:
     call puts
     add esp, 4
 
+    pop ebx
     leave
     ret

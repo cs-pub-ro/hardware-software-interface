@@ -31,4 +31,20 @@ Thus, the initial string `lorem\0ipsum\0dolor\0` will translate to `yberz vcfhz 
 >
 > where you either store the total length of the string (from the beginning to the last `NULL` byte) or the number of strings in the array.
 
+To test the implementation, enter the `tests/` directory and run:
+
+```console
+make check
+```
+
+In case of a correct solution, you will get an output such as:
+
+```text
+./run_all_tests.sh
+test_rot13_plus_plus             ........................ passed ...  50
+test_rot13_with_uppercase        ........................ passed ...  50
+
+Total:                                                           100/100
+```
+
 If you're having trouble solving this exercise, go through [this](../../reading/functions.md) reading material.

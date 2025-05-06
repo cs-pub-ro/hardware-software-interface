@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-unsigned int  get_max(unsigned int *arr, unsigned int len, unsigned int *pos)
+unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos)
 {
 	unsigned int max = 0;
 	size_t i;

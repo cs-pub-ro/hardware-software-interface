@@ -1,35 +1,23 @@
-%include "../utils/printf32.asm"
-
 section .data
-    mystring db "This is my string", 0
     print_format db "String length is %d", 10, 0
 
 section .text
 
 extern printf
-global main
+global print_string_length
 
-main:
+print_string_length:
     push ebp
     mov ebp, esp
+    push ebx                ; preserve ebx as required by cdecl
 
-    mov eax, mystring
-    xor ecx, ecx
-test_one_byte:
-    mov bl, byte [eax]
-    test bl, bl
-    jz out
-    inc eax
-    inc ecx
-    jmp test_one_byte
-
-out:
-    PRINTF32 `[PRINTF32]: %d\n[printf]: \x0`, ecx
+    mov ecx, [ebp + 8]      ; get the string length from the stack
 
     push ecx
     push print_format
     call printf
     add esp, 8
 
+    pop ebx
     leave
     ret

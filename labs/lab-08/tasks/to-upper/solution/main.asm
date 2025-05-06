@@ -6,25 +6,8 @@ section .data
 section .text
 
 extern printf
+extern to_upper
 global main
-
-toupper:
-    push ebp
-    mov ebp, esp
-
-    mov eax, [ebp + 8]
-check_one_byte:
-    mov bl, [eax]
-    test bl, bl
-    je out
-    sub bl, 0x20
-    mov [eax], bl
-    inc eax
-    jmp check_one_byte
-
-out:
-    leave
-    ret
 
 main:
     push ebp
@@ -36,7 +19,7 @@ main:
     add esp, 8
 
     push mystring
-    call toupper
+    call to_upper
     add esp, 4
 
     push mystring

@@ -18,4 +18,4 @@ double_array.o: double_array.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	-rm -f main *.o
+	rm -f main *.o

@@ -33,7 +33,7 @@ Take the example of calling the `printf()` function from an assembly language pr
 ```Assembly
 global main
 
-external printf
+extern printf
 
 section .data
 

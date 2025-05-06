@@ -1,18 +1,19 @@
 AS = nasm
 CC = gcc
 
-SRCS := $(shell find . -name "*.asm")
-OBJS := $(SRCS:.asm=.o)
-
 UTILSDIR := ../utils/
 
 ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
 LDFLAGS ?= -m32 -no-pie
 
-all: print_reverse_string
+TARGET := print_reverse_string
+OBJS := main.o print_reverse_string.o
 
-print_reverse_string_: print_reverse_string.o
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
 
 %.o: %.asm
 	$(AS) $(ASFLAGS) $< -o $@
@@ -20,4 +21,4 @@ print_reverse_string_: print_reverse_string.o
 .PHONY: clean
 
 clean:
-	-rm -f *.o print_reverse_string
+	-rm -f *.o $(TARGET)
