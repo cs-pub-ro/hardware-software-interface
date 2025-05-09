@@ -47,7 +47,7 @@ This is a string that occupies `8` bytes.
 > For example, to generate a payload that overwrites a value in the code with the value `0xDEADBEEF`, you can execute the following command:
 
 ```python
-python2.7 -c 'print "A" * 32 + "\xEF\xBE\xAD\xDE"' > payload
+python3 -c 'import sys; sys.stdout.buffer.write(b"A" * 32 + b"\xEF\xBE\xAD\xDE")' > payload
 ```
 
 > **NOTE** number `32` is only an example and it represents the size of buffer that needs to be bypassed.
