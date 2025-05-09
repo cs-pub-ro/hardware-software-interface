@@ -16,4 +16,22 @@ quantity is 42
 
 Explore the interface and the content of the functions in the `shop.o` file using `nm` and `objdump`.
 
+**Checker**: To test the implementation, enter the tests/ directory and run:
+
+```console
+./run_all_tests.sh
+```
+
+In case of a correct solution, you will get this output:
+
+```console
+./run_all_tests.sh
+
+test_linking-object-file         ........................ passed ...  100
+
+========================================================================
+
+Total:                                                             100/100
+```
+
 If you're having difficulties solving this exercise, go through [this](../../reading/linking.md) reading material.
