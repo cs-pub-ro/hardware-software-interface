@@ -1,12 +1,13 @@
 /* SPDX-License-Identifier: BSD-3-Clause */
 
-#ifndef OPS_H_
-#define OPS_H_		1
+#ifndef _OPS_H
+#define _OPS_H
 
 void init(void);
 void set(int value);
 int get(void);
-extern int age;
 void print_age(void);
 
-#endif
+extern int age;
+
+#endif /* _OPS_H */
