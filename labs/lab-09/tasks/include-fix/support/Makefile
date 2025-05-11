@@ -1,5 +1,5 @@
 CFLAGS = -Wall -g
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -Werror -g
 
 .DEFAULT_GOAL: all
 
@@ -13,5 +13,4 @@ hello: hello.o
 hello.o: hello.c
 
 clean:
-	-rm -f hello
-	-rm -f *.o
+	-rm -f hello *.o
