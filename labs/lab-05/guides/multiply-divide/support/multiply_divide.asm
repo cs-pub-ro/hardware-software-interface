@@ -1,36 +1,36 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    ; edx:eax = eax * r/m32, where r/m32 is a 32-bit register or memory location
-    mov eax, 10
-    mov ebx, 30
-    mul ebx
+    ; rdx:rax = rax * r/m64, where r/m64 is a 64-bit register or memory location
+    mov rax, 10
+    mov rbx, 30
+    mul rbx
 
-    PRINTF32 `Result is: %u\n\x0`, eax
+    PRINTF64 `Result is: %u\n\x0`, rax
 
-    ; make sure to always clear the edx register before performing a division
+    ; make sure to always clear the rdx register before performing a division
     ; there might be leftover data from previous operations
-    xor edx, edx
+    xor rdx, rdx
 
-    ; qutotient: eax = edx:eax / r/m32
-    ; remainder: edx = edx:eax % r/m32
+    ; qutotient: rax = rdx:rax / r/m64
+    ; remainder: rdx = rdx:rax % r/m64
     ; both operations are performed at the same time, using the div instruction:w
-    ; in this case the divisor is stored in ebx
-    mov eax, 10
-    mov ebx, 3
-    div ebx
+    ; in this case the divisor is stored in rbx
+    mov rax, 10
+    mov rbx, 3
+    div rbx
 
-    PRINTF32 `Quotient is: %u\n\x0`, eax
-    PRINTF32 `Remainder is: %u\n\x0`, edx
+    PRINTF64 `Quotient is: %u\n\x0`, rax
+    PRINTF64 `Remainder is: %u\n\x0`, rdx
 
     leave
     ret

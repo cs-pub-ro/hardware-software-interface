@@ -1,11 +1,15 @@
 IMG_NAME=$(shell basename $(CURDIR))
 CONT_NAME=$(IMG_NAME)
+OUTPUT_DIR=_site
 
 build:
 	docker build -t $(IMG_NAME) .
+	mkdir -p 3
+	docker run -v $$PWD:/usr/src/app $(IMG_NAME) bundle install
+	docker run --rm -v $$PWD:/usr/src/app $(IMG_NAME)
 
 serve:
-	docker run --rm -p 4000:4000 -v $$PWD:/usr/src/app $(IMG_NAME)
+	@cd $(OUTPUT_DIR) && python3 -m http.server 8080
 
 stop:
 	@docker ps -q --filter "name=$(CONT_NAME)" | grep -q . && docker stop $(CONT_NAME) \
@@ -13,7 +17,7 @@ stop:
 
 clean: stop
 	docker rmi $(IMG_NAME)
-	rm -rf _site
+	-rm -rf _site
 
 .PHONY: lint typos
 lint: typos

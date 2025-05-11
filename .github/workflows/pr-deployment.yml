@@ -40,9 +40,21 @@ jobs:
 
       - name: Load Image
         run: |
-          mkdir -p ${{ github.event.number }}
           docker image list
-          docker run -v $GITHUB_WORKSPACE/repo:/usr/src/app hardware-software-interface-${{ github.event.number }}:latest
+          docker run -v $GITHUB_WORKSPACE/repo:/usr/src/app \
+            hardware-software-interface-${{ github.event.number }}:latest bundle install
+          docker run -v $GITHUB_WORKSPACE/repo:/usr/src/app \
+            hardware-software-interface-${{ github.event.number }}:latest
+
+      - name: Debug - List repo directory
+        run: |
+          pwd
+          ls -la repo
+
+      - name: Debug - List site directory
+        run: |
+          pwd
+          ls -la repo/_site
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
@@ -51,7 +63,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages-pr` branch:
-          publish_dir: ./${{ github.event.number }}
+          publish_dir: repo/_site
           destination_dir: ${{ github.event.number }}
           # The following lines assign commit authorship to the official
           # GH-Actions bot for deploys to `gh-pages` branch:

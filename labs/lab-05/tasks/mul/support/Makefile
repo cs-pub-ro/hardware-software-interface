@@ -6,21 +6,21 @@ OBJS := $(SRCS:.asm=.o)
 
 UTILSDIR := ../utils/
 
-ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
+ASFLAGS ?= -f elf64 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+LDFLAGS ?= -m64 -no-pie
 
 TARGETS := $(OBJS:.o=)
 
 all: $(TARGETS)
 
 $(TARGETS): %: %.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
+		$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
 
 %.o: %.asm
-	$(AS) $(ASFLAGS) $< -o $@
+		$(AS) $(ASFLAGS) $< -o $@
 
 .PHONY: clean
 
 clean:
-	rm -r *.o $(TARGETS)
+		rm -r *.o $(TARGETS)

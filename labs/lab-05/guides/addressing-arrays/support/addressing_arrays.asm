@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 %define ARRAY_SIZE 10
 
@@ -12,45 +12,46 @@ section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    xor eax, eax
+    xor rax, rax
 
-    ; ecx                 - loop counter/array index, starting from 0
-    ; [my_array + ecx*4]  - since our array stores double-words (4 bytes)
-    ;                       we multiply `ecx` by 4 to index the `ecx`-th element
-    ; cmp ecx, ARRAY_SIZE - compare `ecx` with ARRAY_SIZE, sets EFLAGS accordingly
-    ; jl for_print_before - `jl` instruction checks if `ecx` < ARRAY_SIZE (based on EFLAGS)
+    ; rcx                 - loop counter/array index, starting from 0
+    ; [my_array + rcx*4]  - since our array stores double-words (4 bytes)
+    ;                       we multiply `rcx` by 4 to index the `rcx`-th element
+    ; cmp rcx, ARRAY_SIZE - compare `rcx` with ARRAY_SIZE, sets RFLAGS accordingly
+    ; jl for_print_before - `jl` instruction checks if `rcx` < ARRAY_SIZE (based on RFLAGS)
     ;                       and it jumps to the `for_print_before` label, otherwise it
     ;                       continues to the next instruction
 
     ; print out the array before incrementing its elements
-    xor ecx, ecx
+    xor rcx, rcx
 for_print_before:
-    PRINTF32 `my_array[%d]: %d\n\x0`, ecx, [my_array + ecx*4]
-    inc ecx
-    cmp ecx, ARRAY_SIZE
+    mov rdx, [my_array + rcx*4]    ; Load value into rdx for printing
+    PRINTF64 `my_array[%d]: %d\n\x0`, rcx, rdx
+    inc rcx
+    cmp rcx, ARRAY_SIZE
     jl for_print_before
 
-	PRINTF32 `\n\x0`
+    PRINTF64 `\n\x0`
 
     ; increment each element of the array
-    xor ecx, ecx
+    xor rcx, rcx
 for:
-    inc dword [my_array + ecx*4]
-    inc ecx
-    cmp ecx, ARRAY_SIZE
+    inc dword [my_array + rcx*4]
+    inc rcx
+    cmp rcx, ARRAY_SIZE
     jl for
 
     ; print out the array after incrementing its elements
-    xor ecx, ecx
+    xor rcx, rcx
 for_print_after:
-    PRINTF32 `my_array[%d]: %d\n\x0`, ecx, [my_array + ecx*4]
-    inc ecx
-    cmp ecx, ARRAY_SIZE
+    mov rdx, [my_array + rcx*4]    ; Load value into rdx for printing
+    PRINTF64 `my_array[%d]: %d\n\x0`, rcx, rdx
+    inc rcx
+    cmp rcx, ARRAY_SIZE
     jl for_print_after
 
     leave
     ret
-
