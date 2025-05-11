@@ -4,28 +4,30 @@ section .text
 
 global get_max
 
+
+; RDI = array pointer
+; RSI = array length
 get_max:
-	push ebp
-	mov ebp, esp
+    push rbp
+    mov  rbp, rsp
 
-	; save ebx in callee
-	push ebx
+    ; initialize EAX with the first value as currently known maximum
+    mov eax, [rdi]
 
-	; [ebp+8] is array pointer
-	; [ebp+12] is array length
+    ; initialize RCX as loop counter for remaining elements
+    mov rcx, rsi
+    dec rcx
 
-	mov ebx, [ebp+8]
-	mov ecx, [ebp+12]
-	xor eax, eax
-
+    ; loop over remaining array elements
 compare:
-	cmp eax, [ebx+ecx*4-4]
-	jge check_end
-	mov eax, [ebx+ecx*4-4]
+    cmp eax, [rdi + 4*rcx]
+    jge check_end
+    mov eax, [rdi + 4*rcx]
 check_end:
-	loopnz compare
+    loop compare
 
-	pop ebx
+    ; result stored in RAX
 
-	leave
-	ret
+    leave
+    ret
+
