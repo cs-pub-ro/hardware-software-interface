@@ -27,7 +27,7 @@ then run it using the command:
 
 Observe the behavior of the program according to its code.
 
-In addition to the buffer, we have also allocated a local variable of 4 bytes, accessible at the address `ebp - 4`.
+In addition to the buffer, we have also allocated a local variable of 4 bytes, accessible at the address `rbp - 8`.
 It is initialized to the value `0xCAFEBABE`.
 This variable will be important later on.
 What is relevant now is to know that this variable is in memory **immediately after the buffer**: when the buffer limit is exceeded, you reach this variable.
@@ -45,21 +45,21 @@ It is a case of read buffer overflow, with the objective of **information leak**
 > not the current limit of 64 bytes.
 
 Follow **TODO 2** and display other information beyond the local variable.
-What information comes on the stack after the local variable (the next 4 bytes)?
-And the next 4 bytes after?
+What information comes on the stack after the local variable (the next 8 bytes)?
+And the next 8 bytes after?
 
 ## Part 3
 
 Based on the experience above, make changes so that the variable's value is `0xDEADBEEF`
 (instead of `0xCAFEBABE` as it is initially) without, however, explicitly modifying the variable's value.
-Look for **TODO 3** and use the buffer modification and the `ebx` register in which we stored the start address of the buffer.
+Look for **TODO 3** and use the buffer modification and the `rbx` register in which we stored the start address of the buffer.
 
 > **TIP** Again, it's not complicated.
-> You need to use the `ebx` value and an offset to write the `0xDEADBEEF` value at that address.
+> You need to use the `rbx` value and an offset to write the `0xDEADBEEF` value at that address.
 > That is, use a construction like:
 
 ```Assembly
-mov byte [ebx + TODO], TODO
+mov byte [rbx + TODO], TODO
 ```
 
 > Do this after the buffer initialization sequence (after the `jl fill_byte` instruction).

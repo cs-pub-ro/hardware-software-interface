@@ -18,56 +18,56 @@ section .text
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    ; Make room for local variabile (32 bit, 4 bytes).
-    ; Variable address is at ebp - 4.
-    sub esp, 4
+    ; Make room for local variabile (64-bit, 8 bytes).
+    ; Variable address is at rbp - 8.
+    sub rsp, 8
 
     ; Make room for buffer (64 bytes).
-    ; Buffer address is at ebp - 68.
-    sub esp, 64
+    ; Buffer address is at rbp - 72.
+    sub rsp, 64
 
     ; Initialize local variable.
-    mov dword [ebp - 4], 0xCAFEBABE
+    mov dword [rbp - 8], 0xCAFEBABE
 
     ; Fill data in buffer: buffer[i] = i + 1
-    ; Use ebx as buffer base address, ecx as index and dl as value.
-    ; dl needs to be ecx + 1.
+    ; Use rbx as buffer base address, rcx as index and dl as value.
+    ; dl needs to be rcx + 1.
     ; Buffer length is 64 bytes.
-    lea ebx, [ebp - 68]
-    xor ecx, ecx
+    lea rbx, [rbp - 72]
+    xor rcx, rcx
 fill_byte:
     mov dl, cl
     inc dl
-    mov byte [ebx + ecx], dl
-    inc ecx
-    cmp ecx, 64
+    mov byte [rbx + rcx], dl
+    inc rcx
+    cmp rcx, 64
     jl fill_byte
 
     ; TODO 3: Print "DEADBEEF" instead of "CAFEBABE"
 
     ; Text before printing buffer.
-    push buffer_intro_message
+    mov rdi, buffer_intro_message
+    xor eax, eax
     call printf
-    add esp, 4
 
-    xor ecx, ecx
+    xor rcx, rcx
 print_byte:
     xor eax, eax
-    lea ebx, [ebp - 68]
-    mov al, byte[ebx + ecx]
-    push ecx	; save ecx, printf may change it
+    lea rbx, [rbp - 72]
+    mov al, byte[rbx + rcx]
+    push rcx                ; save rcx
 
-    ; Print current byte.
-    push eax
-    push byte_format
+    movzx esi, al          ; 2nd arg: char (printable)
+    mov edx, esi           ; 3rd arg: hex value
+    mov rdi, byte_format   ; 1st arg: format string
+    xor eax, eax
     call printf
-    add esp, 8
 
-    pop ecx	; restore ecx
-    inc ecx
+    pop rcx                ; restore rcx
+    inc rcx
 
     ; TODO 1: Print the next bytes 4
     ; TODO 2: After printing the local variable,
@@ -76,16 +76,16 @@ print_byte:
     jl print_byte
 
     ; Print new line. C equivalent instruction is puts("").
-    push null_string
+    sub rsp, 8             ; align stack
+    mov rdi, null_string
     call puts
-    add esp, 4
+    add rsp, 8
 
     ; Print local variable.
-    mov eax, [ebp - 4]
-    push eax
-    push var_message_and_format
+    mov esi, [rbp - 8]                ; value
+    mov rdi, var_message_and_format   ; format
+    xor eax, eax
     call printf
-    add esp, 8
 
     leave
     ret

@@ -8,7 +8,7 @@
 
 void magic_function(void)
 {
-	system("cowsay -f tux 'Good job there, my friend'");
+	printf("Good job there, my friend\n");
 }
 
 char read_buffer(void)

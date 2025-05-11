@@ -20,15 +20,15 @@ You will need to mark it as external using, at the beginning of the assembly lan
 > ```
 
 `stdin` is an address; to call `fgets()` with standard input,
-it is sufficient to pass on the stack the value from the `stdin` address, i.e., using the construction:
+it is sufficient to store in the register the value from the `stdin` address, i.e., using the construction:
 
 ```Assembly
-push dword [stdin]
+mov rdx, [rel stdin]
 ```
 
 > **HINT** Follow the manual page of the [`fgets()`](https://man7.org/linux/man-pages/man3/fgets.3.html) function to find out what parameters it receives.
-> **TIP** Since the `fgets()` function has 3 parameters (which occupy `3 × 4 = 12` bytes) you will need to use `add esp, 12` after the function call,
-> in restoring the stack, instead of `add esp, 4` as in the case of the program above that used `gets()`.
+> **TIP** The `fgets()` function has 3 parameters (which occupy 3 registers - `rdi`, `rsi` and `rdx`),
+> instead of just one as in the case of the program above that used `gets()`.
 > **IMPORTANT** Do not modify the assembly language code. Transmit the input string in the appropriate format to the standard input
 > to generate a buffer overflow and to obtain the required result.
 
