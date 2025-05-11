@@ -7,11 +7,12 @@ parent: Lab 9 - The C - Assembly Interaction
 
 Navigate to `tasks/include-fix/support`.
 
-Run the `make` command.
-You will get a warning.
-Is it from compiling or linking?
-Resolve this warning by editing the `support/hello.c` file.
+Run the `make` command and you will get a warning.
+Is this related to the compiler, or the linker?
 
-Resolve the warning without using the `#include` directive.
+Solve this warning by editing the `support/hello.c` file.
+Do so without using the `#include` directive.
 
-If you're having difficulties solving this exercise, go through [this relevant section](../../reading/memoy-layout-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through
+[this relevant section](../../reading/calling-convention.md) of the reading
+material.
