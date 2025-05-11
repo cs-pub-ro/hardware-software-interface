@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 %define ARRAY_SIZE 13
 %define DECIMAL_PLACES 5
@@ -25,9 +25,10 @@ section .data
     decimal_point   db ".",0
     var             db 64       ; Declare a byte with value 64
                     db 10       ; Declare a byte with value 10.
-                                ; This byte can be found at address (var + 1)
+                              ; This byte can be found at address (var + 1)
     Y               dd 3000     ; Declare a double word (4 bytes)
     Z               dd 1, 2, 3  ; Declare a double word array
+    big_number      dq 9000000000  ; Declare a quad word (8 bytes)
     var5            equ 2
     my_array        times 3 db 8, 9, 10
 
@@ -36,15 +37,15 @@ section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    xor eax, eax
-    mov ecx, ARRAY_SIZE
+    xor rax, rax
+    mov rcx, ARRAY_SIZE
 
     mov al, [var]
 
-    PRINTF32 `var: %d\n\x0`, eax
+    PRINTF64 `var: %d\n\x0`, rax
 
     leave
     ret

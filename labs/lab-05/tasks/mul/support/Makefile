@@ -6,9 +6,9 @@ OBJS := $(SRCS:.asm=.o)
 
 UTILSDIR := ../utils/
 
-ASFLAGS ?= -f elf32 -F dwarf -I "$(UTILSDIR)"
+ASFLAGS ?= -f elf64 -F dwarf -I "$(UTILSDIR)"
 CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+LDFLAGS ?= -m64 -no-pie
 
 TARGETS := $(OBJS:.o=)
 

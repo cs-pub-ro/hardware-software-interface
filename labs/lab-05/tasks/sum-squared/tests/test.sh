@@ -15,27 +15,27 @@ else
     OUTPUT2="Not yet"
 fi
 
-sum_100=$(echo "$OUTPUT1" | grep "S" | sed -n '1p' | awk '{print $2}')
-sum_squares_100=$(echo "$OUTPUT2" | grep "S" | sed -n '1p' | awk '{print $2}')
+sum=$(echo "$OUTPUT1" | grep "Sum" | awk '{print $2}' | tr -d '():')
+sum_squares=$(echo "$OUTPUT2" | grep "Sum" | awk '{print $4}' | tr -d '():')
 
-test_sum_100() {
-	if [[ -z $sum_100 ]]; then
+test_sum() {
+	if [[ -z $sum ]]; then
 		exit 1
 	fi
 
-	if [[ $sum_100 -eq 5050 ]]; then
+	if [[ $sum -eq 5000050000 ]]; then
 		exit 0
 	else
 		exit 1
 	fi
 }
 
-test_sum_squares_100() {
-	if [[ -z $sum_squares_100 ]]; then
+test_sum_squares() {
+	if [[ -z $sum_squares ]]; then
 		exit 1
 	fi
 
-	if [[ $sum_squares_100 -eq 338350 ]]; then
+	if [[ $sum_squares -eq 333338333350000 ]]; then
 		exit 0
 	else
 		exit 1
@@ -43,7 +43,7 @@ test_sum_squares_100() {
 }
 
 run_tests() {
-	local tests=(test_sum_100 test_sum_squares_100)
+	local tests=(test_sum test_sum_squares)
 	local scores=(50 50)
 	for i in {0..1}; do
 		run_test "${tests[i]}" "${scores[i]}"
