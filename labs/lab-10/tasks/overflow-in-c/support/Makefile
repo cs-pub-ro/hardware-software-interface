@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-m32 -masm=intel -fno-stack-protector
+CFLAGS=-m64 -masm=intel -fno-stack-protector
 
 all: do_overflow do_overflow.asm
 
