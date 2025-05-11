@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 ; https://en.wikibooks.org/wiki/X86_Assembly/Arithmetic
 
@@ -11,13 +11,15 @@ section .data
     num2_w dw 9949
     num1_d dd 134932
     num2_d dd 994912
+    num1_q dq 9223372036854775800
+    num2_q dq 12345678
 
 section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; Multiplication for db
     mov al, byte [num1]
@@ -25,10 +27,11 @@ main:
     mul bl
 
     ; Print result in hexa
-    PRINTF32 `Result is: 0x%hx\n\x0`, eax
+    PRINTF64 `Result is: 0x%hx\n\x0`, rax
 
 
-   ; TODO: Implement multiplication for dw and dd data types.
+      ; TODO: Implement multiplication for dw, dd and dq data types.
+
 
     leave
     ret

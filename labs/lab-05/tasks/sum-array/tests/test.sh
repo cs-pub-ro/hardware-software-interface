@@ -8,12 +8,12 @@ binary="../support/sum_array"
 
 OUTPUT=$($binary)
 
-word_sum=$(echo "$OUTPUT" | grep "A" | sed -n '2p' | awk '{print $4}')
-dword_sum=$(echo "$OUTPUT" | grep "A" | sed -n '3p' | awk '{print $4}')
-squares_sum=$(echo "$OUTPUT" | grep "A" | sed -n '4p' | awk '{print $4}')
-big_sum=$(echo "$OUTPUT" | grep "A" | sed -n '5p' | awk '{print $4}')
+word_sum=$(echo "$OUTPUT" | grep "Word array sum:" | awk '{print $4}')
+dword_sum=$(echo "$OUTPUT" | grep "Dword array sum:" | awk '{print $4}')
+qword_sum=$(echo "$OUTPUT" | grep "Qword array sum:" | awk '{print $4}')
+big_sum=$(echo "$OUTPUT" | grep "128-bit addition example:" | awk '{print $4}')
 
-first_test() {
+word_sum_test() {
 	if [[ -z $word_sum ]]; then
 		exit 1
 	fi
@@ -25,36 +25,36 @@ first_test() {
 	fi
 }
 
-second_test() {
+dword_sum_test() {
 	if [[ -z $dword_sum ]]; then
 		exit 1
 	fi
 
-	if [[ $dword_sum -eq 74758117 ]]; then
+	if [[ $dword_sum -eq 140975 ]]; then
 		exit 0
 	else
 		exit 1
 	fi
 }
 
-third_test() {
-	if [[ -z $squares_sum ]]; then
+qword_sum_test() {
+	if [[ -z $qword_sum ]]; then
 		exit 1
 	fi
 
-	if [[ $squares_sum -eq 2704560839 ]]; then
+	if [[ $qword_sum -eq 51933475293 ]]; then
 		exit 0
 	else
 		exit 1
 	fi
 }
 
-fourth_test() {
+big_sum_test() {
 	if [[ -z $big_sum ]]; then
 		exit 1
 	fi
 
-	if [[ $big_sum -eq 1610691026282151079 ]]; then
+	if [[ $big_sum -eq 0x1565ddbe509d3ffe8 ]]; then
 		exit 0
 	else
 		exit 1
@@ -62,7 +62,7 @@ fourth_test() {
 }
 
 run_tests() {
-	local tests=(first_test second_test third_test fourth_test)
+	local tests=(word_sum_test dword_sum_test qword_sum_test big_sum_test)
 	local scores=(20 20 30 30)
 	for i in {0..3}; do
 		run_test "${tests[i]}" "${scores[i]}"
