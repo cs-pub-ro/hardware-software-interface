@@ -2,14 +2,15 @@
 
 #include <stdio.h>
 
-int get_max(unsigned int *arr, unsigned int size, unsigned int *max);
+unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos);
 
 int main(void)
 {
 	unsigned int arr[] = { 19, 7, 129, 87, 54, 218, 67, 12, 19, 99 };
-	unsigned int max, pos;
+	unsigned int max;
+	unsigned int pos = -1;
 
-	max = get_max(arr, sizeof(arr) / sizeof(arr[0]), &pos);
+	max = get_max(arr, 10, &pos);
 
 	printf("max: %u on position: %u\n", max, pos);
 
