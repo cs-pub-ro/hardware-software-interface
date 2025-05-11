@@ -5,64 +5,29 @@ parent: Lab 9 - The C - Assembly Interaction
 
 # Task: Maximum Calculation in Assembly with Call from C
 
-Navigate to `tasks/max-c-calls/support` and open `main.c`
+Navigate to `tasks/max-c-calls/support` and open `main.c`.
+The `get_max()` function that it invokes in order to find the maximum value in
+an array is implemented in `max.asm`.
 
-In this subdirectory you can find an implementation of calculating the maximum of a number where the `main()` function is defined in C from which the `get_max()` function defined in assembly language is called.
+Trace the code in both files and notice how the generated assembly code from
+`main()` performs the function call.
+Specifically, look at how the arguments are passed and how the return value is
+interpreted.
 
-Trace the code in the two files and how the function arguments and return value are passed.
-
-Compile and run the program.
-To compile it run the command:
-
-```bash
-make
-```
-
-Then run the resulting executable:
-
-```bash
-./main
-```
-
-> **IMPORTANT:**
-> Pay attention to understanding the code before proceeding to the next exercise.
->
-> **IMPORTANT:**
-> The return value of a function is placed in the `eax` register.
+> **IMPORTANT:** Pay attention and understand the code before proceeding to the
+                 next exercise.
 
 ## Maximum Computation Extension in Assembly with Call from C
 
-Extend the program from the previous exercise (in assembly language and C) so that the `get_max()` function now has the signature `unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos)`.
-The third argument to the function is the address where the position in the vector on which the maximum is found will be held.
+Extend the program from the previous exercise (in assembly language and C) so
+that the `get_max()` function now has the signature
+`unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos)`.
+The third argument to the function is a reference to a variable where the
+maximum's position should be stored.
 
-The position in the vector on which the maximum is found will also be displayed on display.
+The position in the vector on which the maximum is found should also be
+displayed to `stdout`.
 
-> **TIP:**
-> To hold the position, it is best to define a local variable `pos` in the `main()` function in the C file (`main.c`) in the form
->
-> ```C
-> unsigned int pos;
-> ```
->
-> and call the `get_max()` function in the form:
->
-> ```C
-> max = get_max(arr, 10, &pos);
-> ```
-
-After finishing the exercise and testing it manually, run the checker script in the `max-c-calls/tests/` folder to validate the result:
-
-```console
-make check
-```
-
-The format of your output should be `"max: <max value> on position: <position>\n"`
-In case of a correct solution, you will get an output such as:
-
-```text
-test_max_c_calls    ........................ passed ...  100
-
-Total:                                                           100/100
-```
-
-If you're having difficulties solving this exercise, go through [this relevant section](../../readiing/stack-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through
+[this relevant section](../../reading/calling-convention.md) of the reading
+material.
