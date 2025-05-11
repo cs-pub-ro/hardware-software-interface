@@ -1,6 +1,7 @@
-CFLAGS = -Wall -g -m32
-ASM = nasm
-ASMFLAGS = -f elf32
+CFLAGS   = -Wall -g
+ASM      = nasm
+ASMFLAGS = -f elf64 -F dwarf
+LDFLAGS  = -no-pie
 
 .DEFAULT_GOAL: all
 
@@ -9,7 +10,7 @@ ASMFLAGS = -f elf32
 all: main
 
 main: main.o print_hello.o
-	$(CC) $(LDFLAGS) -m32 -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 print_hello.o: print_hello.asm
 	$(ASM) $(ASMFLAGS) -o $@ $<
