@@ -10,12 +10,6 @@ Recalling how function calls are made **Laboratory 9**, the return address from 
 
 Exploiting this behavior and starting from the resources in the `tasks/overwrite-ret-addr/support/` directory, use a buffer overflow to call the `void magic_function()` by overwriting the return address in the `read_buffer()` function.
 
-> **IMPORTANT** The `void magic_function()` calls the `cowsay` utility, which you need to install with the following command:
-
-```Bash
-sudo apt install cowsay
-```
-
 > **HINT** To inspect the source, use the following command:
 
 ```Bash

@@ -8,9 +8,9 @@ OBJS_ASM := $(SRCS_ASM:.asm=.o)
 SRCS_C := $(wildcard *.c)
 OBJS_C := $(SRCS_C:.c=.o)
 
-ASFLAGS ?= -f elf32 -F dwarf
-CFLAGS ?= -m32 -g -Wall -Wextra -Werror -fno-pic -masm=intel -fno-stack-protector
-LDFLAGS ?= -m32 -no-pie
+ASFLAGS ?= -f elf64 -F dwarf
+CFLAGS ?= -g -Wall -Wextra -Werror -fno-pic -masm=intel -fno-stack-protector
+LDFLAGS ?= -no-pie
 
 TARGET_EXEC = break_this
 

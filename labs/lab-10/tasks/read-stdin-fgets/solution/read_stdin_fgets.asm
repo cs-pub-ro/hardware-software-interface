@@ -22,24 +22,24 @@ section .text
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    ; Make room for local variable (32 bit, 4 bytes).
-    ; Variable address is at ebp - 4.
-    sub esp, 4
+    ; Make room for local variable (64-bit, 8 bytes).
+    ; Variable address is at rbp - 8.
+    sub rsp, 8
 
     ; Make room for buffer (64 bytes).
-    ; Buffer address is at ebp - 68.
-    sub esp, 64
+    ; Buffer address is at rbp - 72.
+    sub rsp, 64
 
     ; Initialize local variable.
-    mov dword [ebp - 4], 0xCAFEBABE
+    mov dword [rbp - 8], 0xCAFEBABE
 
     ; Read buffer from standard input.
-    push read_message
+    mov rdi, read_message
+    xor eax, eax
     call printf
-    add esp, 4
 
     ; The buffer has only 64 bytes of memory allocated
     ; The last one is for null terminator
@@ -47,54 +47,52 @@ main:
     ; There can still be a full overflow of local var
     ; I suggest observing the code with 68 instead
     ; as well.
-    lea ebx, [ebp-68]
-    push dword [stdin]
-    push 69
-    push ebx
+    lea rdi, [rbp - 72]         ; buffer
+    mov esi, 69                 ; size
+    mov rdx, [rel stdin]        ; FILE* stdin
     call fgets
-    add esp, 12
 
-    ; Push string length on the stack.
-    ; String length is stored at ebp - 72.
-    push ebx
+    ; Compute string length
+    lea rdi, [rbp - 72]
     call strlen
-    add esp, 4
-    push eax
+    push rax                    ; store length
 
     ; Text before printing buffer.
-    push buffer_intro_message
+    mov rdi, buffer_intro_message
+    xor eax, eax
     call printf
-    add esp, 4
 
-    xor ecx, ecx
+    xor rcx, rcx
 print_byte:
     xor eax, eax
-    lea ebx, [ebp - 68]
-    mov al, byte[ebx + ecx]
-    push ecx	; save ecx
+    lea rbx, [rbp - 72]
+    mov al, byte [rbx + rcx]
+
+    push rcx                    ; save rcx
 
     ; Print current byte.
-    push eax
-    push eax
-    push byte_format
+    movsx esi, al               ; 2nd arg: %c
+    mov edx, esi                ; 3rd arg: %02X
+    mov rdi, byte_format
+    xor eax, eax
     call printf
-    add esp, 12
 
-    pop ecx	; restore ecx
-    inc ecx
-    cmp ecx, [ebp - 72]
+    pop rcx                     ; restore rcx
+    inc rcx
+    cmp rcx, [rbp - 80]
     jl print_byte
 
-    push null_string
+    ; Final puts
+    sub rsp, 8                  ; align before call
+    mov rdi, null_string
     call puts
-    add esp, 4
+    add rsp, 8
 
     ; Print local variable.
-    mov eax, [ebp - 4]
-    push eax
-    push var_message_and_format
+    mov esi, [rbp - 8]               ; value
+    mov rdi, var_message_and_format  ; format string
+    xor eax, eax
     call printf
-    add esp, 8
 
     leave
     ret
