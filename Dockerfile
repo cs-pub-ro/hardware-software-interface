@@ -1,4 +1,4 @@
-FROM ruby:3.0
+FROM ruby:3.0-slim
 
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -7,10 +7,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/src/app
 
-COPY . .
-
-RUN gem install bundler
-RUN bundle install
+COPY Gemfile ./
+RUN gem install bundler:2.5.23 && bundle install
 
 EXPOSE 4000
 
