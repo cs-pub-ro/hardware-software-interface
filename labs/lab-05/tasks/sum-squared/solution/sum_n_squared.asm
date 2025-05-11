@@ -1,28 +1,28 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .data
-    num dd 100
+    num dq 100000
 
 section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov ecx, [num]     ; Use ecx as counter for computing the sum.
-    xor ebx, ebx       ; Use ebx to store the sum. Start from 0.
+    mov rcx, [num]     ; Use rcx as counter.
+    xor rbx, rbx       ; Use rbx to store the sum of squares. Start from 0.
 
-add_to_sum:
-    mov eax, ecx
-    mul eax
-    add ebx, eax
-    loop add_to_sum    ; Decrement ecx. If not zero, add it to sum.
+add_square_to_sum:
+    mov rax, rcx       ; Move current number to rax for multiplication
+    mul rax            ; Square the number (rax = rax * rax)
+    add rbx, rax       ; Add the square to our sum
+    loop add_square_to_sum    ; Decrement rcx. If not zero, continue.
 
-    mov ecx, [num]
-    PRINTF32 `Sum(%u): %u\n\x0`, ecx, ebx
+    mov rcx, [num]
+    PRINTF64 `Sum of squares(%lu): %lu\n\x0`, rcx, rbx
 
     leave
     ret

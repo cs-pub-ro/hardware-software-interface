@@ -1,26 +1,26 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .data
-    num dd 100
+    num dq 100000
 
 section .text
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    mov ecx, [num]     ; Use ecx as counter for computing the sum.
-    xor eax, eax       ; Use eax to store the sum. Start from 0.
+    mov rcx, [num]     ; Use rcx as counter for computing the sum.
+    xor rax, rax       ; Use rax to store the sum. Start from 0.
 
 add_to_sum:
-    add eax, ecx
-    loop add_to_sum    ; Decrement ecx. If not zero, add it to sum.
+    add rax, rcx
+    loop add_to_sum    ; Decrement rcx. If not zero, add it to sum.
 
-    mov ecx, [num]
-    PRINTF32 `Sum(%u): %u\n\x0`, ecx, eax
+    mov rcx, [num]
+    PRINTF64 `Sum(%lu): %lu\n\x0`, rcx, rax
 
     leave
     ret

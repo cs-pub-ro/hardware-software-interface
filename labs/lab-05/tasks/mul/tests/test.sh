@@ -11,6 +11,7 @@ OUTPUT=$($binary)
 result1=$(echo "$OUTPUT" | grep "R" | sed -n '1p' | awk '{print $3}')
 result2=$(echo "$OUTPUT" | grep "R" | sed -n '2p' | awk '{print $3}')
 result3=$(echo "$OUTPUT" | grep "R" | sed -n '3p' | awk '{print $3}')
+result4=$(echo "$OUTPUT" | grep "R" | sed -n '4p' | awk '{print $3}')
 
 test_byte_mul() {
 	if [[ -z "$result1" ]]; then
@@ -48,10 +49,22 @@ test_int_mul() {
 	fi
 }
 
+test_long_mul() {
+	if [[ -z "$result4" ]]; then
+		exit 1
+	fi
+
+	if [[ $result4 -eq $((0x5e30a6fffffffffa1cf590)) ]]; then
+		exit 0
+	else
+		exit 1
+	fi
+}
+
 run_tests() {
-	local tests=(test_byte_mul test_short_mul test_int_mul)
-	local scores=(33 33 34)
-	for i in {0..2}; do
+	local tests=(test_byte_mul test_short_mul test_int_mul test_long_mul)
+	local scores=(25 25 25 25)
+	for i in {0..3}; do
 		run_test "${tests[i]}" "${scores[i]}"
 	done
 }
