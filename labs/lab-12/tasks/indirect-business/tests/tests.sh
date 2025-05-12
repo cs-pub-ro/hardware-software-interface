@@ -15,17 +15,17 @@ test_payload()
 {
     flag="HSI_{well_well_well,...}"
 
-    output=$($EXPLOIT | $BINARY)
+    output=$($EXPLOIT | $BINARY | grep "HSI")
 
     echo
 
-    if [[ $output == $flag ]]; then
-        OUT=0
+    if [[ "$output" == "$flag" ]]; then
+        res=0
     else
-        OUT=1
+        res=1
     fi
 
-    return $OUT
+    return $res
 }
 
 run_test test_payload 100

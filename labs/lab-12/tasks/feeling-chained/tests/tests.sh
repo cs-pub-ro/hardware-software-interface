@@ -19,13 +19,13 @@ test_payload()
 
     echo
 
-    if [[ $output == $flag ]]; then
-        OUT=0
+    if [[ "$output" == "$flag" ]]; then
+        res=0
     else
-        OUT=1
+        res=1
     fi
 
-    return $OUT
+    return $res
 }
 
 run_test test_payload 100
