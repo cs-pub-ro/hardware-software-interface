@@ -12,6 +12,7 @@ COPY . .
 RUN gem install bundler
 RUN bundle install
 
-EXPOSE 4000
+EXPOSE 8080
 
-CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0"]
+# CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["bundle", "exec", "jekyll", "build"]

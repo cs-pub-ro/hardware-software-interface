@@ -26,7 +26,7 @@ struc mystruct
     a:    resw 1    ; a will refer to a single word-sized element
     b:    resd 1    ; b will refer to a single double-word-sized element
     c:    resb 1    ; c will refer to a single byte-sized element
-    d:    resd 1    ; d will refer to a single double-word-sized element
+    d:    resq 1    ; d will refer to a single quad-word-sized element
     e:    resb 6    ; e will refer to 6 byte-sized elements
 endstruc
 ```
@@ -66,7 +66,7 @@ struct_var:
         at a, dw        -1
         at b, dd        0x12345678
         at c, db        ' '
-        at d, dd        23
+        at d, dq        23
         at e, db        'Gary', 0
     iend
 ```
@@ -79,7 +79,7 @@ struct_var:
         at mystruct.a, dw        -1
         at mystruct.b, dd        0x12345678
         at mystruct.c, db        ' '
-        at mystruct.d, dd        23
+        at mystruct.d, dq        23
         at mystruct.e, db        'Gary', 0
     iend
 ```
@@ -91,12 +91,12 @@ struct_var:
 To access and/or modify a specific member of the instantiated structure, we need to know its address.
 This address can be obtained by calculating the sum of the starting address of the structure and the offset within the structure of the desired member.
 
-The following code sequence demonstrates setting a value in the `b` field of the structure and subsequently displaying the value of this field.
+The following code sequence demonstrates setting a value in the `d` field of the structure and subsequently displaying the value of this field.
 
 ```Assembly
-mov eax, 12345
-mov dword [mystruct + b], eax ; the address of field b is the base address of the statically instantiated structure + the offset of the field (given by the label 'b')
+mov rax, 12345
+mov [mystruct + d], rax ; the address of field d is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
 
-mov ebx, dword [mystruct + b] ; putting the value from field b into the ebx register for display
-PRINTF32 `%d\n\x0`, ebx
+mov rbx, [mystruct + d] ; putting the value from field d into the rbx register for display
+PRINTF64 `%ld\n\x0`, rbx
 ```
