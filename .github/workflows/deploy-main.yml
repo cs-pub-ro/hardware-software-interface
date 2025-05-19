@@ -1,0 +1,46 @@
+name: Deploy Main to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build and load Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: hardware-software-interface-main:latest
+          cache-from: type=gha
+          cache-to: type=gha
+
+      - name: Run Jekyll build
+        run: |
+          docker run -v $GITHUB_WORKSPACE:/usr/src/app \
+            hardware-software-interface-main:latest bundle install
+          docker run -v $GITHUB_WORKSPACE:/usr/src/app \
+            hardware-software-interface-main:latest \
+            jekyll build -d /usr/src/app/_site
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          enable_jekyll: true
