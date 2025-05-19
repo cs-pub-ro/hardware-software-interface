@@ -15,7 +15,7 @@ fi
 test_warning() {
     cd "$SRC_PATH" || exit 1
     make clean >/dev/null 2>&1
-    make >make_output.log
+    make >make_output.log 2>&1
     if grep -q "warning" make_output.log; then
         make clean >/dev/null 2>&1
         rm make_output.log
