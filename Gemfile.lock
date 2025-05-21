@@ -42,7 +42,7 @@ GEM
       base64 (~> 0.2.0)
       logger (~> 1.6.5)
       simpleidn (~> 0.2.1)
-    drb (2.2.1)
+    drb (2.2.3)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
