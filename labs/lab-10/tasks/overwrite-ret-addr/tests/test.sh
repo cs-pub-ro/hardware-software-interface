@@ -5,7 +5,7 @@
 source ./graded_test.inc.sh
 
 test_exploit() {
-	if ( cd ../support && python3 exploit.py | ./break_this | grep -q "< Good job there, my friend >" ); then
+	if ( cd ../support && python3 exploit.py | ./break_this | grep -q "Good job there, my friend" ); then
 		return 1
 	else
 		return 0

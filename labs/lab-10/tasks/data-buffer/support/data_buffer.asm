@@ -45,6 +45,7 @@ print_byte:
     xor rax, rax
     mov al, byte[buffer + rcx]
     push rcx	; save ecx, printf may change it
+    sub rsp, 8	; align stack to 16 bytes
 
     ; Print current byte.
     mov rsi, rax
@@ -52,6 +53,7 @@ print_byte:
     xor rax, rax
     call printf
 
+    add rsp, 8	; restore stack
     pop rcx	; restore ecx
     inc rcx
     cmp rcx, len

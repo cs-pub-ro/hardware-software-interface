@@ -5,7 +5,7 @@ RM = rm
 SRCS := $(shell find . -name "*.asm")
 OBJS := $(SRCS:.asm=.o)
 
-ASFLAGS ?= -f el64 -F dwarf
+ASFLAGS ?= -f elf64 -F dwarf
 CFLAGS ?= -Wall
 LDFLAGS ?= -no-pie
 

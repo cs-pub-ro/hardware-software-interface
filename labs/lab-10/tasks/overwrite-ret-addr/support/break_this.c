@@ -9,6 +9,7 @@
 void magic_function(void)
 {
 	printf("Good job there, my friend\n");
+	fflush(stdout);
 }
 
 char read_buffer(void)
