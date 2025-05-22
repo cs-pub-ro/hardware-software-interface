@@ -7,8 +7,8 @@ parent: 'Task: Buffer Overflow for Program Written in C'
 
 In `do_overflow.asm`:
 
-- `line 33` -> `sexy_var` is at `ebp - 12`
-- `line 40` -> start reading buffer at `ebp - 96`
+- `line 29` -> `sexy_var` is at `ebp - 12`
+- `line 35` -> start reading buffer at `ebp - 96`
 - 96 - 12 = 84 of `'A'`s
 - and `0x5541494D` written in little-endian encoding
 

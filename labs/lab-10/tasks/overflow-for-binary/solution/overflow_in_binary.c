@@ -7,11 +7,13 @@
 static void win(void)
 {
 	puts("Great success!");
+	fflush(stdout);
 }
 
 static void fail(void)
 {
 	puts("Epic failure!");
+	fflush(stdout);
 }
 
 static void check_string(const char *str)

@@ -29,6 +29,8 @@ main:
     ; Buffer address is at rbp - 72.
     sub rsp, 64
 
+    sub rsp, 8             ; align stack
+
     ; Initialize local variable.
     mov dword [rbp - 8], 0xCAFEBABE
 
@@ -59,7 +61,8 @@ print_byte:
     xor eax, eax
     lea rbx, [rbp - 72]
     mov al, byte[rbx + rcx]
-    push rcx                ; save rcx
+    push rcx               ; save rcx
+    sub rsp, 8             ; align stack
 
     movzx esi, al          ; 2nd arg: char (printable)
     mov edx, esi           ; 3rd arg: hex value
@@ -67,16 +70,15 @@ print_byte:
     xor eax, eax
     call printf
 
+    add rsp, 8             ; restore stack
     pop rcx                ; restore rcx
     inc rcx
     cmp rcx, 76            ; solution TODO 1 and TODO 2
     jl print_byte
 
     ; Print new line. C equivalent instruction is puts("").
-    sub rsp, 8             ; align stack
     mov rdi, null_string
     call puts
-    add rsp, 8
 
     ; Print local variable.
     mov esi, [rbp - 8]                ; value

@@ -23,7 +23,7 @@ It is recommended to first take a look at the assembly file, then understand the
 > **HINT** To see the "real-world" reality, i.e., to find out what the difference is between the buffer and the variable we want to overwrite,
 > consult the equivalent assembly language file (`do_overflow.asm`), obtained by assembling the C code.
 > In this file, you can find the relative address of the buffer to `ebp` and the variable to `ebp`;
-> follow the sequence between lines `36` and `47`;
+> follow the sequence between lines `29` and `35` (it may vary depending on the compiler);
 > you have a mapping between the variable name and the relative offset to `ebp`.
 > With this information, you can create the string to transmit as a payload to the standard input of the program.
 > **NOTE** If you want to recompile the files run:
