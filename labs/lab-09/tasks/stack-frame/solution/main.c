@@ -6,15 +6,15 @@ void print_hello(void);
 
 void asm_call_wrapper(void)
 {
-	print_hello();
-	printf(" world");
+    print_hello();
+    printf(" world");
 }
-
 
 int main(void)
 {
-	asm_call_wrapper();
-	printf("!\n");
+    asm_call_wrapper();
+    printf("!\n");
 
-	return 0;
+    return 0;
 }
+

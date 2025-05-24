@@ -2,16 +2,17 @@
 
 static void hi(void)
 {
-	puts("Hi!");
+    puts("Hi!");
 }
 
 static void bye(void)
 {
-	puts("Bye!");
+    puts("Bye!");
 }
 
 int main(void)
 {
-	hi();
-	bye();
+    hi();
+    bye();
 }
+
