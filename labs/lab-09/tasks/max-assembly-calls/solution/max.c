@@ -12,5 +12,6 @@ unsigned int get_max(unsigned int *arr, unsigned int len, unsigned int *pos)
 			max = arr[i];
 			*pos = i;
 		}
+
 	return max;
 }
