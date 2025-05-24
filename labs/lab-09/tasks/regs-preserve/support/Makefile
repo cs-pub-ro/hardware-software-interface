@@ -1,6 +1,7 @@
-CFLAGS = -Wall -g -m32
+CFLAGS = -Wall -g -O2
 ASM = nasm
-ASMFLAGS = -f elf32
+ASMFLAGS = -f elf64 -F dwarf
+LDFLAGS = -no-pie
 
 .DEFAULT_GOAL: all
 
@@ -9,7 +10,7 @@ ASMFLAGS = -f elf32
 all: main
 
 main: main.o double_array.o
-	$(CC) $(LDFLAGS) -m32 -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^
 
 main.o: main.asm
 	$(ASM) $(ASMFLAGS) -o $@ $<
