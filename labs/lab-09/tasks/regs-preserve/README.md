@@ -5,40 +5,42 @@ parent: Lab 9 - The C - Assembly Interaction
 
 # Task: Keeping Records
 
-Navigate to `tasks/regs-preserve/support` and open `main.asm`
+Navigate to `tasks/regs-preserve/support` and open `main.asm`.
+Here, you will find the  `print_reverse_array()` function that loops over the
+elements of an array and calls `printf()` for each one.
 
-In this subdirectory of the lab's task repository you will find the `print_reverse_array()` function implemented by a simple loop that makes repeated calls of the `printf()` function.
+Analyze the code in `main.asm`, then compile and run the program.
 
-Follow the code in the `main.asm` file, compile and run the program.
 What happened?
 The program runs indefinitely.
-This is because the `printf()` function does not preserve the value in the `ecx` register, used here as a counter.
+That's because the `printf()` function does not preserve the value in the `RCX`
+register, used here as a counter.
 
 Uncomment the lines marked `TODO1` and rerun the program.
 
-## Troubleshooting SEGFAULT
+## Troubleshooting
 
-Decompose the lines marked `TODO2` in the assembly file from the previous exercise.
-The code sequence makes a call to the `double_array()` function, implemented in C, just before displaying the vector using the function seen earlier.
+Uncomment the lines marked `TODO2` in the assembly file from the previous
+exercise.
+The code sequence makes a call to the `double_array()` function, implemented in
+C, just before displaying the vector using the function seen earlier.
+The `double_array()` function should double each element of the original array.
 
 Compile and run the program.
-To debug the segfault you can use the `objdump` utility to trace the assembly language code corresponding to the `double_array()` function.
-Notice which of the registers used before and after the call are modified by this function.
+Is the output as expected?
+Do you get a SEGFAULT?
+Investigate with GDB and take note of the Parameter Registers at the time of
+each function call.
+One you find the problem, fix it.
 
-Add the instructions for preserving and restoring the required registers to the assembly file.
+> **NOTE:** We compiled `double_array.c` with -O2 optimization level to increase
+            the probability of RDI and RSI registers being used in calculations.
+            With -O0, the generated assembly code is much simpler and the
+            parameter registers are most likely never used for anything other
+            than holding the function argument values. In this case, the bug in
+            `main.asm` could pass unnoticed, but the implementation would still
+            be incorrect.
 
-After finishing the exercise and testing it manually, run the checker script in the `regs-preserve/tests/` folder to validate the result:
-
-```console
-make check
-```
-
-In case of a correct solution, you will get an output such as:
-
-```text
-test_regs_preserve    ........................ passed ...  100
-
-Total:                                                           100/100
-```
-
-If you're having difficulties solving this exercise, go through [this relevant section](../../reading/memory-layout-c-asm.md) reading material.
+If you're having difficulties solving this exercise, go through
+[this relevant section](../../reading/calling-convention.md) of the reading
+material.
