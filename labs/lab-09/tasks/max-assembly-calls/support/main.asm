@@ -6,34 +6,34 @@ extern get_max
 section .data
     arr: dd 19, 7, 129, 87, 54, 218, 67, 12, 19, 99
     len: equ $-arr
-    max: dd 0
 
-    print_format: db "max: %u", 10, 0
+    fmt: db "max: %u", 10, 0
 
 section .text
 
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    ; Compute length in eax.
-    ; Divide by 4 (we are using integer data type of 4 bytes) by
-    ; using shr 2 (shift right with 2 bits).
-    mov eax, len
-    shr eax, 2
+    ; compute the array length in RSI
+    ; NOTE: len is the total array size; we want the number of elements
+    mov rsi, len
+    shr rsi, 2
 
-    push eax ; length of the array
-    push arr ; pointer to the array
+    mov rdi, arr
     call get_max
-    add esp, 8 ; clean up the stack
 
-    ; Print max.
-    push eax
-    push print_format
+    ; print maximum value
+    ; NOTE: RAX holds the return value of get_max()
+    mov rdi, fmt
+    mov rsi, rax
     call printf
-    add esp, 8
+
+    ; set exit code 0 (in main)
+    xor rax, rax
 
     leave
     ret
+
