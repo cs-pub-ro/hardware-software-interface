@@ -1,5 +1,5 @@
-CFLAGS = -fno-PIC -m32 -g
-LDFLAGS = -no-pie -m32
+CFLAGS = -fno-PIC -g
+LDFLAGS = -no-pie
 
 .DEFAULT_GOAL: all
 

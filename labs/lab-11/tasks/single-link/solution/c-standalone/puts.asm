@@ -4,48 +4,49 @@ section .text
 
 global puts
 
-; /usr/include/x86_64-linux-gnu/asm/unistd_32.h
-__NR_write equ 4
+; /usr/include/x86_64-linux-gnu/asm/unistd_64.h
+__NR_write equ 1
 
 ; Argument is message to be printed to standard output.
 puts:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; Call __NR_write(1, message, message_len) (system call).
     ;
-    ; Use x86 Linux system call convention.
-    ; https://en.wikibooks.org/wiki/X86_Assembly/Interfacing_with_Linux#Making_a_system_call
+    ; Use x86_64 Linux system call convention.
+    ; https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f
     ;
-    ; eax stores the system call id.
-    ; ebx stores the first system call argument: 1 (standard output).
-    ; ecx stores the second system call argument: message.
-    ; edc stores the third system call argument: message length.
+    ; rax stores the system call id.
+    ; rdi stores the first system call argument: 1 (standard output).
+    ; rsi stores the second system call argument: message.
+    ; rdx stores the third system call argument: message length.
 
-    ; Store the write system call id in eax.
-    mov eax, __NR_write
+    ; Store the write system call id in rax.
+    mov rax, __NR_write
 
-    ; Store standard output file descriptor (1) in ebx.
-    mov ebx, 1
 
-    ; Store function argument (message) in ecx.
-    mov ecx, [ebp + 8]
+    ; Store function argument (message) in rsi.
+    mov rsi, rdi
 
-    ; Compute message length in edx.
-    ; Find NUL byte address of message using edi. Start from message address (ecx).
-    ; Then edx <- edi - ecx.
-    mov edi, ecx
-    dec edi
+    ; Store standard output file descriptor (1) in rdi.
+    mov rdi, 1
+
+    ; Compute message length in rdx.
+    ; Find NUL byte address of message using rcx. Start from message address rsi.
+    ; Then rdx <- rcx - rsi.
+    mov rcx, rsi
+    dec rcx
 again:
-    inc edi
-    cmp byte [edi], 0
+    inc rcx
+    cmp byte [rcx], 0
     jne again
 
-    mov edx, edi
-    sub edx, ecx
+    mov rdx, rcx
+    sub rdx, rsi
 
     ; Do system call.
-    int 0x80
+    syscall
 
     leave
     ret
