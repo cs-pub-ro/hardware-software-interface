@@ -1,5 +1,5 @@
-CFLAGS = -fno-PIC -m32 -g
-LDFLAGS = -no-pie -m32
+CFLAGS = -fno-PIC -g
+LDFLAGS = -no-pie
 
 .DEFAULT_GOAL: all
 
@@ -9,7 +9,7 @@ all: hello
 
 hello: hello.o
 	$(CC) $(LDFLAGS) -o $@ $^
-	#ld -dynamic-linker /lib/ld-linux.so.2 -m elf_i386 -o $@ /usr/lib32/crt1.o /usr/lib32/crti.o $^ -lc /usr/lib32/crtn.o
+	# ld -dynamic-linker /lib64/ld-linux-x86-64.so.2  -m elf_x86_64  -o $@ /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o  $^ -lc /usr/lib/x86_64-linux-gnu/crtn.o
 
 hello.o: hello.c
 

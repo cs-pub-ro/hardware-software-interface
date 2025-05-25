@@ -1,30 +1,30 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
-extern my_main
+extern main
 
 section .text
 
-; /usr/include/x86_64-linux-gnu/asm/unistd_32.h
-__NR_exit equ 1
+; /usr/include/x86_64-linux-gnu/asm/unistd_64.h
+__NR_exit equ 60
 
 global _start
 
 _start:
-    call my_main
+    call main
 
     ; Call __NR_exit(main_return_value) (system call).
     ;
-    ; Use x86 Linux system call convention.
-    ; https://en.wikibooks.org/wiki/X86_Assembly/Interfacing_with_Linux#Making_a_system_call
+    ; Use x86_64 Linux system call convention.
+    ; https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f
     ;
-    ; ebx stores the first system call argument.
-    ; eax stores the system call id.
+    ; rdi stores the first system call argument.
+    ; rax stores the system call id.
 
-    ; eax is main return value. Store it in ebx.
-    mov ebx, eax
+    ; eax is main return value. Store it in rdi.
+    mov rdi, rax
 
     ; Store the exit system call id in rax.
-    mov eax, __NR_exit
+    mov rax, __NR_exit
 
     ; Do system call.
-    int 0x80
+    syscall

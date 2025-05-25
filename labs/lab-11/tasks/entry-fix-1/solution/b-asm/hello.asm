@@ -1,7 +1,7 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
 extern puts
-extern main
+global main
 
 section .rodata
 
@@ -11,28 +11,28 @@ section .rodata
 section .text
 
 hi:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push hi_str
+    mov rdi, hi_str
     call puts
 
     leave
     ret
 
 bye:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push bye_str
+    mov rdi, bye_str
     call puts
 
     leave
     ret
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     call hi
     call bye
