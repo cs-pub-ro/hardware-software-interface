@@ -5,7 +5,7 @@ parent: Lab 11 - Linking
 
 # Guide: Linking C and C++
 
-Access the directory `tasks/cpp-obs/support/`.
+Access the directory `guides/cpp-obs/support/`.
 We want to observe how linking is performed with mixed sources: C and C++.
 
 In the `bad/` subdirectory, we have two directories, `c-calls-cpp/` and `cpp-calls-c/`, where we combine C and C++ sources.

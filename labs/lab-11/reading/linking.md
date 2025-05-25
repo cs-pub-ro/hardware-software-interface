@@ -68,34 +68,22 @@ The Linux linking utility, `ld`, is invoked transparently by `gcc` or `g++`.
 To see how the linker is invoked, we use the `-v` option of the `gcc` utility, with the following output:
 
 ```console
-/usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so
--plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwnf5NM.res
--plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc
--plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu
---as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o hello
-/usr/lib/gcc/x86_64-linux-gnu/7/../../../i386-linux-gnu/crt1.o
-/usr/lib/gcc/x86_64-linux-gnu/7/../../../i386-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/32/crtbegin.o
--L/usr/lib/gcc/x86_64-linux-gnu/7/32 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../i386-linux-gnu
--L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib32 -L/lib/i386-linux-gnu -L/lib/../lib32 -L/usr/lib/i386-linux-gnu
--L/usr/lib/../lib32 -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../i386-linux-gnu
--L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. -L/lib/i386-linux-gnu -L/usr/lib/i386-linux-gnu hello.o -lgcc --push-state
---as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state
-/usr/lib/gcc/x86_64-linux-gnu/7/32/crtend.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../i386-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-no-pie' '-m32' '-v' '-o' 'hello' '-mtune=generic' '-march=i686'
+ /usr/lib/gcc/x86_64-linux-gnu/11/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/11/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/11/lto-wrapper -plugin-opt=-fresolution=/tmp/ccxcxtmC.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o app /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/11 -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/11/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/11/../../.. app.o helpers.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'app' '-mtune=generic' '-march=x86-64' '-dumpdir' 'app.'
 ```
 
 The `collect2` utility is, in fact, a wrapper around the `ld` utility.
 The result of running the command is complex. A "manual" invocation of the `ld` command would look like this:
 
 ```console
-ld -dynamic-linker /lib/ld-linux.so.2 -m elf_i386 -o app /usr/lib32/crt1.o /usr/lib32/crti.o app.o helpers.o -lc /usr/lib32/crtn.o
+ld -dynamic-linker /lib64/ld-linux-x86-64.so.2  -m elf_x86_64 -o app /usr/lib/x86_64-linux-gnu/crt1.o /usr/lib/x86_64-linux-gnu/crti.o app.o helpers.o -lc /usr/lib/x86_64-linux-gnu/crtn.o
 ```
 
 The arguments of the above command have the following meanings:
 
-- `-dynamic-linker /lib/ld-linux.so.2`: specifies the dynamic loader/linker used for loading the dynamic executable
-- `-m elf_i386`: links files for the x86 architecture (32-bit, i386)
-- `/usr/lib32/crt1.o`, `/usr/lib32/crti.o`, `/usr/lib32/crtn.o`: represent the C runtime library (`crt` - *C runtime*) that provides the necessary support for loading the executable
+- `-dynamic-linker /lib64/ld-linux-x86-64.so.2`: specifies the dynamic loader/linker used for loading the dynamic executable
+- `-m elf_x86_64`: links files for the x86_64 architecture
+- `/usr/lib/x86_64-linux-gnu/crt1.o`, `/usr/lib/x86_64-linux-gnu/crti.o`, `/usr/lib/x86_64-linux-gnu/rtn.o`: represent the C runtime library (`crt` - *C runtime*) that provides the necessary support for loading the executable
 - `-lc`: links against standard C library (libc)
 
 ## File Inspection
@@ -105,44 +93,35 @@ To track the linking process, we use static analysis utilities such as `nm`, `ob
 We use the `nm` utility to display symbols from an object file or an executable file:
 
 ```console
-$ nm hello.o
-00000000 T main
-         U puts
+$ nm app.o
+                 U add
+                 U _GLOBAL_OFFSET_TABLE_
+0000000000000000 T main
+                 U printf
 
-$ nm hello
-0804a01c B __bss_start
-0804a01c b completed.7283
-0804a014 D __data_start
-0804a014 W data_start
-08048370 t deregister_tm_clones
-08048350 T _dl_relocate_static_pie
-080483f0 t __do_global_dtors_aux
-08049f10 t __do_global_dtors_aux_fini_array_entry
-0804a018 D __dso_handle
-08049f14 d _DYNAMIC
-0804a01c D _edata
-0804a020 B _end
-080484c4 T _fini
-080484d8 R _fp_hw
-08048420 t frame_dummy
-08049f0c t __frame_dummy_init_array_entry
-0804861c r __FRAME_END__
-0804a000 d _GLOBAL_OFFSET_TABLE_
-         w __gmon_start__
-080484f0 r __GNU_EH_FRAME_HDR
-080482a8 T _init
-08049f10 t __init_array_end
-08049f0c t __init_array_start
-080484dc R _IO_stdin_used
-080484c0 T __libc_csu_fini
-08048460 T __libc_csu_init
-         U __libc_start_main@@GLIBC_2.0
-08048426 T main
-         U puts@@GLIBC_2.0
-080483b0 t register_tm_clones
-08048310 T _start
-0804a01c D __TMC_END__
-08048360 T __x86.get_pc_thunk.bx
+
+$ nm app
+00000000004010be T add
+0000000000404024 D __bss_start
+0000000000404020 D __data_start
+0000000000404020 W data_start
+0000000000401080 T _dl_relocate_static_pie
+0000000000403e50 d _DYNAMIC
+0000000000404024 D _edata
+0000000000404028 D _end
+0000000000401168 T _fini
+0000000000404000 d _GLOBAL_OFFSET_TABLE_
+                 w __gmon_start__
+0000000000401000 T _init
+0000000000403e50 d __init_array_end
+0000000000403e50 d __init_array_start
+0000000000402000 R _IO_stdin_used
+0000000000401160 T __libc_csu_fini
+00000000004010f0 T __libc_csu_init
+                 U __libc_start_main@@GLIBC_2.2.5
+0000000000401085 T main
+                 U printf@@GLIBC_2.2.5
+0000000000401050 T _start
 ```
 
 The `nm` command displays three columns:
@@ -182,49 +161,66 @@ With the `readelf` command, we can view the headers of files.
 An important piece of information in the header of executable files is the entry point, the address of the first instruction executed:
 
 ```console
-$ readelf -h hello
+$ readelf -h app
 ELF Header:
-  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
-  Class:                             ELF32
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF64
   Data:                              2's complement, little endian
   Version:                           1 (current)
   OS/ABI:                            UNIX - System V
   ABI Version:                       0
   Type:                              EXEC (Executable file)
-  Machine:                           Intel 80386
+  Machine:                           Advanced Micro Devices X86-64
   Version:                           0x1
-  Entry point address:               0x8048310
-  Start of program headers:          52 (bytes into file)
-  Start of section headers:          8076 (bytes into file)
+  Entry point address:               0x401050
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          14008 (bytes into file)
   Flags:                             0x0
-  Size of this header:               52 (bytes)
-  Size of program headers:           32 (bytes)
-  Number of program headers:         9
-  Size of section headers:           40 (bytes)
-  Number of section headers:         35
-  Section header string table index: 34
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         12
+  Size of section headers:           64 (bytes)
+  Number of section headers:         27
+  Section header string table index: 26[]
 ```
 
 Using the `readelf` command, we can see the sections of an executable/object file:
 
 ```console
-$ readelf -S hello
-There are 35 section headers, starting at offset 0x1f8c:
-Section Headers:
-  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
-  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
-  [ 1] .interp           PROGBITS        08048154 000154 000013 00   A  0   0  1
-  [ 2] .note.ABI-tag     NOTE            08048168 000168 000020 00   A  0   0  4
-  [ 3] .note.gnu.build-i NOTE            08048188 000188 000024 00   A  0   0  4
+$ readelf -S app
+There are 27 section headers, starting at offset 0x36b8:
+
+Section
+Headers:
+
+  [Nr] Name              Type             Address
+  Offset
+       Size              EntSize          Flags  Link  Info
+       Align
+
+  [ 0]                   NULL             0000000000000000
+  00000000
+       0000000000000000  0000000000000000           0     0
+       0
+  [ 1] .interp           PROGBITS         00000000004002e0
+  000002e0
+       000000000000001c  0000000000000000   A       0     0
+       1
+  [ 2] .note.gnu.propert NOTE             0000000000400300
+  00000300
+       0000000000000020  0000000000000000   A       0     0
+       8
+  [ 3] .note.ABI-tag     NOTE             0000000000400320
+  00000320
+       0000000000000020  0000000000000000   A       0     0     4
 [...]
 ```
 
 Also, with the `readelf` command, we can list (dump) the contents of a specific section:
 
 ```console
-$ readelf -x .rodata hello
+$ readelf -x .rodata app
 
 Hex dump of section '.rodata':
-  0x080484d8 03000000 01000200 48656c6c 6f2c2057 ........Hello, W
-  0x080484e8 6f726c64 2100                       orld!.
+  0x00402000 01000200 61202b20 623d2564 0a00     ....a + b=%d..
 ```

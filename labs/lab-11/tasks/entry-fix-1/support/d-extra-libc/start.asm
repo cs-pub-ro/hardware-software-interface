@@ -1,29 +1,26 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
 extern __libc_start_main
-extern my_main
+extern main
 
 section .text
 
 global _start
 global _dl_relocate_static_pie
 
-; Adapted from GNU Libc i386 start.S
-;   https://sourceware.org/git/?p=glibc.git;a=blob;f=sysdeps/i386/start.S;hb=HEAD
+; Adapted from GNU Libc x86_64 start.S
+;   https://github.com/lattera/glibc/blob/master/sysdeps/x86_64/start.S
 _start:
     ; Align stack.
-    xor ebp, ebp
-    pop esi
-    mov ecx, esp
-    and esp, 0xfffffff0
+    xor rbp, rbp
+    pop rsi
+    mov rdx, rsp
+    and rsp, 0xfffffffffffffff0
 
-    push eax
-    push esp
-    push edx
+    push rax
+    push rsp
 
-    push ecx
-    push esi
-    push main
+    mov rdi, main
     call __libc_start_main
 
     hlt
