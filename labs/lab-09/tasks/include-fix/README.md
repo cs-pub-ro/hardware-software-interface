@@ -1,5 +1,5 @@
 ---
-nav_order: 5
+nav_order: 7
 parent: Lab 9 - The C - Assembly Interaction
 ---
 
@@ -13,6 +13,4 @@ Is this related to the compiler, or the linker?
 Solve this warning by editing the `support/hello.c` file.
 Do so without using the `#include` directive.
 
-If you're having difficulties solving this exercise, go through
-[this relevant section](../../reading/calling-convention.md) of the reading
-material.
+If you're having difficulties solving this exercise, go through [this relevant section](../../reading/calling-convention.md) of the reading material.
