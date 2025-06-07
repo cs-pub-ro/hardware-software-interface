@@ -10,9 +10,10 @@ fi
 
 binary=$SRC_PATH/main
 
-test_max_c_calls_x64()
+test_max_asm_calls()
 {
     make -s -C "$SRC_PATH" || return 1
+
     # Execute the program and capture the output
     OUTPUT=$($binary)
 
@@ -29,4 +30,4 @@ test_max_c_calls_x64()
     return $OUT
 }
 
-run_test "test_max_c_calls_x64" 100
+run_test "test_max_asm_calls" 100

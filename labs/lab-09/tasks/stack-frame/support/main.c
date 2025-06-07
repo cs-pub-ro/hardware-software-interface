@@ -10,7 +10,6 @@ void asm_call_wrapper(void)
 	printf(" world");
 }
 
-
 int main(void)
 {
 	asm_call_wrapper();

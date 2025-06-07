@@ -1,75 +1,75 @@
 ; SPDX-License-Identifier: BSD-3-Clause
 
+global main
 extern printf
 extern double_array
 
 section .data
-	myarray dd 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
-	myarray_len dd 10
+    myarray dd 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+    myarray_len equ 10
 
-	format_string db "%d ", 0
-	newline db 13, 10, 0
-
+    format_string db "%d ", 0
+    newline db 13, 10, 0
 
 section .text
 
-
+; RDI = array pointer
+; RSI = array length
 print_reverse_array:
-	push ebp
-	mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-	; save ebx in callee
-	push ebx
+    ; save RBX in callee
+    push rbx
 
-	; [ebp+8] is array pointer
-	; [ebp+12] is array length
-	mov ebx, [ebp+8]
-	mov ecx, [ebp+12]
-	xor eax, eax
+    ; store copy of RDI; initialize counter register
+    mov rbx, rdi
+    mov rcx, rsi
 
 next:
+    push rcx
 
-;   TODO1: Decomentați următoarele două linii comentate
-    push ecx
-	push dword [ebx+ecx*4-4]
-	push format_string
-	call printf
-	add esp, 8
-    pop ecx
-	loop next
+    xor rax, rax
+    mov esi, [rbx + 4*rcx - 4]
+    mov rdi, format_string
+    call printf
 
-	push newline
-	call printf
-	add esp, 4
+    pop rcx
+    loop next
 
-	pop ebx
+    ; align the stack to 16 bytes before calling printf
+    sub rsp, 8
 
-	leave
-	ret
+    xor rax, rax
+    mov rdi, newline
+    call printf
 
+    ; restore preserved register
+    pop rbx
 
-global main
+    ; restore the stack after calling printf
+    add rsp, 8
+
+    leave
+    ret
+
 
 main:
-	push ebp
-	mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-	mov edx, [myarray_len]
-	lea eax, [myarray]
+    mov rdi, myarray
+    mov rsi, myarray_len
 
-;   TODO2: Decomentați această secvență de cod
-    push edx
-    push eax
+    ; TODO2: Uncomment this function call
     call double_array
-    add esp, 8
 
-	mov edx, [myarray_len]
-	lea eax, [myarray]
-	push edx
-	push eax
-	call print_reverse_array
-	add esp, 8
+    ; RDI and RSI are scratch registers
+    ; compiling double_array() with -O2 overwrites these registers
+    ; reload the argument data before calling print_reverse_array()
+    mov rdi, myarray
+    mov rsi, myarray_len
+    call print_reverse_array
 
-
-	leave
-	ret
+    leave
+    ret
