@@ -1,5 +1,5 @@
 ---
-nav_order: 3
+nav_order: 5
 parent: Lab 9 - The C - Assembly Interaction
 ---
 
