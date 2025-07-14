@@ -1,38 +1,42 @@
-%include "../utils/printf32.asm"
+%include "../utils/printf64.asm"
 
 %define ARRAY_LEN 7
 
 section .data
 
-input dd 122, 184, 199, 242, 263, 845, 911
-output times ARRAY_LEN dd 0
+input dq 122, 184, 199, 242, 263, 845, 911
+output times ARRAY_LEN dq 0
 
 section .text
 
 extern printf
 global main
 main:
+    push rbp
+    mov rbp, rsp
 
     push ARRAY_LEN
-    pop ecx
+    pop rcx
 push_elem:
-    push dword [input + 4 * (ecx - 1)]
+    push qword [input + 8 * (rcx - 1)]
     loop push_elem
 
     push ARRAY_LEN
-    pop ecx
+    pop rcx
 pop_elem:
-    pop dword [output + 4 * (ecx - 1)]
+    pop qword [output + 8 * (rcx - 1)]
     loop pop_elem
 
-    PRINTF32 `Reversed array: \n\x0`
-    xor ecx, ecx
+    PRINTF64 `Reversed array: \n\x0`
+    xor rcx, rcx
 print_array:
-    mov edx, [output + 4 * ecx]
-    PRINTF32 `%d\n\x0`, edx
-    inc ecx
-    cmp ecx, ARRAY_LEN
+    mov rdx, [output + 8 * rcx]
+    PRINTF64 `%ld\n\x0`, rdx
+    inc rcx
+    cmp rcx, ARRAY_LEN
     jb print_array
 
-    xor eax, eax
+    xor rax, rax
+
+    leave
     ret

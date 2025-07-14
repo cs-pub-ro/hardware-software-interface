@@ -22,9 +22,11 @@ asm asm-qualifiers ( AssemblerTemplate
 Where:
 
 - **asm:** Is just the keyword `asm` (like `for`, or `if`).
-- **asm-qualifiers:** Are modifiers in the same vein as `const` is a modifier to variable declarations. The only one you will ever be interested in is `volatile`.
+- **asm-qualifiers:** Are modifiers in the same vein as `const` is a modifier to variable declarations.
+The only one you will ever be interested in is `volatile`.
     This keyword tells **gcc** to avoid modifying your assembly code snippet, even for the purpose of what it calls "optimization".
-- **AssemblerTemplate:** Is a string literal containing one or more assembly statements. These statements can be separated through either a `;` character or a `\n`.
+- **AssemblerTemplate:** Is a string literal containing one or more assembly statements.
+These statements can be separated through either a `;` character or a `\n`.
 - **OutputOperands:** Binds register values at the end of the assembly code snippet to C variables where the values should be stored.
 - **InputOperands:** Specifies what values (immediate or located in C variables) should be used to initialize specific registers when starting to execute the assembly code snippet.
 - **Clobbers:** A list of registers (or memory) changed by the AssemblerTemplate that were not explicitly stated as OutputOperands.

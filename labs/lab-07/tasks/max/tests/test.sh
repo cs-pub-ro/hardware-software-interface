@@ -20,7 +20,7 @@ test_max()
     ./"$binary" > "$out" 2>&1
     ./"$ref_binary" > "$ref" 2>&1
 
-    if grep -q -E 'cmp eax, ebx|cmp ebx, eax' "${binary}.asm" &&
+    if grep -q -E 'cmp rax, rbx|cmp rbx, rax' "${binary}.asm" &&
        grep -q -E 'jl|jg|jb|ja|jle|jge|jbe|jae' "${binary}.asm" &&
        grep -q -E 'push' "${binary}.asm" &&
        grep -q -E 'pop' "${binary}.asm"; then

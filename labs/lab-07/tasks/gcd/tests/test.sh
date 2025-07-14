@@ -17,8 +17,8 @@ test_segfault()
 {
     touch "$out" "$ref"
 
-    ./"$binary" > "$out" 2>&1
-    ./"$ref_binary" > "$ref" 2>&1
+    { ./"$binary"; } > "$out" 2>&1
+    { ./"$ref_binary"; } > "$ref" 2>&1
 
     if grep -q "Segmentation fault" "$out"; then
         exit 1

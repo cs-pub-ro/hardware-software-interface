@@ -1,44 +1,48 @@
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
-    ; input values (eax, edx): the 2 numbers to compute the gcd for
-    mov eax, 49
-    mov edx, 28
+    sub rsp, 8  ;; Necessary for stack alignment
 
-    push eax
-    push edx
+    ; input values (rax, rdx): the 2 numbers to compute the gcd for
+    mov rax, 49
+    mov rdx, 28
+
+    push rax
+    push rdx
 
 gcd:
-    neg eax
+    neg rax
     je gcd_end
 
 swap_values:
-    neg eax
-    push eax
-    push edx
-    pop eax
-    pop edx
+    neg rax
+    push rax
+    push rdx
+    pop rax
+    pop rdx
 
 subtract_values:
-    sub eax,edx
+    sub rax,rdx
     jg subtract_values
     jne swap_values
 
 gcd_end:
-    add eax,edx
+    add rax,rdx
     jne print
-    inc eax
+    inc rax
 
 print:
 
     ; TODO 1: solve the 'Segmentation fault!' error
 
-    ; TODO 2: print the result in the form of: "gdc(eax, edx)=7" with PRINTF32 macro
-    ; output value in eax
+    ; TODO 2: print the result in the form of: "gdc(rax, rdx)=7" with PRINTF64 macro
+    ; output value in rax
 
-    xor eax, eax
+    xor rax, rax
+
+    add rsp, 8  ;; Necessary for stack alignment
     ret

@@ -60,6 +60,9 @@ _site/
 
 .view/
 
+*.ref
+.gdb_history
+
 # Ruby files for the local Jekyll server
 .sass-cache/
 .jekyll-cache/

@@ -1,45 +1,49 @@
 ;  SPDX-License-Identifier: BSD-3-Clause
 
-%include "../utils/printf32.asm"
+%include "../utils/printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
-    ; Input values (eax, edx) : the 2 numbers to compute the gcd for.
-    mov eax, 49
-    mov edx, 28
+    sub rsp, 8  ;; Necessary for stack alignment
 
-    push eax
-    push edx
+    ; Input values (rax, rdx) : the 2 numbers to compute the gcd for.
+    mov rax, 49
+    mov rdx, 28
+
+    push rax
+    push rdx
 
 gcd:
-    neg eax
+    neg rax
     je gcd_end
 
 swap_values:
-    neg eax
-    push eax
-    push edx
-    pop eax
-    pop edx
+    neg rax
+    push rax
+    push rdx
+    pop rax
+    pop rdx
 
 subtract_values:
-    sub eax,edx
+    sub rax,rdx
     jg subtract_values
     jne swap_values
 
 gcd_end:
-    add eax,edx
+    add rax,rdx
     jne print
-    inc eax
+    inc rax
 
 print:
-    pop edx
-    pop ebx
+    pop rdx
+    pop rbx
 
-    PRINTF32 `gcd(%d, %d) = %d\n\x0`, ebx, edx, eax  ; eax = greatest common divisor
+    PRINTF64 `gcd(%ld, %ld) = %ld\n\x0`, rbx, rdx, rax  ; rax = greatest common divisor
 
-    xor eax, eax
+    xor rax, rax
+
+    add rsp, 8  ;; Necessary for stack alignment
     ret

@@ -1,16 +1,21 @@
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
+    push rbp
+    mov rbp, rsp
+
     ; numbers are placed in these two registers
-    mov eax, 1
-    mov ebx, 4
+    mov rax, 1
+    mov rbx, 4
 
     ; TODO: get maximum value. You are only allowed to use one conditional jump and push/pop instructions.
 
-    PRINTF32 `Max value is: %d\n\x0`, eax ; print maximum value
+    PRINTF64 `Max value is: %ld\n\x0`, rax ; print maximum value
 
+    mov rsp, rbp
+    pop rbp
     ret
