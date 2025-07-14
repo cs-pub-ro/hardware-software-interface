@@ -1,26 +1,26 @@
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push dword 10
-    push dword 11
-    push dword 12
-    push dword 13
+    push qword 10
+    push qword 11
+    push qword 12
+    push qword 13
 
-    mov eax, ebp
+    mov rax, rbp
 print_stack:
-    PRINTF32 `%p: %p\n\x0`, eax, [eax]
+    PRINTF64 `%p: %p\n\x0`, rax, qword [rax]
 
-    sub eax, 4
-    cmp eax, esp
+    sub rax, 8
+    cmp rax, rsp
     jge print_stack
 
-    xor eax, eax
+    xor rax, rax
     leave
     ret

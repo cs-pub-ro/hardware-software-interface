@@ -1,58 +1,54 @@
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .data
-    var: dd ?
+    var: dq ?
 
 section .text
 
-; esp -> stack pointer
-; ebp -> base pointer
+; rsp -> stack pointer
+; rbp -> base pointer
 
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push dword 10 ; sub esp, 4;  mov [esp], 10;
-    push dword 11 ; sub esp, 4;  mov [esp], 11;
-    push dword 12 ; sub esp, 4;  mov [esp], 12;
-    push dword 13 ; sub esp, 4;  mov [esp], 13;
-    push dword 14 ; sub esp, 4;  mov [esp], 13;
-
-
-    pusha  ; push all registers on the stack
-    popa  ; pop all registers from the stack
+    push qword 10  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 10
+    push qword 11  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 11
+    push qword 12  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 12
+    push qword 13  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 13
+    push qword 14  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 13
 
     ; Version 1
-    pop eax; ; mov eax, [esp]; add esp, 4
-    pop eax; ; mov eax, [esp]; add esp, 4
-    pop eax; ; mov eax, [esp]; add esp, 4
-    pop eax; ; mov eax, [esp]; add esp, 4
-    pop eax; ; mov eax, [esp]; add esp, 4
+    pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
+    pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
+    pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
+    pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
+    pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
 
     ; Version 2
-    ; add esp, 20 ; 4 * number_of_push
+    ; add rsp, 40  ;  8 * number_of_push
 
     ; Version 3
-    ; mov esp, ebp
+    ; mov rsp, rbp
 
-    ; sub esp <-> add esp -> use to allocate/deallocate memory
+    ; sub rsp <-> add rsp -> use to allocate/deallocate memory
 
-    ; Aloc 8 bytes <-> 2 int
-    ; sub esp, 8
-    ; mov [esp], 10
-    ; mov [esp + 4], 12
+    ; Aloc 16 bytes <-> 2 long
+    ; sub rsp, 16
+    ; mov [rsp], 10
+    ; mov [rsp + 8], 12
 
     ; Push/Pop from global variable
 
-    mov dword [var], 1337
+    mov qword [var], 1337
 
-    push dword [var]
-    pop dword [var]
+    push qword [var]
+    pop qword [var]
 
-    mov eax, [var]
-    PRINTF32 `VAR: %d\n\x0`, eax
+    mov rax, [var]
+    PRINTF64 `VAR: %ld\n\x0`, rax
 
 
     leave

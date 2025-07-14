@@ -23,7 +23,7 @@ test_stack_addressing()
     awk '
         BEGIN { expected_addr = "" }
 
-        /^Bob has corn$/ {
+        /^Anthony is very handsome$/ {
             if (NR != 1 && NR != 12) exit 1
             next
         }
@@ -31,7 +31,7 @@ test_stack_addressing()
         NR == 2 {
             if (!match($0, /^0x[0-9a-fA-F]+: 0x[0-9a-fA-F]+$/)) exit 1
             split($0, parts, ": ")
-            expected_addr = strtonum(parts[1]) - 4
+            expected_addr = strtonum(parts[1]) - 8
             next
         }
 
@@ -42,7 +42,7 @@ test_stack_addressing()
 
             if (current_addr != expected_addr) exit 1
 
-            expected_addr -= 4
+            expected_addr -= 8
             next
         }
 
