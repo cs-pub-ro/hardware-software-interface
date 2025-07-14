@@ -33,12 +33,12 @@ As the above image suggests, the order in which items are inserted and removed f
 ## So, Why is it Useful?
 
 In the previous chapters we learned how to work with the basics of assembly.
-A pretty big limitation we have imposed on ourselves by using such a low-level language is the small number of values we can work with at a time.
-For anything but small programs, having just the 6 registers (`eax`, `ebx`, `ecx`, `edx`, `esi`, `edi`) is usually not enough, and creating global variables for temporary values is not memory efficient and, at some point, we'll struggle to even name them something reasonable!
+The x86_64 architecture provides plenty general-purpose registers for us to use in our programs, but sometimes we need to store and reuse multiple values.
+Using up all our registers for this purpose could prove to be a waste of resources.
+Likewise, creating global variables for temporary values is not memory efficient and, at some point, we'll struggle to even name them something reasonable!
 
 You might have also felt the absence of functions. The stack will help us out as it provides a nice place to store:
 
-- the arguments,
 - the values of registers before entering a function so they can be restored on exit,
 - and some metadata useful for when we want to exit out of a function.
 
@@ -66,18 +66,18 @@ section .text
 global CMAIN
 CMAIN:
 
-    mov eax, 7
-    mov ebx, 8
-    add eax, ebx
-    push eax                 ; push the value of the eax register onto the stack
-    mov eax, 10              ; we can now use the eax register, as its value is saved on the stack
-    PRINTF32 `%d \n\x0`, eax  ; 10
+    mov rax, 7
+    mov rbx, 8
+    add rax, rbx
+    push rax                  ; push the value of the rax register onto the stack
+    mov rax, 10               ; we can now use the rax register, as its value is saved on the stack
+    PRINTF64 `%d \n\x0`, rax  ; 10
 
-    pop eax                  ; retrieve the value of the eax register from the stack
-    PRINTF32 `%d \n\x0`, eax  ; 15
+    pop rax                   ; retrieve the value of the rax register from the stack
+    PRINTF64 `%d \n\x0`, rax  ; 15
 ```
 
-1. By directly accessing the memory with the help of a special register in which the top of the stack is held - `esp` also known as the "stack pointer register".
+1. By directly accessing the memory with the help of a special register in which the top of the stack is held - `rsp` also known as the "stack pointer register".
 
 ```assembly
 %include "io.asm"
@@ -85,20 +85,20 @@ CMAIN:
 section .text
 global CMAIN
 CMAIN:
-    mov eax, 7
-    mov ebx, 8
-    add eax, ebx
-    sub esp, 4           ; reserve 4 bytes on the stack
-    mov [esp], eax       ; move the contents of the eax register to the new address pointed to by esp
-    mov eax, 10
-    PRINTF32 `%d \n\x0`, eax
+    mov rax, 7
+    mov rbx, 8
+    add rax, rbx
+    sub rsp, 8           ; reserve 8 bytes on the stack
+    mov [rsp], rax       ; move the contents of the rax register to the new address pointed to by rsp
+    mov rax, 10
+    PRINTF64 `%d \n\x0`, rax
 
-    mov eax, [esp]       ; retrieve the value from the stack
-    add esp, 4           ; restore the value of the esp register
-    PRINTF32 `%d \n\x0`, eax
+    mov rax, [rsp]       ; retrieve the value from the stack
+    add rsp, 8           ; restore the value of the rsp register
+    PRINTF64 `%d \n\x0`, rax
 ```
 
-> **IMPORTANT:** Comment out the instructions `sub esp, 4` and `add esp, 4`.
+> **IMPORTANT:** Comment out the instructions `sub rsp, 4` and `add rsp, 4`.
 > What happens?
 > Why?
 >
@@ -111,18 +111,18 @@ CMAIN:
 Some processors do not have support for stack operations: for example, MIPS processors do not have `push` and `pop` instructions and do not have a special register for the stack pointer.
 Thus, if we want to implement stack operations on a MIPS processor, we would do it exactly as in the example above, but we can choose any register to keep track of the stack pointer.
 
-Therefore, the `push eax` instruction on an x86 processor is equivalent to:
+Therefore, the `push rax` instruction on an x86_64 processor is equivalent to:
 
 ```assembly
-sub esp, 4
-mov [esp], eax
+sub rsp, 8
+mov [rsp], rax
 ```
 
-And the `pop eax` is equivalent to:
+And the `pop rax` is equivalent to:
 
 ```assembly
-mov eax, [esp]
-add esp, 4
+mov rax, [rsp]
+add rsp, 8
 ```
 
 > **IMPORTANT:** We need to be careful with the amount of data allocated on the stack because the size of the stack is limited.
@@ -156,19 +156,19 @@ Given that the stack is used for function calls, it is very important that when 
 section .text
 global CMAIN
 CMAIN:
-    mov eax, 5
-    mov ebx, 6
-    mov ecx, 7
+    mov rax, 5
+    mov rbx, 6
+    mov rcx, 7
 
-    push eax
-    push ebx
-    push ecx
+    push rax
+    push rbx
+    push rcx
 
-    add esp, 12     ; equivalent to using 3 consecutive pop-s
+    add rsp, 24     ; equivalent to using 3 consecutive pop-s
     ret
 ```
 
-1. An alternative method is to save the current stack pointer value in a separate register, such as `ebp`, before performing any `push` operations.
+1. An alternative method is to save the current stack pointer value in a separate register, such as `rbp`, before performing any `push` operations.
 This allows us to easily restore the stack pointer value at the end of the function, without having to keep track of the number of `push` operations performed.
 
 ```assembly
@@ -176,22 +176,22 @@ section .text
 global CMAIN
 CMAIN:
 
-    mov ebp, esp       ; save current stack pointer value in ebp
+    mov rbp, rsp       ; save current stack pointer value in rbp
 
-    mov eax, 5
-    mov ebx, 6
-    mov ecx, 7
+    mov rax, 5
+    mov rbx, 6
+    mov rcx, 7
 
-    push eax
-    push ebx
-    push ecx
+    push rax
+    push rbx
+    push rcx
 
-    mov esp, ebp       ; restore stack pointer value
+    mov rsp, rbp       ; restore stack pointer value
     ret
 ```
 
-> **IMPORTANT:** What is the primary use of the `ebp` register?
+> **IMPORTANT:** What is the primary use of the `rbp` register?
 
-As we can observe, the `ebp` register defines the stack frame for each function.
-Similarly to how we can address local variables using the `esp` register, we can do the same with `ebp`.
-Additionally, we will see that function parameters are addressed using `ebp`.
+As we can observe, the `rbp` register defines the stack frame for each function.
+Similarly to how we can address local variables using the `rsp` register, we can do the same with `rbp`.
+Additionally, we will see that, on 32-bit systems, function parameters are addressed using its 32-bit equivalent, `ebp`.

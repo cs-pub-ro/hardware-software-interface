@@ -1,4 +1,4 @@
-%include "../utils/printf32.asm"
+%include "printf64.asm"
 
 %define NUM 5
 section .text
@@ -6,54 +6,65 @@ section .text
 extern printf
 global main
 main:
-    mov ebp, esp
-    mov ecx, NUM
+    sub rsp, 8
+    mov qword [rsp], rbp
+    mov rbp, rsp
+
+    mov rcx, NUM
 push_nums:
-    sub esp, 4
-    mov dword [esp], ecx
+    sub rsp, 8
+    mov qword [rsp], rcx
     loop push_nums
 
-    sub esp, 4
-    mov dword [esp], 0
+    and rsp, -16  ;; Align the stack to 16 bytes
 
-    sub esp, 4
-    mov dword [esp], "corn"
+    sub rsp, 8
+    mov qword [rsp], 0
 
-    sub esp, 4
-    mov dword [esp], "has "
+    sub rsp, 8
+    mov rax, "handsome"
+    mov qword [rsp], rax
 
-    sub esp, 4
-    mov dword [esp], "Bob "
-    lea esi, [esp]
-    PRINTF32 `%s\n\x0`, esi
+    sub rsp, 8
+    mov rax, "is very "
+    mov qword [rsp], rax
+
+    sub rsp, 8
+    mov rax, "Anthony "
+    mov qword [rsp], rax
+    lea rsi, [rsp]
+    PRINTF64 `%s\n\x0`, rsi
 
     ; Print the stack in "address: value" format.
-    mov eax, ebp
+    mov rax, rbp
 print_stack:
-    PRINTF32 `0x%x: 0x%x\n\x0`, eax, [eax]
+    PRINTF64 `0x%x: 0x%x\n\x0`, rax, qword [rax]
 
-    sub eax, 4
-    cmp eax, esp
+    sub rax, 8
+    cmp rax, rsp
     jge print_stack
 
     ; Print the string.
-    lea esi, [esp]
-    PRINTF32 `%s\n\x0`, esi
+    lea rsi, [rsp]
+    PRINTF64 `%s\n\x0`, rsi
 
     ; Print the array.
-    add esp, 16
-    mov eax, esp
+    lea rax, [rsp + 40]
+
 print_array:
-    PRINTF32 `%d \x0`, [eax]
+    PRINTF64 `%d \x0`, qword [rax]
 
-    add eax, 4
-    cmp eax, ebp
+    add rax, 8
+    cmp rax, rbp
     jl print_array
-    PRINTF32 `\n\x0`
+    PRINTF64 `\n\x0`
 
-    ; Restore the previous value of the EBP (Base Pointer).
-    mov esp, ebp
+    ; Restore the previous value of the RBP (Base Pointer).
+    mov rsp, rbp
+    mov rbp, qword [rsp]
+    add rsp, 8
 
     ; Exit without errors.
-    xor eax, eax
+    xor rax, rax
+
     ret

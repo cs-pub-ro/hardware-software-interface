@@ -10,49 +10,46 @@ The `stack_addressing.asm` file demonstrates how data is stored on the stack, an
 Here's what an usual output for the compiled program would be:
 
 ```c
-0xff99fba8: 0xf7f46020
-0xff99fba4: 0xa
-0xff99fba0: 0xb
-0xff99fb9c: 0xc
-0xff99fb98: 0xd
+0x7fff124f4830: 0x7fff124f48d0
+0x7fff124f4828: 0xa
+0x7fff124f4820: 0xb
+0x7fff124f4818: 0xc
+0x7fff124f4810: 0xd
 ```
 
 > **Note:** The last 4 values are the ones we pushed on stack.
 > What is the first one?
 >
-> **Answer:** It is the old EBP we push at the start of the function.
+> **Answer:** It is the old RBP we push at the start of the function.
 
 For convenience, here's the contents of the file.
 To play around with it, download the lab locally.
 
 ```assembly
-%include "printf32.asm"
+%include "printf64.asm"
 
 section .text
 
 extern printf
 global main
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
-    push dword 10
-    push dword 11
-    push dword 12
-    push dword 13
+    push qword 10
+    push qword 11
+    push qword 12
+    push qword 13
 
-    mov eax, ebp
+    mov rax, rbp
 print_stack:
-    PRINTF32 `0x\x0`
-    PRINTF32 `%x\x0`, eax
-    PRINTF32 `: 0x\x0`
-    PRINTF32 `%x\n\x0`, [eax]
+    PRINTF64 `%p: %p\n\x0`, rax, [rax]
 
-    sub eax, 4
-    cmp eax, esp
+    sub rax, 8
+    cmp rax, rsp
     jge print_stack
 
-    xor eax, eax
+    xor rax, rax
     leave
     ret
 ```
