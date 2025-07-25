@@ -10,4 +10,4 @@ The `look-at-him-go/support/dynamic` binary is executable this time and its sole
 No tricks here.
 > **TIP:** GDB is your friend.
 
-If you're unable to progress in this exercise, reference [the GDB lab](https://cs-pub-ro.github.io/hardware-software-interface/Lab%202%20-%20Memory%20Operations.%20Introduction%20to%20GDB/Introduction%20to%20GDB/Reading/) and [this](https://stackoverflow.com/questions/5429137/how-to-print-register-values-in-gdb).
+If you're unable to progress in this exercise, reference [the GDB lab](https://cs-pub-ro.github.io/hardware-software-interface/labs/lab-02/reading/introduction-to-GDB.html) and [this](https://stackoverflow.com/questions/13282176/using-gdb-to-check-registers-values/13282633).

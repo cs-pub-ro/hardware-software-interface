@@ -8,17 +8,15 @@ parent: 'Task: Hook at Him Go'
 Run the executable with GDB, ideally with `gef`, `pwndbg`, or `peda`.
 As you step through, you will notice that the flag will appear in fragments in the display of the register contents (the flag string contains null characters placed specifically so that it would not be displayed all at once).
 
-```asm
-$eax   : 0x0804d625  →  "_out,"
-$ebx   : 0x0804d22e  →  "_out,"
-$ecx   : 0x0804d62a  →  0x00000000
-$edx   : 0x0804d625  →  "_out,"
+You may also see fragments in the memory dump, at times.
+
+To step through the code, you can use the following commands:
+
+```gdb
+ni # Step to the next instruction
+n # Step to the next line of code
+b *0x<address> or <line> or <fun_name> # Set a breakpoint at a specific address
+c # Continue execution until the next breakpoint
 ```
 
-You may also see fragments in the memory dump, at times:
-
-```asm
-0xffffd4b8│+0x0008: 0xf7fb9000  →  0x001ead6c
-0xffffd4bc│+0x000c: 0x0804d600  →  0x00000000
-0xffffd4c0│+0x0010: 0x0804d210  →  0x00495348 ("HSI"?)
-```
+Observe the registers and memory as you step through the code, and you will see the flag being constructed in parts.
