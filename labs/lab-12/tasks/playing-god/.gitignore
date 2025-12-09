@@ -1,0 +1,10 @@
+# Binaries
+solution/dynamic2
+support/dynamic2
+
+# Object files
+*.o
+
+# Build artifacts
+solution/obfuscator
+solution/deobfuscator

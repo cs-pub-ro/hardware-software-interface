@@ -10,7 +10,19 @@ This is a clear indicator that we have to find a way to call it ourselves.
 
 We define a `get_flag()` function prototype as void (you may be able to skip this step, but there will be an implicit declaration error during compilation) and we call it in our main function.
 We then compile and assemble the file:
-`gcc -g -m32 -fno-PIC -c main.c`
+
+```bash
+gcc -g -m64 -fno-PIC -c main.c
+```
 
 We then link it to the `link` binary:
-`gcc -no-pie -m32 link main.o -o a.out`
+
+```bash
+gcc -no-pie -m64 link main.o -o a.out
+```
+
+Run the executable:
+
+```bash
+./a.out
+```

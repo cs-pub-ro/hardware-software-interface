@@ -1,0 +1,10 @@
+# Binaries
+solution/rop
+support/rop
+
+# Object files
+*.o
+
+# Build artifacts
+solution/obfuscator
+solution/deobfuscator

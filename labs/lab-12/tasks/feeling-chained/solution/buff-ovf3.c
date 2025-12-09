@@ -79,6 +79,8 @@ void gateway(void)
 
 int main(void)
 {
+	/* Make stdout unbuffered to ensure output is written immediately */
+	setvbuf(stdout, NULL, _IONBF, 0);
 	gateway();
 
 	return 0;
