@@ -56,6 +56,8 @@ void special_function(int x, int y)
 
 int main(void)
 {
+	// Disable stdout buffering to ensure output is flushed before segfault
+	setvbuf(stdout, NULL, _IONBF, 0);
 	char buf[16];
 
 	fgets(buf, 100, stdin);

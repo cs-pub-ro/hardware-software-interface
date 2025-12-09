@@ -1,0 +1,10 @@
+# Binaries
+solution/buff-ovf2
+support/buff-ovf2
+
+# Object files
+*.o
+
+# Build artifacts
+solution/obfuscator
+solution/deobfuscator

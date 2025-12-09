@@ -55,6 +55,8 @@ void trampoline(void)
 
 int main(void)
 {
+	// Disable stdout buffering to ensure output is flushed before segfault
+	setvbuf(stdout, NULL, _IONBF, 0);
 	trampoline();
 
 	return 0;

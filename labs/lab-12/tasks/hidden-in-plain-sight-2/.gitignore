@@ -1,0 +1,13 @@
+# Binaries
+solution/main
+support/main
+
+# Object files
+*.o
+
+# Build artifacts
+solution/obfuscator
+solution/deobfuscator
+
+# Keep the precompiled link2 object (should be tracked)
+!support/link2
