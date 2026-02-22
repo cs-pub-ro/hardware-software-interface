@@ -46,7 +46,7 @@ test_third_div() {
 }
 
 test_fourth_div() {
-	if [[ $quotient4 -eq 0xffff && $remainder4 -eq 0xffff ]]; then
+	if [[ $quotient4 -eq $((0xffff)) && $remainder4 -eq $((0xffff)) ]]; then
 		exit 0
 	else
 		exit 1

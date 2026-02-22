@@ -54,7 +54,7 @@ big_sum_test() {
 		exit 1
 	fi
 
-	if [[ $big_sum -eq 0x1565ddbe509d3ffe8 ]]; then
+	if [[ $big_sum -eq $((0x1565ddbe509d3ffe8)) ]]; then
 		exit 0
 	else
 		exit 1
