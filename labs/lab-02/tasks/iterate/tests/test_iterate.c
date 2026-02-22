@@ -122,7 +122,7 @@ static int test_ints(void)
 	return status == 0 ? 1 : 0;
 }
 
-static int test_ints(void)
+static int test_long_longs(void)
 {
 	int status;
 
