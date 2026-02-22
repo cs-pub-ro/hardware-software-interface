@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - x86_64
+      - x86
 
 jobs:
   deploy:
@@ -16,11 +16,11 @@ jobs:
         with:
           path: main
 
-      - name: Checkout `x86_64` branch
+      - name: Checkout `x86` branch
         uses: actions/checkout@v4
         with:
-          ref: x86_64
-          path: x86_64
+          ref: x86
+          path: x86
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -36,7 +36,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha
 
-      - name: Build Jekyll site for x86
+      - name: Build Jekyll site for x86_64
         run: |
           echo "url: https://${{ github.repository_owner }}.github.io" >> _config.yaml
           echo "baseurl: /hardware-software-interface" >> _config.yaml
@@ -48,21 +48,21 @@ jobs:
             jekyll-image bundle exec jekyll build -s /base/app -d /base/app/_site
         working-directory: main
 
-      - name: Build Jekyll site for x64
+      - name: Build Jekyll site for x86
         run: |
           echo "url: https://${{ github.repository_owner }}.github.io" >> _config.yaml
-          echo "baseurl: /hardware-software-interface/x86_64" >> _config.yaml
+          echo "baseurl: /hardware-software-interface/x86" >> _config.yaml
 
-          # Build Jekyll site for x86_64
-          # Note: The x86_64 site is built in a separate directory.
+          # Build Jekyll site for x86
+          # Note: The x86 site is built in a separate directory.
           docker run --rm \
             -v $(pwd):/base/app \
             -u $(id -u):$(id -g) \
             jekyll-image bundle exec jekyll build -s /base/app -d /base/app/_site
 
-          # Move the x86_64 site under the main site directory
-          mv _site ${{ github.workspace }}/main/_site/x86_64
-        working-directory: x86_64
+          # Move the x86 site under the main site directory
+          mv _site ${{ github.workspace }}/main/_site/x86
+        working-directory: x86
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
