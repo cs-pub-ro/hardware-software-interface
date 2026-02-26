@@ -6,7 +6,11 @@ sum7:
     push rbp
     mov rbp, rsp
 
-    ; To Do
+    ; TODO: save the used registers and align the stack, if needed
+
+    ; TODO: implement the sum7 function
+
+    ; TODO: restore the used registers and the stack pointer, if altered
 
     leave
     ret
