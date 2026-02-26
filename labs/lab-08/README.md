@@ -38,7 +38,7 @@ If the `git status` output differs, follow the [instructions to save your progre
             modified:   main.c
     ```
 
-    If `git status` states "work tree clean", you should follow the [instructions to pull latest changes](#getting-the-latest-changes) instead.
+    If `git status` states "working tree clean", you should follow the [instructions to pull latest changes](#getting-the-latest-changes) instead.
 
 1. Create a commit to store your changes:
 
