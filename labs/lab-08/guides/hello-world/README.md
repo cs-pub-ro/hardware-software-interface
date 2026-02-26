@@ -13,7 +13,7 @@ Notice the display of the message *Hello, world!*
 Note that:
 
 - The `hello_world.asm` program uses the `puts()` function call (an external function of the current module) to perform the display.
-For this, it puts the argument on the stack and calls the function.
+For this, it puts the argument in the `rdi` register and calls the function.
 - The `msg` variable in the `hello_world.asm` program contains the byte `10`.
 This symbolizes the *line feed* character (`\n`), used to add a new line on Linux.
 
