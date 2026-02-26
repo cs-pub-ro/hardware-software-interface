@@ -45,7 +45,7 @@ When it comes to calling a function with parameters, there are two major options
 When we call a function, the steps are as follows:
 
 - We put the first 6 arguments(if there are at least 6 arguments) in the following registers in left-to-right order: `rdi`, `rsi`, `rdx`, `rcx`, `r8` and `r9`.
-- We put the remaining arguments on the stack, pushing them in the reverse order in which they are sent as function arguments.
+- We push the remaining arguments onto the stack in reverse order in which they are sent as function arguments.
 - We call `call`.
 - We restore the stack at the end of the call.
 
@@ -83,7 +83,7 @@ mov r8, [e]
 mov r9, [f]
 
 push qword [h]   ; put the last 2 arguments onto the stack in reverse order, first h
-push qworg [g]   ; then g
+push qword [g]   ; then g
 
 call foo         ; call the function
 add rsp, 16      ; restore the stack
