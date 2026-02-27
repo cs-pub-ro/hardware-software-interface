@@ -4,7 +4,7 @@
 
 extern printf
 
-section .bss:
+section .bss
 	; the structure for a student
 	struc student_t
 		name:   resb	10	; char[10] - student name

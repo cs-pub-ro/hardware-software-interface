@@ -12,6 +12,7 @@ global main
 main:
     push rbp
     mov rbp, rsp
+    sub rsp, 8
 
     ; The calling convention requires saving and restoring `rbx` if modified
     push rbx
@@ -25,7 +26,7 @@ calc_fibo:
     add rax, rbx
     add rbx, rdx
     xchg rbx, rdx
-    ; The `xhcg` above is equivalent to the following:
+    ; The `xchg` above is equivalent to the following:
     ; push rax
     ; mov rax, rbx
     ; mov rbx, rdx
@@ -33,10 +34,11 @@ calc_fibo:
     ; pop rax
     loop calc_fibo
 
-    PRINTF64 `Sum first %d fibonacci numbers is %d\n\x0`, qword [N], rax
+    PRINTF64 `Sum first %ld fibonacci numbers is %ld\n\x0`, qword [N], rax
 
     ; Restore the `rbx` that was previously saved
     pop rbx
+    add rsp, 8          ; Undo stack alignment
 
     xor rax, rax
     leave

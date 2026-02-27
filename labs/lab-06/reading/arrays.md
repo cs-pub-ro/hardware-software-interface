@@ -75,20 +75,34 @@ section .bss
 ### Traversing an Array of Structures
 
 As mentioned before, to access a field of an element in an array, we need to use normal addressing (particularly "based-indexed with scale" addressing).
-The formula to find the address of the element is `base_of_array + i * size_of_struct`.
+The address of the element at index `i` is calculated as:
 
-Assuming we have the start address of the array in the `rbx` register and the index of the element we want to access in the `rax` register, the following example demonstrates printing the value of the y field of this element.
+```Assembly
+address = base_of_array + i * size_of_struct
+```
+
+Then, to access a specific field within that element, we add the field's offset:
+
+```Assembly
+address = base_of_array + i * size_of_struct + field_offset
+```
+
+In our `point` structure, the `.x` field is at offset 0 and the `.y` field is at offset 4 (since `.x` is a 32-bit dword).
+
+Assuming we have the start address of the array in the `rbx` register and the index of the element we want to access in the `rax` register, the following example demonstrates printing the value of the `y` field of this element.
 
 ```Assembly
 mov rbx, point_array                         	    ; Move the start address of the array into rbx
 mov rax, 13                                 	    ; Assume we want the 14th element
-xor rax, rax                                        ; Clear the rax register
-mov rdx, dword [rbx + point_size * rax + point.y] 	; Calculate the address of the desired field between []
-                                            	    ; and then transfer the value from that address
-                                                    ; into the rdx register
+mov edx, dword [rbx + point_size * rax + point.y] 	; Calculate the address of the desired field between []
+                                            	    ; and load 32-bit field value into edx
+                                                    ; Note: edx zero-extends into rdx
 
 PRINTF64 `%lu\n\x0`, rdx
 ```
+
+Note that NASM defines `point.x`, `point.y` and `point_size` as compile-time constants representing field offsets and structure size.
+Do not confuse them with the actual values stored in the structure fields.
 
 We traverse the array, having the current index in the rax register at each iteration.
 We can print the values from both fields of each element in the array with the following program:
