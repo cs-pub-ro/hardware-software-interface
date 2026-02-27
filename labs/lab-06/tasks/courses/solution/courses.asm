@@ -106,7 +106,7 @@ step:
     mov rsi, courses
     imul rbx, course_t_size
     add rsi, rbx
-    add rsi, name_course ; get the name of the student
+    add rsi, name_course ; get the name of the course
     PRINTF64 ` %s\n\x0`, rsi
 
 finish:

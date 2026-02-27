@@ -35,6 +35,17 @@ endstruc
 For more details about the `res` syntax, please follow this link: [NASM Documentation](https://www.nasm.us/doc/nasmdoc3.html#section-3.2.2)
 
 Each label defining a field represents the offset of the field within the structure.
+Here is the memory layout of the structure declared above:
+
+| Field | Declaration | Size | Offset |
+|-------|-------------|------|--------|
+| a     | resw 1      | 2 bytes | 0 |
+| b     | resd 1      | 4 bytes | 2 |
+| c     | resb 1      | 1 byte  | 6 |
+| d     | resq 1      | 8 bytes | 7 |
+| e     | resb 6      | 6 bytes | 15 |
+| **Total** | - | **21 bytes** | - |
+
 For example, `b` will have the value 2, because there are 2 bytes from the beginning of the structure to the `b` field (the first 2 bytes are occupied by the `a` word).
 
 > **WARNING**: If you want to use the same field name in two different structures, you must prefix the label name with a dot (`.`) like this:
@@ -95,8 +106,8 @@ The following code sequence demonstrates setting a value in the `d` field of the
 
 ```Assembly
 mov rax, 12345
-mov [mystruct + d], rax ; the address of field d is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
+mov [struct_var + d], rax ; the address of field d is the base address of the statically instantiated structure + the offset of the field (given by the label 'd')
 
-mov rbx, [mystruct + d] ; putting the value from field d into the rbx register for display
+mov rbx, [struct_var + d] ; putting the value from field d into the rbx register for display
 PRINTF64 `%ld\n\x0`, rbx
 ```

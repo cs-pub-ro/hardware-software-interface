@@ -4,7 +4,7 @@
 
 extern printf
 
-section .bss:
+section .bss
 	; the structure for a student
 	struc student_t
 		name:   resb	10		; char[10] - student name
@@ -68,6 +68,6 @@ main:
 		PRINTF64 `%s\n\x0`, rbx
 		inc rcx
 		cmp rcx, [v_students_count]
-		jl afisare
+		jl print
     leave
     ret
