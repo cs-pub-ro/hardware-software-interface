@@ -109,7 +109,7 @@ Therefore, when talking about the code:
 >   jl negative
 > ```
 
-The jump to the `negative` label will be made only if the value in eax is less than `0`.
+The jump to the `negative` label will be made only if the value in rax is less than `0`.
 The `rax - 0` subtraction is evaluated and if the result is negative (and so, rax is negative), the jump will be made.\
 When have comparisons with `0`, the same thing can be done more efficiently using the `test` instruction:
 
