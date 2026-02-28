@@ -7,7 +7,7 @@ rot13:
 
     ; TODO: save the used registers and align the stack, if needed
 
-    ; TODO
+    ; TODO: implement the rot13 function
 
     ; TODO: restore the used registers and the stack pointer, if altered
 

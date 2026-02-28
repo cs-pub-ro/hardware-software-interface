@@ -8,7 +8,7 @@ to_upper:
 
     ; TODO: save the used registers and align the stack, if needed
 
-    ; TODO
+    ; TODO: convert the string to uppercase
 
     ; TODO: restore the used registers and the stack pointer, if altered
 

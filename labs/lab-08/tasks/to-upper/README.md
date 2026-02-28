@@ -16,7 +16,7 @@ This string is passed as an argument to the `toupper()` function when called.
 Perform the transformation in place;
 there is no need for another string.
 
-> **NOTE_**  To convert a lowercase letter to uppercase, you need to **subtract** `0x20` from its value.
+> **NOTE:**  To convert a lowercase letter to uppercase, you need to **subtract** `0x20` from its value.
 > This is the difference between lowercase and uppercase letters;
 > for example, `a` is `0x61`, and `A` is `0x41`.
 > You can see this in the [ASCII manual page](http://man7.org/linux/man-pages/man7/ascii.7.html).
