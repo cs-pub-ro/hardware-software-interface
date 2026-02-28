@@ -141,10 +141,10 @@ static int test_long_longs(void)
 }
 
 static struct graded_test all_tests[] = {
-	{ test_chars, "test_chars", 25 },
-	{ test_shorts, "test_shorts", 25},
-	{ test_ints, "test_ints", 25},
-	{ test_long_longs, "test_long_long", 25},
+	{ test_chars, "print_chars", 25 },
+	{ test_shorts, "print_shorts", 25},
+	{ test_ints, "print_ints", 25},
+	{ test_long_longs, "print_long_long", 25},
 };
 
 int main(void)
