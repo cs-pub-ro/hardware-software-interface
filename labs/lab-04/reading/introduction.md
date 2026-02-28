@@ -15,7 +15,7 @@ These instructions are encoded in machine code.
 An example would be:
 
 ```text
-1011000000001100011001100011000111011111111111100100
+10110000000011000110011000110001110100101111111111100100
 ```
 
 This sequence of bits doesn't tell us much in particular.
@@ -28,7 +28,7 @@ We can convert it to hexadecimal to compress it and group it better.
 Furthermore, for many of us, this sequence still doesn't mean anything.
 Hence the need for a more understandable and usable language.
 
-Assembly language allows us to write text programs which will then be translated, through an utility called an **assembler**, specific to each architecture, into machine code.
+Assembly language allows us to write text programs which will then be translated, through a utility called an **assembler**, specific to each architecture, into machine code.
 Most assembly languages provide a direct correspondence between instructions. For example:
 
 ```assembly
@@ -86,4 +86,4 @@ This category includes drivers for devices.
 
 ### Fun
 
-For more details, discuss with your laboratory assistant to share his personal experience with assembly language and practical use cases.
+For more details, discuss with your laboratory assistant to share their personal experience with assembly language and practical use cases.
