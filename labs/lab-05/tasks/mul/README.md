@@ -57,9 +57,9 @@ You'll need to multiply:
 >
 > **NOTE**: When displaying the results, use the appropriate format specifiers with the PRINTF64 macro:
 >
-> - For word multiplication: `PRINTF64 \`Result is: 0x%hx%hx\n\x0\`, rdx, rax`
-> - For double word multiplication: `PRINTF64 \`Result is: 0x%x%x\n\x0\`, rdx, rax`
-> - For quad word multiplication: `PRINTF64 \`Result is: 0x%lx%016lx\n\x0\`, rdx, rax`
+> - For word multiplication: ``PRINTF64 `Result is: 0x%hx%04hx\n\x0`, rdx, rax``
+> - For double word multiplication: ``PRINTF64 `Result is: 0x%x%08x\n\x0\`, rdx, rax``
+> - For quad word multiplication: ``PRINTF64 `Result is: 0x%lx%016lx\n\x0\`, rdx, rax``
 
 ## Testing
 
@@ -73,9 +73,9 @@ In case of a correct solution, you will get an output such as:
 
 ```text
 test_byte_mul                    ........................ passed ...  25
-test_short_mul                    ........................ passed ...  25
-test_int_mul                   ........................ passed ...  25
-test_long_mul                   ........................ passed ...  25
+test_short_mul                   ........................ passed ...  25
+test_int_mul                     ........................ passed ...  25
+test_long_mul                    ........................ passed ...  25
 
 ========================================================================
 

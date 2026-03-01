@@ -41,7 +41,7 @@ main:
     ; Print result in hexa
     ; NOTE: The `%hx` format specifier is used in the same way as in the
     ; previous PRINTF64 statement, only now for both dx and ax registers
-    PRINTF64 `Result is: 0x%hx%hx\n\x0`, rdx, rax
+    PRINTF64 `Result is: 0x%hx%04hx\n\x0`, rdx, rax
 
 
     ; Multiplication for dd
@@ -50,7 +50,7 @@ main:
     mul ebx
 
     ; Print result in hexa
-    PRINTF64 `Result is: 0x%x%x\n\x0`, rdx, rax
+    PRINTF64 `Result is: 0x%x%08x\n\x0`, rdx, rax
 
 
     ; Multiplication for dq

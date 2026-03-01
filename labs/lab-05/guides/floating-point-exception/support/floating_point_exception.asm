@@ -22,7 +22,7 @@ main:
     mov bl, 2
     div bl
 
-    ; qutoient is stored in al
+    ; quotient is stored in al
     PRINTF64 `Result is: %hhu\n\0`, rax
 
     ; remainder is stored in ah, thus we need to shift it to the right by 8 bits
