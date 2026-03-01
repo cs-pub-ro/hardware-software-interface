@@ -19,7 +19,7 @@ It will be difficult for you to complete the following exercises if you have dif
 
 ## Working with Arrays of Different Sizes
 
-In the `TODO` section of the `sum-array.asm` file, complete the code to calculate the sum of:
+In the `TODO` section of the `sum_array.asm` file, complete the code to calculate the sum of:
 
 1. `word_array` (16-bit elements)
 1. `dword_array` (32-bit elements)
@@ -32,7 +32,7 @@ In the `TODO` section of the `sum-array.asm` file, complete the code to calculat
 > In the construction above:
 >
 > - base is the address of the array (i.e., `word_array`, `dword_array` etc.)
-> - size is the length of the array element (i.e., 2 for a word array (16 bits, 2 bytes) and 4 for a dword array (32 bits, 4 bytes))
+> - size is the length of the array element (i.e., 2 for a word array (16 bits, 2 bytes), 4 for a dword array (32 bits, 4 bytes) and 8 for a qword array (64 bits, 8 bytes))
 > - index is the current index within the array
 >
 > **NOTE**: The expected sums for each array are:
