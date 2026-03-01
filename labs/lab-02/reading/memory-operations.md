@@ -13,7 +13,7 @@ The general declaration form is as follows: `type *variable_name`, where `type` 
 These are two entirely different concepts represented by the same symbol.
 > Declaring a pointer does not mean allocating a memory area to store data.
 A pointer is also a data type, whose value is a number representing a memory address.
-The size of the pointer data type is always the same, regardless of the type of data it points to, and is determined by the architecture and operating system on which the program was compiled (but usually 4 bytes on 32-bit systems and 8 bytes on 64-bit systems).
+The size of the pointer is always the same, regardless of the type of data it points to, and is determined by the architecture and operating system on which the program was compiled (but usually 4 bytes on 32-bit systems and 8 bytes on 64-bit systems).
 >
 > ```c
 >   int *p = 0xCAFEBABE; /* Declaring a pointer */
@@ -41,10 +41,10 @@ Similarly, adding an integer `n` to a pointer `p` (thus the operation `p + n`) a
 For example:
 
 ```c
-char *char_ptr = 1000;
-short *short_ptr = 2000;
-int *int_ptr = 3000;
-long long *long_long_ptr = 4000;
+char *char_ptr = (char*)1000;
+short *short_ptr = (short *)2000;
+int *int_ptr = (int *)3000;
+long long *long_long_ptr = (long long *)4000;
 
 ++char_ptr; /* char_ptr will point to address 1001 */
 ++short_ptr; /* short_ptr points to address 2002 */

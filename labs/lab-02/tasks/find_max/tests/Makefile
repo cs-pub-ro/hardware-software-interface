@@ -1,4 +1,4 @@
-SRC_PATH ?= ../solution
+SRC_PATH ?= ../support
 FULL_SRC_PATH = "$(realpath $(SRC_PATH))"
 CPPFLAGS = -I. -I$(FULL_SRC_PATH)
 CFLAGS = -Wall -Wextra

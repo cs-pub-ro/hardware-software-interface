@@ -26,7 +26,7 @@ Set a breakpoint at `main` using the `break main` command.
 You will see the message in the prompt:
 
 ```c
-Breakpoint 1 at 0x7d3: file segfault.c, line 21  /* The memory address should not be the same */
+Breakpoint 1 at 0x7d3: file segfault.c, line 23  /* The memory address should not be the same */
 ```
 
 Next, we will step through the instructions one by one.
