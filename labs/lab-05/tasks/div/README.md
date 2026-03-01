@@ -5,7 +5,7 @@ parent: Lab 5 - Registers and Memory Addressing
 
 # Task: Division of Two Numbers
 
-You will solve this exercise starting from the `divide_64.asm` file located in the `tasks/div/support` directory.
+You will solve this exercise starting from the `divide.asm` file located in the `tasks/div/support` directory.
 
 In the `divide.asm` program, you'll implement division operations for various data sizes.
 Update the area marked with `TODO` in the code to perform the division of the numbers mentioned in the comments.
@@ -43,8 +43,7 @@ The divisor is passed as an argument to the `div` mnemonic.
 > - The quotient is placed in `rax`
 > - The remainder is placed in `rdx`
 >
-> **TIP**: If the program gives you a `SIGFPE`.
-Arithmetic exception," you most likely forgot to initialize the upper part of the dividend (`ah`, `dx`, `edx`, `rdx`).
+> **TIP**: If the program gives you a `SIGFPE` Arithmetic exception," you most likely forgot to initialize the upper part of the dividend (`ah`, `dx`, `edx`, `rdx`).
 
 ## Testing
 
