@@ -15,4 +15,4 @@ The program declares multiple variables of different sizes in the `.bss` and `.d
 >decimal_point   db ".",0
 >```
 
-For a complete set of the pseudo-instruction check out the `nasm` [documentation](https://nasm.us/doc/nasmdoc3.html).
+For a complete set of the pseudo-instructions check out the `nasm` [documentation](https://nasm.us/doc/nasmdoc3.html).

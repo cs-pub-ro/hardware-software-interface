@@ -11,4 +11,4 @@ The program tries to perform division using an `8 bit` operand, `bl`, in this ca
 Given that `ax` is `22891` and `bl` is `2`, the result of the division would be out of the defined range.
 Thus we will see a `Floating point exception` after the division.
 
->**Note**: For a detailed description of the `div` instruction check out the [documentation](https://www.felixcloutier.com/x86/idiv).
+>**Note**: For a detailed description of the `div` instruction check out the [documentation](https://www.felixcloutier.com/x86/div).
