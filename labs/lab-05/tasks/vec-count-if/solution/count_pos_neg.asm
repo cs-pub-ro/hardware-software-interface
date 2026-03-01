@@ -6,7 +6,6 @@
 
 section .data
     qword_array dq 1392, -12544, -7992, -6992, 7202, 27187, 28789, -17897, 12988, 17992
-    fmt_str db "Num pos is %lu, num neg is %lu", 10, 0
 
 section .text
 extern printf
@@ -29,7 +28,7 @@ add_to_neg:
 test_end:
     loop next_element ; Decrement rcx, if not zero, go to next element.
 
-    PRINTF64 `Num even is %u, num odd is %u\n\x0`, rbx, rdx
+    PRINTF64 `Num pos is %u, num neg is %u\n\x0`, rbx, rdx
 
     leave
     ret
