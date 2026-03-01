@@ -29,9 +29,7 @@ main:
     ; Print result in hexa
     PRINTF64 `Result is: 0x%hx\n\x0`, rax
 
-
-      ; TODO: Implement multiplication for dw, dd and dq data types.
-
+    ; TODO: Implement multiplication for dw, dd and dq data types.
 
     leave
     ret
