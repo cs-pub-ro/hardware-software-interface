@@ -34,12 +34,15 @@ You will need an ID (student card, national ID, etc.) in order to participate in
 ## Midterm Exam
 
 The midterm exam is worth 2 points.
-The midterm exam will take place on Saturday, May 10th.
+The midterm exam will take place on Saturday, April 18th 2026.
 
 The midterm exam is a practical exam, identical with the [final exam](#final-exam) in term of rules.
 
 You will be assigned an interval in which you will participate in the exam.
-The midterm exam takes **60 minutes** and will test knowledge acquired from the first eight labs (up to the `Functions` one).
+The midterm exam takes **60 minutes** and will test knowledge acquired from the first six labs (up to the `Structures, Vectors and Strings` one).
+
+You'll find some midterm subject samples [here](https://drive.google.com/drive/u/0/folders/1xagJCZ2iAkJQwBCaRYdahCazD5Nov571).
+Note that the architecture for these subjects is `x86`, but the actual exam you'll take won't drift too much from these examples.
 
 ## Assignments
 
