@@ -64,18 +64,18 @@ Starting from the third week, the attendance list for the laboratory becomes fix
 
 ## Lecture Quizzes
 
-There will be 4 lecture quizzes, worth a total of **0.5 points**.
-These will be conducted online on the Moodle platform and will be available for one day (closing at 11:55 PM on the announced date).
+There will be 2 lecture quizzes, worth a total of **0.5 points** (each has **0.25 points**).
+These will be conducted online on the Moodle platform and will be available for a limited period of time which will be announced closer to the date of each quiz.
 
-Each assessment will contain **5 questions**, and the allocated time to complete it is **10 minutes**.
+Each assessment will contain **5 questions**, and the allocated time to complete it is **7 minutes**.
 Each question will have an **arbitrary number of answer choices**, with **only one correct answer**.
+
+**NOTE**: There might be the case that some questions will have multiple correct answers (the number of correct answers will be mentioned for the questions with more than one correct answer).
 
 The schedule for the course assessments is described below:
 
-- Course Assessment 1 will take place on **March 18, 2025** and will cover chapters 1-3 (Programs and the Computing System, Program Investigation and Construction, Computer System Architecture).
-- Course Assessment 2 will take place on **April 8, 2025** and will cover chapter 4-5 (Number Representation, x86 Hardware-Software Interface).
-- Course Assessment 3 will take place on **April 29, 2025** and will cover chapters 6-7 (Stack, Functions).
-- Course Assessment 4 will take place on **May 20, 2025** and will cover chapters 8-9 (Application Binary Interface, Buffer Overflow).
+- Course Assessment 1 will take place on **March 26, 2026** and will cover all the courses until the day of the quiz.
+- Course Assessment 2 will take place on **May 7, 2026** and will cover all the courses until the day of the quiz (**excluding the courses covered by the first quiz**).
 
 ## Rules
 
