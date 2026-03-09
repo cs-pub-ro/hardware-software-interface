@@ -54,7 +54,9 @@ There are 3 assignments, graded as follows:
 1. Assignment 3: 0.75p (30.04 - 21.05.2026)
 
 **Each assignment has a single deadline.**
+
 **Once the deadline passes (soft deadline), the assignment can be submitted with a penalty of 2 points out of 10 per day for the next 5 days (hard deadline).**
+
 **Any bonus points aquired at any assignment can be used to compensate the points obtained at any of the other assignments, but are not transferable to other components of the final grade (final exam, mid term exam, laboratory sessions, lecture quizzes).** 
 
 Assignments will be subject to plagiarism detection and penalties.
