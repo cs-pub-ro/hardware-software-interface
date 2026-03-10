@@ -49,12 +49,15 @@ Note that the architecture for these subjects is `x86`, but the actual exam you'
 Assignments are worth 2 points of the final grade.
 There are 3 assignments, graded as follows:
 
-1. Assignment 1: 0.50p (24.03 - 06.04.2025)
-1. Assignment 2: 0.75p (14.04 - 04.05.2025)
-1. Assignment 3: 0.75p (05.05 - 25.05.2025)
+1. Assignment 1: 0.50p (27.03 - 09.04.2026)
+1. Assignment 2: 0.75p (10.04 - 30.04.2026)
+1. Assignment 3: 0.75p (30.04 - 21.05.2026)
 
 **Each assignment has a single deadline.**
+
 **Once the deadline passes (soft deadline), the assignment can be submitted with a penalty of 2 points out of 10 per day for the next 5 days (hard deadline).**
+
+**Any bonus points obtained at any homework assignment can be used to compensate the grade from another assignment, but can't be transferred to any other component of the final grade (final exam, midterm exam, laboratory sessions, lecture quizzes).**
 
 Assignments will be subject to plagiarism detection and penalties.
 
