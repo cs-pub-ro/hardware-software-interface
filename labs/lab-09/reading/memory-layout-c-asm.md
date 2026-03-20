@@ -40,13 +40,19 @@ section .data
 text db "291 is the best!", 10, 0
 strformat db "%s", 0
 
-section .code
+section .text
+global main
 
 main:
-        push dword text
-        push dword strformat
+        push rbp
+        mov rbp, rsp
+
+        mov rdi, strformat
+        mov rsi, text
+        xor rax, rax
         call printf
-        add esp, 8
+
+        leave
         ret
 ```
 
