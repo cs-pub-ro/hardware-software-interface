@@ -36,9 +36,12 @@ next:
     ; pop rcx
     loop next
 
+    sub rsp, 8
     xor rax, rax
     mov rdi, newline
     call printf
+
+    add rsp, 8
 
     ; restore preserved register
     pop rbx

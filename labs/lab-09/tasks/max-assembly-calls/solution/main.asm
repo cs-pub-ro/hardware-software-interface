@@ -37,6 +37,7 @@ main:
     mov rdi, fmt
     mov rsi, rax
     mov edx, dword [pos]
+    xor rax, rax
     call printf
 
     ; set exit code 0 (in main)
