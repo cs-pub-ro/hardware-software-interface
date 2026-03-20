@@ -44,11 +44,11 @@ next:
     mov rdi, newline
     call printf
 
-    ; restore preserved register
-    pop rbx
-
     ; restore the stack after calling printf
     add rsp, 8
+
+    ; restore preserved register
+    pop rbx
 
     leave
     ret

@@ -6,7 +6,7 @@ global get_max
 
 
 ; RDI = array pointer
-; RSI = array length
+; RSI = array lengthget_max
 get_max:
     push rbp
     mov  rbp, rsp
@@ -18,16 +18,12 @@ get_max:
     mov rcx, rsi
     dec rcx
 
-    ; loop over remaining array elements
 compare:
     cmp eax, [rdi + 4*rcx]
-    jge check_end
+    jae check_end              ; <-- Keep the unsigned fix here!
     mov eax, [rdi + 4*rcx]
 check_end:
     loop compare
 
-    ; result stored in RAX
-
     leave
     ret
-
