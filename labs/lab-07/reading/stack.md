@@ -98,7 +98,7 @@ CMAIN:
     PRINTF64 `%d \n\x0`, rax
 ```
 
-> **IMPORTANT:** Comment out the instructions `sub rsp, 4` and `add rsp, 4`.
+> **IMPORTANT:** Comment out the instructions `sub rsp, 8` and `add rsp, 8`.
 > What happens?
 > Why?
 >
