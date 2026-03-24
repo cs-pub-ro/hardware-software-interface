@@ -29,9 +29,6 @@ good:
     PRINTF64 `%s\n\x0`, right
     xor rax, rax
 
-    leave
-    ret
-
 bad:
     PRINTF64 `%s\n\x0`, wrong
     xor rax, rax
