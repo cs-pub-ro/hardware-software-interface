@@ -49,7 +49,7 @@ main:
 
         mov rdi, strformat
         mov rsi, text
-        xor rax, rax    
+        xor rax, rax
         call printf
 
         leave
