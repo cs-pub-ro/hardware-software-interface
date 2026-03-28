@@ -11,10 +11,10 @@ Linking combines multiple object files into an executable file.
 To obtain an executable file from object files, the linker performs the following actions:
 
 1. Symbol resolution: locating the undefined symbols of one object file in other object files.
-1. Section merging: merging sections of the same type from different object files into a single section in the executable file.
-1. Address binding: after merging, the effective address symbols within the executable file can be established.
-1. Symbol relocation: once the symbol addresses are set, the instructions and data referring to those addresses in the executable must be updated.
-1. Entry point establishment: specifying the address of the first instruction to be executed.
+2. Section merging: merging sections of the same type from different object files into a single section in the executable file.
+3. Address binding: after merging, the effective address symbols within the executable file can be established.
+4. Symbol relocation: once the symbol addresses are set, the instructions and data referring to those addresses in the executable must be updated.
+5. Entry point establishment: specifying the address of the first instruction to be executed.
 
 ## Linker Invocation
 
