@@ -8,7 +8,7 @@ parent: Lab 11 - Linking
 Access the directory `tasks/var-func-fix/support/`.
 Run the `make` command, run the resulted executable, interpret the encountered error, and resolve it by editing the source files.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

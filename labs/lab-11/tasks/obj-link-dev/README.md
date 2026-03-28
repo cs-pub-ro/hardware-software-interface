@@ -16,7 +16,7 @@ quantity is 42
 
 Explore the interface and the content of the functions in the `shop.o` file using `nm` and `objdump`.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

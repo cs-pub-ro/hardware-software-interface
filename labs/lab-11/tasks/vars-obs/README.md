@@ -21,7 +21,7 @@ A variable is declared by prefixing it with `extern`.
 
 Modify `main.c` such that `hidden_value` is set to 10 and `age` is set to 33.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

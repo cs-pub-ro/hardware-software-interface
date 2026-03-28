@@ -21,7 +21,7 @@ We want to compile and link the source files in each subdirectory, following the
 
 Copy the `Makefile` files and update them in each subdirectory to obtain the executable file.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

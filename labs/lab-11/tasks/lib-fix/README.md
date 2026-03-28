@@ -9,7 +9,7 @@ Access the directory `tasks/lib-fix/support/`.
 Run the `make` command, interpret the encountered error, and resolve it by editing the `Makefile`.
 Refer to the `Makefile` in the directory `tasks/multiple-link/support/example/c-lib/`.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

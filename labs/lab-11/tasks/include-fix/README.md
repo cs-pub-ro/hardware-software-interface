@@ -12,7 +12,7 @@ Resolve this warning by editing the `hello.c` file.
 
 **Bonus**: Fix the warning without using the `#include` directive.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh

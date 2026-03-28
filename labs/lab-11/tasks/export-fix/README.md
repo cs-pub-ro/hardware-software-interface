@@ -9,7 +9,7 @@ Access the directory `tasks/export-fix/support/`.
 Each subdirectory (`a-func/`, `b-var/`, `c-var-2/`) contains a problem related to the export of symbols (functions or variables).
 In each subdirectory, run the `make` command, identify the issue, and edit the necessary files to resolve it.
 
-**Checker**: To test the implementation, enter the tests/ directory and run:
+**Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
 ./run_all_tests.sh
