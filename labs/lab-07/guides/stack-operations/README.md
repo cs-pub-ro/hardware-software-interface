@@ -5,7 +5,7 @@ parent: Lab 7 - The Stack
 
 # Guide: Stack Operations
 
-The `stack_operations.asm` file demonstrates various stack operations.
+The `stack-operations.asm` file demonstrates various stack operations.
 The main focus is to show how to manipulate the stack by pushing and popping values, and how to "allocate" and "deallocate" memory on the stack.
 
 > **Note:** Notice how `push` and `pop` are just syntactic sugar for the simpler `sub`, `add`, and `mov` instructions.
@@ -34,7 +34,7 @@ main:
     push qword 11  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 11
     push qword 12  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 12
     push qword 13  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 13
-    push qword 14  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 13
+    push qword 14  ;  same as:  sub rsp, 8   followed by:  mov [rsp], 14
 
     ; Version 1
     pop rax        ;  same as:  mov rax, [rsp]   followed by:  add rsp, 8
@@ -51,7 +51,7 @@ main:
 
     ; sub rsp <-> add rsp -> use to allocate/deallocate memory
 
-    ; Aloc 16 bytes <-> 2 long
+    ; Alloc 16 bytes <-> 2 qwords
     ; sub rsp, 16
     ; mov [rsp], 10
     ; mov [rsp + 8], 12
@@ -64,7 +64,7 @@ main:
     pop qword [var]
 
     mov rax, [var]
-    PRINTF64 `VAR: %d\n\x0`, rax
+    PRINTF64 `VAR: %ld\n\x0`, rax
 
 
     leave
