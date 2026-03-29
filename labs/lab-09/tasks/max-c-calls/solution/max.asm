@@ -14,7 +14,7 @@ get_max:
 
     ; initialize EAX with the first value as currently known maximum
     mov eax, [rdi]
-    mov [rdx], eax
+    mov dword [rdx], 0
 
     ; initialize RCX as loop counter for remaining elements
     mov rcx, rsi
@@ -23,7 +23,7 @@ get_max:
     ; loop over remaining array elements
 compare:
     cmp eax, [rdi + 4*rcx]
-    jge check_end
+    jae check_end
 
     ; update maximum and its position
     mov eax, [rdi + 4*rcx]
