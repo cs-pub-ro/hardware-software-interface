@@ -5,9 +5,9 @@ parent: Lab 7 - The Stack
 
 # Guide: Stack Addressing
 
-The `stack_addressing.asm` file demonstrates how data is stored on the stack, and especially in what order.
+The `stack-addressing.asm` file demonstrates how data is stored on the stack, and especially in what order.
 
-Here's what an usual output for the compiled program would be:
+Here's what a usual output for the compiled program would be:
 
 ```c
 0x7fff124f4830: 0x7fff124f48d0
@@ -43,7 +43,7 @@ main:
 
     mov rax, rbp
 print_stack:
-    PRINTF64 `%p: %p\n\x0`, rax, [rax]
+    PRINTF64 `%p: %p\n\x0`, rax, qword [rax]
 
     sub rax, 8
     cmp rax, rsp
