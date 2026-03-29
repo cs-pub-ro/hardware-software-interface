@@ -1,5 +1,5 @@
 ---
-nav_order: 3
+nav_order: 4
 parent: Lab 5 - Registers and Memory Addressing
 ---
 
