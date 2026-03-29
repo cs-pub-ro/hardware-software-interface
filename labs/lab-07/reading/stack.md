@@ -5,7 +5,7 @@ parent: Lab 7 - The Stack
 
 # Reading: Introduction to the Stack
 
-In this lab, we will learn about how the stack is represented in assembly language, its utility, and how to it could be useful to us.
+In this lab, we will learn about how the stack is represented in assembly language, its utility, and how it could be useful to us.
 
 ## Reminder: Stack Data Structure
 
@@ -28,7 +28,7 @@ Finally, the "pop" instruction makes the stack lose element 2.
 
 ![Stack Stages](../media/the-stack.svg)
 
-As the above image suggests, the order in which items are inserted and removed from a stack is represented by the phrase "first in, last out".
+As the above image suggests, the order in which items are inserted and removed from a stack is represented by the phrase "Last In, First Out" (LIFO).
 
 ## So, Why is it Useful?
 
@@ -45,8 +45,8 @@ You might have also felt the absence of functions. The stack will help us out as
 More on this in the next lab.
 
 As you might have guessed, the solution to this is to use a stack on which we can put arbitrary values onto.
-We don't need implement it ourselves - it comes built-in 😄!
-Whenever a program stars, the kernel makes sure a zone of memory is allocated for the sole purpose of writing arbitrary data onto.
+We don't need to implement it ourselves - it comes built-in 😄!
+Whenever a program starts, the kernel makes sure a zone of memory is allocated for the sole purpose of writing arbitrary data onto.
 Moreover, CPUs also have some specialized instructions that work directly with this memory in a way similar to how a normal stack works.
 
 > **Note**: The size of the stack memory area is often [set at compile-time](https://stackoverflow.com/questions/54821412/how-to-increase-stack-size-when-compiling-a-c-program-using-mingw-compiler).
@@ -60,42 +60,57 @@ The stack can be modified in two ways:
 1. By using special instructions designed for stack operations, the most common of which are `push` and `pop`:
 
 ```assembly
-%include "io.asm"
+%include "printf64.asm"
 
 section .text
-global CMAIN
-CMAIN:
+
+extern printf
+global main
+main:
+    push rbp
+    mov rbp, rsp
 
     mov rax, 7
     mov rbx, 8
     add rax, rbx
-    push rax                  ; push the value of the rax register onto the stack
-    mov rax, 10               ; we can now use the rax register, as its value is saved on the stack
-    PRINTF64 `%d \n\x0`, rax  ; 10
+    push rax                 ; push the value of the rax register onto the stack
+    mov rax, 10              ; we can now use the rax register, as its value is saved on the stack
+    PRINTF64 `%d\n\x0`, rax  ; prints 10
 
-    pop rax                   ; retrieve the value of the rax register from the stack
-    PRINTF64 `%d \n\x0`, rax  ; 15
+    pop rax                  ; retrieve the value of the rax register from the stack
+    PRINTF64 `%d\n\x0`, rax  ; prints 15
+
+    leave
+    ret
 ```
 
-1. By directly accessing the memory with the help of a special register in which the top of the stack is held - `rsp` also known as the "stack pointer register".
+2. By directly accessing the memory with the help of a special register in which the top of the stack is held - `rsp` also known as the "stack pointer register".
 
 ```assembly
-%include "io.asm"
+%include "printf64.asm"
 
 section .text
-global CMAIN
-CMAIN:
+
+extern printf
+global main
+main:
+    push rbp
+    mov rbp, rsp
+
     mov rax, 7
     mov rbx, 8
     add rax, rbx
-    sub rsp, 8           ; reserve 8 bytes on the stack
-    mov [rsp], rax       ; move the contents of the rax register to the new address pointed to by rsp
+    sub rsp, 8              ; reserve 8 bytes on the stack
+    mov [rsp], rax          ; move the contents of the rax register to the new address pointed to by rsp
     mov rax, 10
-    PRINTF64 `%d \n\x0`, rax
+    PRINTF64 `%d\n\x0`, rax ; prints 10
 
-    mov rax, [rsp]       ; retrieve the value from the stack
-    add rsp, 8           ; restore the value of the rsp register
-    PRINTF64 `%d \n\x0`, rax
+    mov rax, [rsp]          ; retrieve the value from the stack
+    add rsp, 8              ; restore the value of the rsp register
+    PRINTF64 `%d\n\x0`, rax ; prints 15
+
+    leave
+    ret
 ```
 
 > **IMPORTANT:** Comment out the instructions `sub rsp, 8` and `add rsp, 8`.
@@ -153,9 +168,16 @@ Given that the stack is used for function calls, it is very important that when 
 1. In situations where we perform N `push`-es and reach the end of the function without doing a `pop` for any of the values, we can restore the stack pointer using the `add` instruction.
 
 ```assembly
+%include "printf64.asm"
+
 section .text
-global CMAIN
-CMAIN:
+
+extern printf
+global main
+main:
+    push rbp
+    mov rbp, rsp
+
     mov rax, 5
     mov rbx, 6
     mov rcx, 7
@@ -165,6 +187,8 @@ CMAIN:
     push rcx
 
     add rsp, 24     ; equivalent to using 3 consecutive pop-s
+
+    leave
     ret
 ```
 
@@ -172,10 +196,14 @@ CMAIN:
 This allows us to easily restore the stack pointer value at the end of the function, without having to keep track of the number of `push` operations performed.
 
 ```assembly
-section .text
-global CMAIN
-CMAIN:
+%include "printf64.asm"
 
+section .text
+
+extern printf
+global main
+main:
+    push rbp
     mov rbp, rsp       ; save current stack pointer value in rbp
 
     mov rax, 5
@@ -187,6 +215,7 @@ CMAIN:
     push rcx
 
     mov rsp, rbp       ; restore stack pointer value
+    pop rbp
     ret
 ```
 
@@ -194,4 +223,6 @@ CMAIN:
 
 As we can observe, the `rbp` register defines the stack frame for each function.
 Similarly to how we can address local variables using the `rsp` register, we can do the same with `rbp`.
-Additionally, we will see that, on 32-bit systems, function parameters are addressed using its 32-bit equivalent, `ebp`.
+
+> **NOTE:** For historical context, on 32-bit x86 systems, function parameters are passed on the stack and addressed using the 32-bit equivalent of `rbp`, which is `ebp`.
+> In contrast, 64-bit x86-64 systems pass the first six arguments in registers (`rdi`, `rsi`, `rdx`, `rcx`, `r8`, `r9` - in order), with any additional arguments passed on the stack.
