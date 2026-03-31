@@ -13,6 +13,7 @@ main:
     mov al, 0xFF
     PRINTF64 `the Carry Flag is not active\n\x0`
     test al, al
+    add al, 1
     ;TODO: activate the Carry Flag
 
     jc carry_flag

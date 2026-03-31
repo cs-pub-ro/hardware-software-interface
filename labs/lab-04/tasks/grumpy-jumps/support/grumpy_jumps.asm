@@ -14,8 +14,8 @@ main:
     push rbp
     mov rbp, rsp
 
-    mov rax, 0xdeadc0de         ; TODO3.1: modify rax register
-    mov rbx, 0x1337ca5e         ; TODO3.1: modify rbx register
+    mov rax, 0x1         ; TODO3.1: modify rax register
+    mov rbx, 0x4         ; TODO3.1: modify rbx register
     mov rcx, 0x5                ; hardcoded; DO NOT change
     cmp rax, rbx
     jns bad
