@@ -14,15 +14,15 @@ main:
     push rbp
     mov rbp, rsp
 
-    mov rax, 0xdeadc0de         ; TODO3.1: modify rax register
-    mov rbx, 0x1337ca5e         ; TODO3.1: modify rbx register
+    mov rax, 0x2        ; TODO3.1: modify rax register
+    mov rbx, 0x3        ; TODO3.1: modify rbx register
     mov rcx, 0x5                ; hardcoded; DO NOT change
-    cmp rax, rbx
+    cmp rax, rbx        ; rax < rbx
     jns bad
-    cmp rcx, rbx
+    cmp rcx, rbx        ; rbx < rcx
     jb bad
-    add rax, rbx
-    xor rax, rcx
+    add rax, rbx        
+    xor rax, rcx        ; rax + rbx = rcx
     jnz bad
 
 good:
