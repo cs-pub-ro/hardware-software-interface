@@ -8,7 +8,9 @@
 
 int main(void)
 {
-	/* TODO: Test functions */
+	char *s = "aac";
+ 	printf("length = %d\n", my_strlen(s));
+	equality_check(s);
 
 	return 0;
 }

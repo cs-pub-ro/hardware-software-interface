@@ -8,7 +8,9 @@
 
 int main(void)
 {
-	/* TODO: Test function */
+	char test[] = "LoremIpsum";
+	mirror(test);
+	printf("%s", test);
 
 	return 0;
 }
