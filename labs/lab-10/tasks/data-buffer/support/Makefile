@@ -5,9 +5,9 @@ RM = rm
 SRCS := $(shell find . -name "*.asm")
 OBJS := $(SRCS:.asm=.o)
 
-ASFLAGS ?= -f elf32 -F dwarf
+ASFLAGS ?= -f elf64 -F dwarf
 CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+LDFLAGS ?= -no-pie
 
 TARGET_EXEC = data_buffer
 
@@ -20,4 +20,4 @@ $(OBJS): $(SRCS)
 .PHONY: clean
 
 clean:
-	$(RM) -r *.o $(TARGET_EXEC)
+	$(RM) -f *.o $(TARGET_EXEC)

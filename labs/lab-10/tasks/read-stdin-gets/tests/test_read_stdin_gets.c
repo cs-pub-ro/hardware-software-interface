@@ -16,11 +16,11 @@ static int test(void)
 		return 0;
 
 	char buffer[512];
-	int found = 1;
+	int found = 0;
 
 	while (fgets(buffer, sizeof(buffer), pipe))
-		if (strstr(buffer, "CAFEBABE") != NULL)
-			found = 0;
+		if (strstr(buffer, "var is 0x574F4C46") != NULL)
+			found = 1;
 
 	return found;
 }

@@ -5,9 +5,9 @@ RM = rm
 SRCS := $(shell find . -name "*.asm")
 OBJS := $(SRCS:.asm=.o)
 
-ASFLAGS ?= -f elf32 -F dwarf
-CFLAGS ?= -Wall
-LDFLAGS ?= -m32 -no-pie
+ASFLAGS ?= -f elf64 -F dwarf
+CFLAGS ?= -g -Wall
+LDFLAGS ?= -no-pie
 
 TARGET_EXEC = read_stdin
 

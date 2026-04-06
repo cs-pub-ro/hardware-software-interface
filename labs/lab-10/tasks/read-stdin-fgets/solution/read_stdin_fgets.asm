@@ -4,11 +4,12 @@
 ; Fill buffer with data from standard input.
 ; Buffer is stored on the stack.
 
+extern stdin
 extern printf
 extern puts
 extern strlen
 extern fgets
-extern stdin
+
 
 section .data
     read_message: db "insert buffer string: ", 0
@@ -22,24 +23,25 @@ section .text
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; Make room for local variable (32 bit, 4 bytes).
-    ; Variable address is at ebp - 4.
-    sub esp, 4
+    ; Variable address is at rbp - 4.
+    sub rsp, 4
 
     ; Make room for buffer (64 bytes).
-    ; Buffer address is at ebp - 68.
-    sub esp, 64
+    ; Buffer address is at rbp - 68.
+    sub rsp, 64
 
     ; Initialize local variable.
-    mov dword [ebp - 4], 0xCAFEBABE
+    mov dword [rbp - 4], 0xCAFEBABE
 
     ; Read buffer from standard input.
-    push read_message
+    xor rax, rax            ; rax has to be cleared before calling
+                            ; variadic functions
+    mov rdi, read_message
     call printf
-    add esp, 4
 
     ; The buffer has only 64 bytes of memory allocated
     ; The last one is for null terminator
@@ -47,54 +49,52 @@ main:
     ; There can still be a full overflow of local var
     ; I suggest observing the code with 68 instead
     ; as well.
-    lea ebx, [ebp-68]
-    push dword [stdin]
-    push 69
-    push ebx
+    lea rdi, [rbp - 68]
+    mov rsi, 69
+    mov rdx, [stdin]
     call fgets
-    add esp, 12
 
     ; Push string length on the stack.
-    ; String length is stored at ebp - 72.
-    push ebx
+    ; String length is stored at rbp - 76.
+    lea rdi, [rbp - 68]
     call strlen
-    add esp, 4
-    push eax
+    push rax        ; string len at [rbp - 76]
 
     ; Text before printing buffer.
-    push buffer_intro_message
+    xor rax, rax            ; rax has to be cleared before calling
+                            ; variadic functions
+    mov rdi, buffer_intro_message
     call printf
-    add esp, 4
 
-    xor ecx, ecx
+    xor rcx, rcx
 print_byte:
-    xor eax, eax
-    lea ebx, [ebp - 68]
-    mov al, byte[ebx + ecx]
-    push ecx	; save ecx
+    xor rax, rax
+    lea rbx, [rbp - 68]
+    mov al, byte[rbx + rcx]
+    push rcx	; save rcx, printf may modify it
 
     ; Print current byte.
-    push eax
-    push eax
-    push byte_format
+    mov rdi, byte_format
+    mov rsi, rax
+    mov rdx, rax
+    xor rax, rax        ; rax has to be cleared before calling
+                        ; variadic functions
     call printf
-    add esp, 12
 
-    pop ecx	; restore ecx
-    inc ecx
-    cmp ecx, [ebp - 72]
+    pop rcx	; restore rcx
+    inc rcx
+    cmp rcx, [rbp - 76]
     jl print_byte
 
-    push null_string
+    mov rdi, null_string
     call puts
-    add esp, 4
 
     ; Print local variable.
-    mov eax, [ebp - 4]
-    push eax
-    push var_message_and_format
+    xor rax, rax        ; rax has to be cleared before calling
+                        ; variadic functions
+    mov rdi, var_message_and_format
+    mov rsi, [rbp - 4]
     call printf
-    add esp, 8
 
     leave
     ret

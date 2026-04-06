@@ -6,23 +6,26 @@
 
 static void win(void)
 {
-	puts("Great success!");
+	puts("VICTORY!!!");
 }
 
 static void fail(void)
 {
-	puts("Epic failure!");
+	puts("defeat!");
 }
 
 static void check_string(const char *str)
 {
-	unsigned int flag = 0x12345678;
+	unsigned int padding_ignoreme = 0x43484154;
+	unsigned int flag = 0xCAFEBABE;
 	char buffer[32];
 
 	strcpy(buffer, str);
-	buffer[15] = str[1];
 
-	if (flag == 0x4e305250)
+	// to keep variable from getting ignored by compiler
+	padding_ignoreme++;
+
+	if (flag == 0x35545047)  // 47 50 54 35 = G P T 5
 		win();
 	else
 		fail();
