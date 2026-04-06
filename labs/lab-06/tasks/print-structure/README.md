@@ -5,6 +5,8 @@ parent: Lab 6 - Structures, Vectors and Strings
 
 # Task: Modifying a Structure
 
+You will solve the exercises starting from the `print_structure.asm` file located in the `tasks/print-structure/support` directory.
+
 Write code within the `main` function to modify the fields of the `sample_student` structure so that:
 
 - the birth year is `1993`

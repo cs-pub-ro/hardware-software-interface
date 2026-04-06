@@ -5,7 +5,7 @@ parent: Lab 6 - Structures, Vectors and Strings
 
 # Task: Fibonacci Sum
 
-You will solve the exercises starting from the `fibo_sum.asm` file located in the `tasks/fibonacci` directory.
+You will solve the exercises starting from the `fibo_sum.asm` file located in the `tasks/fibonacci/support` directory.
 Starting from the `fibo_sum.asm` file, implement a program that calculates the sum of the first N numbers in the Fibonacci sequence using the `loop` instruction.
 The sum of the first 9 numbers is 54.
 

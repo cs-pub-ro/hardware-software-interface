@@ -5,7 +5,7 @@ parent: Lab 6 - Structures, Vectors and Strings
 
 # Task: Mul-arrays
 
-You will solve the exercises starting from the `mul_arrays.asm` file located in the `tasks/mul-arrays` directory.
+You will solve the exercises starting from the `mul_arrays.asm` file located in the `tasks/mul-arrays/support` directory.
 Write the Assembly instructions through which, for each pair of one-byte elements with identical indexes from `array1` and `array2`, their product is saved in `array3`.
 Then print `array3`.
 

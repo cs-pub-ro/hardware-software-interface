@@ -5,6 +5,8 @@ parent: Lab 6 - Structures, Vectors and Strings
 
 # Task: Getter-Setter
 
+You will solve the exercises starting from the `getter_setter_printf.asm` file located in the `tasks/getters-setters` directory.
+
 Write in the `getter_setter_printf.asm` file the instructions needed to display the values of the `int_x`, `char_y`, and `string_s` fields from the `sample_obj` object.
 
 The program's output after a correct solution should be:

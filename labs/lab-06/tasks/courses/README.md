@@ -5,7 +5,7 @@ parent: Lab 6 - Structures, Vectors and Strings
 
 # Task: Courses
 
-You will solve the exercises starting from the `courses.asm` file located in the `tasks/courses` directory.
+You will solve the exercises starting from the `courses.asm` file located in the `tasks/courses/support` directory.
 Fill in the instructions to display the course in which each student is enrolled.
 We will assume that each student is enrolled in at most one course.
 
