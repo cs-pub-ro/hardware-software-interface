@@ -84,7 +84,7 @@ main:
     ret
 ```
 
-2. By directly accessing the memory with the help of a special register in which the top of the stack is held - `rsp` also known as the "stack pointer register".
+1. By directly accessing the memory with the help of a special register in which the top of the stack is held - `rsp` also known as the "stack pointer register".
 
 ```assembly
 %include "printf64.asm"

@@ -20,11 +20,11 @@ test_reverse_array()
     ./"$binary" > "$out" 2>&1
     ./"$ref_binary" > "$ref" 2>&1
 
-    if grep -q "mov.*input" "${binary}.asm"; then
+    if sed 's/;.*//' "${binary}.asm" | grep -q "mov.*input"; then
         exit 1
     fi
-    if grep -q "push.*input" "${binary}.asm" &&
-       grep -q "pop.*output" "${binary}.asm"; then
+    if sed 's/;.*//' "${binary}.asm" | grep -q "push.*input" &&
+       sed 's/;.*//' "${binary}.asm" | grep -q "pop.*output"; then
         if diff -q "$out" "$ref"; then
             exit 0
         else

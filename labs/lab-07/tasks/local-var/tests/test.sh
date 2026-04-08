@@ -20,8 +20,8 @@ test_local_var()
     ./"$binary" > "$out" 2>&1
     ./"$ref_binary" > "$ref" 2>&1
 
-    if grep -q "sub rsp, .*" "${binary}.asm" &&
-       grep -q "mov .*, [rsp]" "${binary}.asm"; then
+    if sed 's/;.*//' "${binary}.asm" | grep -q "sub rsp, .*" &&
+       sed 's/;.*//' "${binary}.asm" | grep -q -E 'mov .*\[ *[er]sp.*\]'; then
         if diff -q "$out" "$ref"; then
             exit 0
         else

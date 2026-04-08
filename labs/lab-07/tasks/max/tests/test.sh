@@ -22,8 +22,8 @@ test_max()
 
     if grep -q -E 'cmp rax, rbx|cmp rbx, rax' "${binary}.asm" &&
        grep -q -E 'jl|jg|jb|ja|jle|jge|jbe|jae' "${binary}.asm" &&
-       grep -q -E 'push' "${binary}.asm" &&
-       grep -q -E 'pop' "${binary}.asm"; then
+       sed 's/;.*//' "${binary}.asm" | grep -q -E 'push' &&
+       sed 's/;.*//' "${binary}.asm" | grep -q -E 'pop'; then
         if diff -q "$out" "$ref"; then
             exit 0
         else
