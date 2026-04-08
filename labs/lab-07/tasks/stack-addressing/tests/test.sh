@@ -17,7 +17,7 @@ test_stack_addressing()
 
     ./"$binary" > "$out" 2>&1
 
-    if grep -q "push .*" "${binary}.asm"; then
+    if sed 's/;.*//' "${binary}.asm" | grep -q "push .*"; then
         exit 1
     fi
     awk '
