@@ -16,7 +16,7 @@ else
 fi
 
 sum=$(echo "$OUTPUT1" | grep "Sum" | awk '{print $2}' | tr -d '():')
-sum_squares=$(echo "$OUTPUT2" | grep "Sum" | awk '{print $4}' | tr -d '():')
+sum_squares=$(echo "$OUTPUT2" | grep "Sum" | awk '{print $2}' | tr -d '():')
 
 test_sum() {
 	if [[ -z $sum ]]; then
