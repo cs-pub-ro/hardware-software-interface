@@ -5,33 +5,46 @@ section .text
 global get_max
 
 
-; RDI = array pointer
-; RSI = array length
-; RDX = pos pointer
+; EDI = array pointer
+; ESI = array length
+; EDX = pos pointer
 get_max:
-    push rbp
-    mov  rbp, rsp
+    push ebp
+    mov  ebp, esp
+
+    ; save registers
+    push edi
+    push esi
+
+    mov edi, [ebp + 8]
+    mov esi, [ebp + 12]
+    mov edx, [ebp + 16]
+
 
     ; initialize EAX with the first value as currently known maximum
-    mov eax, [rdi]
-    mov dword [rdx], 0
+    mov eax, [edi]
+    mov dword [edx], 0
 
-    ; initialize RCX as loop counter for remaining elements
-    mov rcx, rsi
-    dec rcx
+    ; initialize ECX as loop counter for remaining elements
+    mov ecx, esi
+    dec ecx
 
     ; loop over remaining array elements
 compare:
-    cmp eax, [rdi + 4*rcx]
+    cmp eax, [edi + 4*ecx]
     jae check_end
 
     ; update maximum and its position
-    mov eax, [rdi + 4*rcx]
-    mov [rdx], ecx
+    mov eax, [edi + 4*ecx]
+    mov [edx], ecx
 check_end:
     loop compare
 
-    ; result stored in RAX
+    ; result stored in EAX
+
+    ; restore registers
+    pop esi
+    pop edi
 
     leave
     ret

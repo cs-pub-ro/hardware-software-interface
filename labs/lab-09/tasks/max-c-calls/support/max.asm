@@ -5,25 +5,36 @@ section .text
 global get_max
 
 
-; RDI = array pointer
-; RSI = array lengthget_max
+; EDI = array pointer
+; ESI = array length
 get_max:
-    push rbp
-    mov  rbp, rsp
+    push ebp
+    mov  ebp, esp
+
+    ; save registers
+    push edi
+    push esi
+
+    mov edi, [ebp + 8]
+    mov esi, [ebp + 12]
 
     ; initialize EAX with the first value as currently known maximum
-    mov eax, [rdi]
+    mov eax, [edi]
 
-    ; initialize RCX as loop counter for remaining elements
-    mov rcx, rsi
-    dec rcx
+    ; initialize ECX as loop counter for remaining elements
+    mov ecx, esi
+    dec ecx
 
 compare:
-    cmp eax, [rdi + 4*rcx]
-    jae check_end              ; <-- Keep the unsigned fix here!
-    mov eax, [rdi + 4*rcx]
+    cmp eax, [edi + 4*ecx]
+    jae check_end
+    mov eax, [edi + 4*ecx]
 check_end:
     loop compare
+
+    ; restore registers
+    pop esi
+    pop edi
 
     leave
     ret

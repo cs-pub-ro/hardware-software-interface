@@ -53,7 +53,6 @@ main:
     call printf
 
     pop rbp
-    xor rax, rax
     ret
 ```
 
