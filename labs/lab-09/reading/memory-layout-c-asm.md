@@ -44,16 +44,16 @@ section .text
 global main
 
 main:
-        push rbp
-        mov rbp, rsp
+	push rbp
+	mov rbp, rsp
 
-        mov rdi, strformat
-        mov rsi, text
-        xor rax, rax
-        call printf
+	mov rdi, strformat
+	mov rsi, text
+	xor rax, rax
+	call printf
 
-        leave
-        ret
+	leave
+	ret
 ```
 
 Note that the procedure is declared as global and is called `main` - the starting point of any C program.
