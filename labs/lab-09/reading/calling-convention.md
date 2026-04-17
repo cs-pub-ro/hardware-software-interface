@@ -49,10 +49,10 @@ main:
 
     mov rdi, fmt
     mov rsi, text
+    xor rax, rax
     call printf
 
     pop rbp
-    xor rax, rax
     ret
 ```
 

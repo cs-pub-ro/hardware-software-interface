@@ -40,14 +40,20 @@ section .data
 text db "291 is the best!", 10, 0
 strformat db "%s", 0
 
-section .code
+section .text
+global main
 
 main:
-        push dword text
-        push dword strformat
-        call printf
-        add esp, 8
-        ret
+	push rbp
+	mov rbp, rsp
+
+	mov rdi, strformat
+	mov rsi, text
+	xor rax, rax
+	call printf
+
+	leave
+	ret
 ```
 
 Note that the procedure is declared as global and is called `main` - the starting point of any C program.
