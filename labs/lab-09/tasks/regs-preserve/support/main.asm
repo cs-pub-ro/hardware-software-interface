@@ -27,7 +27,8 @@ print_reverse_array:
     mov rcx, rsi
 
 next:
-    ; TODO1: uncomment the following two lines
+    ; TODO1: uncomment push rcx and pop rcx.
+    ; Note: pushing rcx also aligns the stack to 16 bytes for printf.
     ; push rcx
     xor rax, rax
     mov esi, [rbx + 4*rcx - 4]
@@ -36,12 +37,10 @@ next:
     ; pop rcx
     loop next
 
-    sub rsp, 8
     xor rax, rax
     mov rdi, newline
     call printf
 
-    add rsp, 8
 
     ; restore preserved register
     pop rbx
