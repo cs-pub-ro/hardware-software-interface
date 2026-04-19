@@ -16,51 +16,47 @@ section .data
     null_string: db 0
 
 section .text
-
 global main
 
 main:
-    push ebp
-    mov ebp, esp
+    push rbp
+    mov rbp, rsp
 
     ; Fill data in buffer: buffer[i] = i + 1
     ; ecx is buffer index (i), dl is buffer value (i + 1). dl needs to be ecx + 1.
     ; Buffer length is 64 bytes.
-    xor ecx, ecx
+    xor rcx, rcx
 fill_byte:
     mov dl, cl
     inc dl
-    mov byte [buffer + ecx], dl
-    inc ecx
-    cmp ecx, len
+    mov byte [buffer + rcx], dl
+    inc rcx
+    cmp rcx, len
     jl fill_byte
 
-    ; Text before printing buffer.
-    push buffer_intro_message
+    ; printf("buffer is:");
+    xor rax, rax                    ; required for variadic functions
+    mov rdi, buffer_intro_message   ; 1st arg
     call printf
-    add esp, 4
 
-    xor ecx, ecx
+    xor rcx, rcx
 print_byte:
-    xor eax, eax
-    mov al, byte[buffer + ecx]
-    push ecx	; save ecx, printf may change it
+    mov rdi, byte_format            ; 1st arg (format)
+    xor rsi, rsi                    ; clear rsi
+    mov sil, byte [buffer + rcx]    ; 2nd arg (value)
+    xor rax, rax                    ; variadic call requirement
 
-    ; Print current byte.
-    push eax
-    push byte_format
+    push rcx                        ; save rcx (caller-saved)
     call printf
-    add esp, 8
+    pop rcx                         ; restore rcx
 
-    pop ecx	; restore ecx
-    inc ecx
-    cmp ecx, len
+    inc rcx
+    cmp rcx, len
     jl print_byte
 
     ; Print new line. C equivalent instruction is puts("").
-    push null_string
+    mov rdi, null_string
     call puts
-    add esp, 4
 
     leave
     ret

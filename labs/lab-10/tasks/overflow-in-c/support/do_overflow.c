@@ -8,7 +8,7 @@
 int main(void)
 {
 	unsigned int sexy_var = 0xFEEDFACE;
-	unsigned char in_between[5];
+	unsigned char in_between[25];
 	char buffer[64];
 	size_t i, len;
 

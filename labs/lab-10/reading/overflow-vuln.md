@@ -23,7 +23,7 @@ This can be achieved by overwriting the return address, using a system call thro
 
 There are many ways to protect an executable from these types of attacks, most of which you will study in detail in the OS course next year.
 A good practice against this type of attack is to avoid using insecure functions, such as those mentioned above.
-More details on best practices against buffer overflow attacks can be found [here](https://security.web.cern.ch/recommendations/en/codetools/c.shtml).
+More details on best practices against buffer overflow attacks can be found [by reading this](https://security.web.cern.ch/recommendations/en/codetools/c.shtml).
 
 Often, best practices prove to be insufficient in the "battle" against hackers, which is why several executable protection mechanisms have been invented by manipulating the code and its position within the executable (*Position Independent Code* - [PIC](https://en.wikipedia.org/wiki/Position-independent_code)), through address randomization (*Address Space Layout Randomization* - [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization)), or by introducing additional checks in the code to detect potential attacks.
 
@@ -32,4 +32,4 @@ These values are generated and placed within the executable by the compiler and 
 When an attacker tries to overwrite the return address, they will also overwrite the canary value, and before exiting the current function call, it will be checked whether that value has been modified or not.
 If it has been modified, it means that a buffer overflow has occurred, and the program execution will be interrupted.
 
-This mechanism is called **Stack Smashing Protection** or **Stack Guard**. More details about Stack Guard and buffer overflow attacks can be found [here](https://en.wikipedia.org/wiki/Buffer_overflow).
+This mechanism is called **Stack Smashing Protection** or **Stack Guard**. More details about Stack Guard and buffer overflow attacks can be found [by reading this](https://en.wikipedia.org/wiki/Buffer_overflow).

@@ -8,6 +8,7 @@
 
 void magic_function(void)
 {
+	puts("I'm here friend!!! Hi Mom!!!");
 	system("cowsay -f tux 'Good job there, my friend'");
 }
 
@@ -29,8 +30,8 @@ char read_buffer(void)
 	printf("\nn is %x\n", n);
 	printf("buffer is: ");
 	len = strlen(buffer);
-	for (i = 0; i < len + 2; i++)
-		printf(" %02X(%c)", buffer[i], buffer[i]);
+	for (i = 0; i < len + 8; i++)
+		printf(" %02X(%c)", (unsigned char)buffer[i], buffer[i]);
 	puts("");
 
 	printf("stack variable: %X\n", disorienting_var);

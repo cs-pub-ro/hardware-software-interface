@@ -43,7 +43,7 @@ static int test_part2(void)
 		token = strtok_r(NULL, " ", &save_ptr);
 	}
 
-	if (num_bytes != 76)
+	if (num_bytes != 84)
 		return 0;
 
 	if (!strcmp(bytes[67], "DE") && !strcmp(bytes[66], "AD"))

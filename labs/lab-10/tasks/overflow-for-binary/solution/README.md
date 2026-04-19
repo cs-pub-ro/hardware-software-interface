@@ -11,7 +11,7 @@ parent: 'Task: Buffer Overflow for Binary'
 
 In `check_string()`:
 
-- `local_10` must be set to `0x4E305250` to call `win()` (carefully, use the little-endian encoding)
-- `local_10` is stored at stack - `0x10`
-- The buffer is stored at `stack - 0x30`
-- So the payload should consist of `32 (48 - 16)` `'A'` characters, followed by `"\x50\x52\x30\x4E"`
+- `local_10` must be set to `0x52413342494c3056` to call `win()` (carefully, use the little-endian encoding)
+- `local_10` is stored at `stack - 0x10` (sau `stack - 0x8` ?)
+- The buffer is stored at `stack - 0x30` (sau `stack - 0x28` ?)
+- So the payload should consist of `32 (48 - 16)` `'A'` characters, followed by `"\x50\x52\x30\x4E"`    <-- change this

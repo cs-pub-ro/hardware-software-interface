@@ -5,7 +5,7 @@
 source ./graded_test.inc.sh
 
 test_exploit() {
-	if ( cd ../support && python3 exploit.py | grep -q "Great success!" ); then
+	if ( cd ../support && python3 exploit.py | grep -q VICTORY!!! ); then
 		return 1
 	else
 		return 0

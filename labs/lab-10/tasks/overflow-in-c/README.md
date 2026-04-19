@@ -14,7 +14,14 @@ There we need to see what buffers are and what is the distance from the buffer t
 ## Overwrite Variable Using a Buffer
 
 For the current exercise, access the `tasks/overflow-in-c/support/` directory from the lab resource archive and observe the corresponding C source code.
-For the case where you do not want to compile the code yourself, you have in the archive the equivalent assembly language file and the executable file.
+
+Compile the code using `make` inside of `support/` folder.
+
+```Makefile
+make
+```
+
+This will create the `do_overflow.asm`, `do_overflow.o` and `do_overflow` files.
 
 Discover the difference between the buffer's address and the variable's address, create an input file (also called `payload`) with which to trigger the overflow and make it so that the message *Full of win* is displayed.
 
@@ -22,9 +29,9 @@ It is recommended to first take a look at the assembly file, then understand the
 
 > **HINT** To see the "real-world" reality, i.e., to find out what the difference is between the buffer and the variable we want to overwrite,
 > consult the equivalent assembly language file (`do_overflow.asm`), obtained by assembling the C code.
-> In this file, you can find the relative address of the buffer to `ebp` and the variable to `ebp`;
-> follow the sequence between lines `36` and `47`;
-> you have a mapping between the variable name and the relative offset to `ebp`.
+> In this file, you can find the relative address of the buffer to `rbp` and the variable to `rbp`;
+> follow the sequence between lines `28` and `38`;
+> you have a mapping between the variable name and the relative offset to `rbp`.
 > With this information, you can create the string to transmit as a payload to the standard input of the program.
 > **NOTE** If you want to recompile the files run:
 
@@ -81,6 +88,7 @@ What has changed?
 
 > **NOTE** The compiler introduced a randomly generated value called a **canary** onto the stack, which it checks before exiting the current function's execution.
 > Through buffer overflow, this canary was overwritten upon exceeding the buffer's size, resulting in a mismatch between the initial canary value and the one at the end of the function execution.
+> You will see the compiler might also decide to move the local variables around (place the buffer before the int).
 
 Recompile the files and run:
 

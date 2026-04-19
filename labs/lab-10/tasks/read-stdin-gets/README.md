@@ -37,17 +37,17 @@ This is a string that occupies `8` bytes.
 > You must write the ASCII representation of the number `0x574F4C46`, which is `FLOW`:
 > `0x57` is `W`, `0x4F` is `O`, `0x4C` is `L`, and `0x46` is `F`.
 > **HINT** x86 is a **little endian** architecture.
-> That means the string `"FLOW"`, having the character-ASCII code correspondence. If it seems unclear, check out this [link](https://www.geeksforgeeks.org/little-and-big-endian-mystery/)
+> That means the string `"FLOW"`, having the character-ASCII code correspondence. If it seems unclear, check out this [reading](https://www.geeksforgeeks.org/little-and-big-endian-mystery/)
 > `F`: `0x46`, `L`: `0x4C`, `O`: `0x4F`, `W`: `0x57` will be stored in memory on `4` bytes as `0x574F4C46`.
 > So at the bigger address we will have `W`, while at the lower address there will be `F`.
 > **HINT** To transmit the input string, it is recommended to write it in a file and then redirect that file to the corresponding program command.
-> You can use an editor such as `gedit` or `vim` to edit the file.
+> You can use an editor such as `nano` or `vim` to edit the file.
 > The advantage is that they also display the column you are on, and you can know how many characters you have written in the file.
 > Alternatively, you can use python to more easily generate your payload.
 > For example, to generate a payload that overwrites a value in the code with the value `0xDEADBEEF`, you can execute the following command:
 
 ```python
-python2.7 -c 'print "A" * 32 + "\xEF\xBE\xAD\xDE"' > payload
+python3 -c 'print ("A" * 32 + "\x4c\x4f\x56\x45")' > payload
 ```
 
 > **NOTE** number `32` is only an example and it represents the size of buffer that needs to be bypassed.

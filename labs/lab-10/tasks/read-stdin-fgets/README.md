@@ -20,16 +20,14 @@ You will need to mark it as external using, at the beginning of the assembly lan
 > ```
 
 `stdin` is an address; to call `fgets()` with standard input,
-it is sufficient to pass on the stack the value from the `stdin` address, i.e., using the construction:
+it is sufficient to pass to rdi the value from the `stdin` address, i.e., using the construction:
 
 ```Assembly
-push dword [stdin]
+mov rdi, [stdin]
 ```
 
 > **HINT** Follow the manual page of the [`fgets()`](https://man7.org/linux/man-pages/man3/fgets.3.html) function to find out what parameters it receives.
-> **TIP** Since the `fgets()` function has 3 parameters (which occupy `3 × 4 = 12` bytes) you will need to use `add esp, 12` after the function call,
-> in restoring the stack, instead of `add esp, 4` as in the case of the program above that used `gets()`.
-> **IMPORTANT** Do not modify the assembly language code. Transmit the input string in the appropriate format to the standard input
+> **IMPORTANT** Do not modify the assembly language code (after completing TODO 1). Transmit the input string in the appropriate format to the standard input
 > to generate a buffer overflow and to obtain the required result.
 
 Follow **TODO 2** in code and call *fgets()* instead of gets, but keep in mind that you will have to push a value big enough for the buffer size in order to produce an overflow.
@@ -41,6 +39,12 @@ The result should be the same like in the *read_stdin_gets* task.
 
 ```Bash
 ./read_stdin_fgets < payload
+```
+
+If done correctly, you will see:
+
+```Bash
+var is 0x574F4C46
 ```
 
 What happens if you push *buffer_length - 1*, instead of *buffer_length*.
