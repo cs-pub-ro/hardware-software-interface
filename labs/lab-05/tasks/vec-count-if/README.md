@@ -34,7 +34,7 @@ For negative numbers, sign extension should be performed; it would work without 
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/vec-count-if/tests$ make check
 ```
 
 In order to get the points, you should have a single line of output with

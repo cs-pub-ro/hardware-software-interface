@@ -25,7 +25,7 @@ Do not modify the structure in the `.data` section, you need to use code to modi
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/print-structure/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

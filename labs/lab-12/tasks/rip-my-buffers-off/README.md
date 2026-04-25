@@ -16,7 +16,7 @@ The `rip-my-buffers-off/support/buff-ovf2` binary does not use the `get_flag()` 
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/rip-my-buffers-off/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

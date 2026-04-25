@@ -45,7 +45,7 @@ Perform the union of the two sets.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/sets/tests$ ./run_all_tests.sh
 
 test_reunion                     ........................ passed ...  10
 test_add_value_in_first_set      ........................ passed ...  20

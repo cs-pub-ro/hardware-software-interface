@@ -25,7 +25,7 @@ The `mirror` function should perform an **in-place** reversal of the characters 
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/mirror/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

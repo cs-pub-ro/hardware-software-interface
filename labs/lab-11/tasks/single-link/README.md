@@ -39,13 +39,13 @@ Copy the `Makefile` files and update them in each subdirectory to obtain the exe
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/single-link/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/single-link/tests$ ./run_all_tests.sh
 
 test_a-dynamic                   ........................ passed ...  100
 test_b-static                    ........................ passed ...  100

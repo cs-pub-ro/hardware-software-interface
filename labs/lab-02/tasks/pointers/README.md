@@ -12,7 +12,7 @@ Implement the functions [`memcpy()`](http://www.cplusplus.com/reference/cstring/
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/pointers/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

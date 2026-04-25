@@ -11,13 +11,13 @@ Run the `make` command, interpret the encountered error, and resolve it by editi
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/entry-fix-2/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/entry-fix-2/tests$ ./run_all_tests.sh
 
 test_EntryFix2                   ........................ passed ...  100
 

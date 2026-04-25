@@ -25,7 +25,7 @@ Implement left and right rotations for 32-bit integers in C.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/rotations/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:
