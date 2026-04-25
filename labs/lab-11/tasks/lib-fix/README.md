@@ -12,13 +12,13 @@ Refer to the `Makefile` in the directory `tasks/multiple-link/support/example/c-
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/lib-fix/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/lib-fix/tests$ ./run_all_tests.sh
 
 test_library_issue               ........................ passed ...  100
 

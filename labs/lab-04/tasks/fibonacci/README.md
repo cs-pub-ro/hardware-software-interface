@@ -18,7 +18,7 @@ Calculate the Nth Fibonacci number, where N is given through the `rcx` register.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/fibonacci/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

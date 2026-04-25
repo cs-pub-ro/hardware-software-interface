@@ -81,19 +81,19 @@ After you consider your implementation complete, it is recommended to first run 
 In order to do so, enter the `support/` directory and run:
 
 ```console
-make
+student@hsi:~/.../tasks/print-rev-string/support$ make
 ```
 
 If your code successfully compiled, you can then run the binary like so:
 
 ```console
-./print_reverse_string
+student@hsi:~/.../tasks/print-rev-string/support$ ./print_reverse_string
 ```
 
 To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/print-rev-string/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

@@ -21,7 +21,7 @@ In `pwndbg`, you can use something like `rop --grep "pop rsi"`.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/rop/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

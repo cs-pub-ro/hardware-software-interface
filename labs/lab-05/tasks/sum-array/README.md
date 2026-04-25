@@ -62,7 +62,7 @@ big_qword_array dq 9223372036854775800, 8223372036854775800, 7223372036854775800
 To test the implementation, enter the tests/ directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/sum-array/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

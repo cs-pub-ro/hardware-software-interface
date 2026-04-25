@@ -24,7 +24,7 @@ First use this command to scan the executable:
 We can find the address of the `magic_function()` using this command:
 
 ```console
-student@hsi:/.../overwrite-ret-addr/support$ nm break_this | grep magic_function
+student@hsi:~/.../tasks/overwrite-ret-addr/support$ nm break_this | grep magic_function
 080491d6 T magic_function
 ```
 

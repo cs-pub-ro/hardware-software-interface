@@ -33,14 +33,14 @@ In order to verify your exploit, please complete the `exploit.py` TODOs.
 You can test it using this command:
 
 ```console
-student@hsi:/.../overwrite-ret-addr/support python3 exploit.py | ./break_this
+student@hsi:~/.../tasks/overwrite-ret-addr/support$ python3 exploit.py | ./break_this
 [...]
 ```
 
 Afterwards, navigate to the `tests` directory and run:
 
 ```console
-student@hsi:/.../overwrite-ret-addr/tests make check
+student@hsi:~/.../tasks/overwrite-ret-addr/tests$ make check
 
 test........................................passed
 Total:                                      100/100

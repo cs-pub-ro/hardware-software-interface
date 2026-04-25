@@ -12,7 +12,7 @@ Calculate the minimum of the numbers in 2 registers (`r9` and `r10`) using a com
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/min/tests$ ./run_all_tests.sh
 
 test_use_compare                 ........................ passed ...  10
 test_use_jump                    ........................ passed ...  10

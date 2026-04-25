@@ -12,7 +12,7 @@ The sum of the first 9 numbers is 54.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/fibonacci/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

@@ -20,13 +20,13 @@ These solutions instead modify the build system to use a different function, oth
 **Checker**: To test the implementation, enter the tests/ directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/entry-fix-1/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/entry-fix-1/tests$ ./run_all_tests.sh
 
 test_a-c                         ........................ passed ...  25
 test_b-asm                       ........................ passed ...  25

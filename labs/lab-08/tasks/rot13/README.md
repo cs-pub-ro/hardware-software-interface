@@ -35,19 +35,19 @@ After you consider your implementation complete, it is recommended to first run 
 In order to do so, enter the `support/` directory and run:
 
 ```console
-make
+student@hsi:~/.../tasks/rot13/support$ make
 ```
 
 If your code successfully compiled, you can then run the binary like so:
 
 ```console
-./rot13
+student@hsi:~/.../tasks/rot13/support$ ./rot13
 ```
 
 To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/rot13/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

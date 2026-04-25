@@ -18,7 +18,7 @@ Modify the source so that the wrong message is not displayed anymore.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/grumpy-jumps/tests$ ./run_all_tests.sh
 
 test_display_right               ........................ passed ...  50
 test_display_only_right          ........................ passed ...  50

@@ -19,13 +19,13 @@ Explore the interface and the content of the functions in the `shop.o` file usin
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/obj-link-dev/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/obj-link-dev/tests$ ./run_all_tests.sh
 
 test_linking-object-file         ........................ passed ...  100
 

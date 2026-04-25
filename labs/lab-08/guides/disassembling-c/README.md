@@ -67,7 +67,7 @@ where `<path-to-obj-file>` is the path to the object file `test.o`.
 Afterwards, you'll see an output similar to the following:
 
 ```console
-$ objdump -M intel -d test.o
+student@hsi:~/.../guides/disassembling-c/support$ objdump -M intel -d test.o
 
 test.o:     file format elf64-x86-64
 
