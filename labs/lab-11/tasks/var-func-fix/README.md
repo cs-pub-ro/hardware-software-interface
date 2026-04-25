@@ -11,13 +11,13 @@ Run the `make` command, run the resulted executable, interpret the encountered e
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/var-func-fix/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/var-func-fix/tests$ ./run_all_tests.sh
 
 test_var-func-fix                ........................ passed ...  100
 

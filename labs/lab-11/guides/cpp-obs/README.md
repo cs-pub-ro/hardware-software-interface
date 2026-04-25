@@ -15,10 +15,10 @@ This occurs because C++ symbols are *mangled*.
 If we use the `nm` command on object modules obtained from C source code, we get:
 
 ```console
-$ nm add.o
+student@hsi:~/.../guides/cpp-obs/support$ nm add.o
 0000000000000000 T _Z3addii
 
-$ nm sub.o
+student@hsi:~/.../guides/cpp-obs/support$ nm sub.o
 0000000000000000 T _Z3subii
 ```
 

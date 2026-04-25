@@ -17,7 +17,7 @@ The previously mentioned [online example](https://medium.com/@0x-Singularity/exp
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/feeling-chained/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

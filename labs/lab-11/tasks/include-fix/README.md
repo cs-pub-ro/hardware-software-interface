@@ -15,13 +15,13 @@ Resolve this warning by editing the `hello.c` file.
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/include-fix/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/include-fix/tests$ ./run_all_tests.sh
 
 test_warning                     ........................ passed ...  100
 

@@ -24,7 +24,7 @@ Therefore, the result is stored on two bytes.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/mul-arrays/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

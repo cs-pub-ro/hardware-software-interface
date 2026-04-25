@@ -22,7 +22,7 @@ compare(const void *a, const void *b)
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/find_max/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

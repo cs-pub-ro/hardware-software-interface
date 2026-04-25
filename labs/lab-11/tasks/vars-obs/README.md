@@ -24,13 +24,13 @@ Modify `main.c` such that `hidden_value` is set to 10 and `age` is set to 33.
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/vars-obs/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/vars-obs/tests$ ./run_all_tests.sh
 
 test_vars-obs                    ........................ passed ...  100
 

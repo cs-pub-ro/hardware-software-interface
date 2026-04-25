@@ -28,7 +28,7 @@ The skeleton for the code is in `binary_search/support/binary_search.c`.
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/binary_search/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

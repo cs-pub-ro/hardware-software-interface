@@ -19,19 +19,19 @@ After you consider your implementation complete, it is recommended to first run 
 In order to do so, enter the `support/` directory and run:
 
 ```console
-make
+student@hsi:~/.../tasks/string-print/support$ make
 ```
 
 If your code successfully compiled, you can then run the binary like so:
 
 ```console
-./print_string
+student@hsi:~/.../tasks/string-print/support$ ./print_string
 ```
 
 To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/string-print/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

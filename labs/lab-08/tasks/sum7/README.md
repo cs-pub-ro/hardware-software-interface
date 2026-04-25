@@ -17,19 +17,19 @@ After you consider your implementation complete, it is recommended to first run 
 In order to do so, enter the `support/` directory and run:
 
 ```console
-make
+student@hsi:~/.../tasks/sum7/support$ make
 ```
 
 If your code successfully compiled, you can then run the binary like so:
 
 ```console
-./sum7
+student@hsi:~/.../tasks/sum7/support$ ./sum7
 ```
 
 To fully test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/sum7/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

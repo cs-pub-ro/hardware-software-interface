@@ -26,7 +26,7 @@ Traverse an array of 32-bit integers using pointer operations and display the ev
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/odd-even/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

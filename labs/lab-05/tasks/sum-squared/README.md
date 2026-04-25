@@ -30,7 +30,7 @@ Therefore, you cannot easily use the `rax` register to store the sum of squares.
 To test your implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/sum-squared/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

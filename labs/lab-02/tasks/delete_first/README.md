@@ -21,7 +21,7 @@ Given a string and a pattern, implement the `delete_first(char *s, char *pattern
 To test the implementation, enter the `tests/` directory and run:
 
 ```console
-make check
+student@hsi:~/.../tasks/delete_first/tests$ make check
 ```
 
 In case of a correct solution, you will get an output such as:

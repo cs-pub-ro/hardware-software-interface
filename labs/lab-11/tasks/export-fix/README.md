@@ -12,13 +12,13 @@ In each subdirectory, run the `make` command, identify the issue, and edit the n
 **Checker**: To test the implementation, enter the `tests/` directory and run:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/export-fix/tests$ ./run_all_tests.sh
 ```
 
 In case of a correct solution, you will get this output:
 
 ```console
-./run_all_tests.sh
+student@hsi:~/.../tasks/export-fix/tests$ ./run_all_tests.sh
 
 test_a-func                      ........................ passed ...  30
 test_b-var                       ........................ passed ...  30
