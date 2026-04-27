@@ -1,8 +1,8 @@
 section .data
     mystring db "lorem", 0, "ipsum", 0, "dolor", 0
-    length   dd ($ - mystring)
+    length   dq ($ - mystring)
 
-    after_fmt  db "After:  %s", 10, 0
+    after_fmt  db "After: '%s'", 10, 0
 
 section .text
 extern printf
@@ -15,12 +15,9 @@ main:
 
     mov rax, [length]
 
-    sub rsp, 8          ; align the stack
-    push mystring
     mov rdi, mystring
     mov rsi, rax
     call rot13
-    add rsp, 8
 
     mov rdi, after_fmt
     mov rsi, mystring
