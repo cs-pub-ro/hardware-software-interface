@@ -2,7 +2,7 @@ section .data
     mystring db "lorem", 0, "ipsum", 0, "dolor", 0
     length   dq ($ - mystring)
 
-    after_fmt  db "After:  %s", 10, 0
+    after_fmt  db "After: '%s'", 10, 0
 
 section .text
 extern printf
