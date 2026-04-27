@@ -1,6 +1,6 @@
 section .data
     mystring db "lorem", 0, "ipsum", 0, "dolor", 0
-    length   dd ($ - mystring)
+    length   dq ($ - mystring)
 
     after_fmt  db "After:  %s", 10, 0
 
