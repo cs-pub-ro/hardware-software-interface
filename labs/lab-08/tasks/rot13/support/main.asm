@@ -15,12 +15,9 @@ main:
 
     mov rax, [length]
 
-    sub rsp, 8          ; align the stack
-    push mystring
     mov rdi, mystring
     mov rsi, rax
     call rot13
-    add rsp, 8
 
     mov rdi, after_fmt
     mov rsi, mystring
