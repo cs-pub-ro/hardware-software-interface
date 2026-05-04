@@ -1,6 +1,7 @@
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -m32
 ASM = nasm
-ASMFLAGS = -f elf64 -F dwarf
+ASMFLAGS = -f elf32
+LDFLAGS = -no-pie
 
 .DEFAULT_GOAL: all
 
@@ -9,12 +10,13 @@ ASMFLAGS = -f elf64 -F dwarf
 all: main
 
 main: main.o max.o
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) -m32 $(LDFLAGS) -o $@ $^
+
+main.o: main.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 max.o: max.asm
 	$(ASM) $(ASMFLAGS) -o $@ $<
-
-main.o: main.c
 
 clean:
 	-rm -f main *.o
