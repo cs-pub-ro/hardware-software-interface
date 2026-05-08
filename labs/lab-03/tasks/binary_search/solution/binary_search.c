@@ -15,7 +15,7 @@ int binary_search(int *v, int len, int dest)
 	 */
 loop:
 	if (start > end)
-		return -1;
+		goto not_found;
 
 	middle = (end + start) / 2;
 
@@ -40,4 +40,7 @@ bigger:
 
 out:
 	return middle;
+
+not_found:
+	return -1;
 }
