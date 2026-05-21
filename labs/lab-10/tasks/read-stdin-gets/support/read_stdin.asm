@@ -76,7 +76,7 @@ print_byte:
     pop rcx     ; restore rcx
 
     inc rcx
-    cmp rcx, [rbp - 80]
+    cmp rcx, [rbp - 88]
     jl print_byte
 
     mov rdi, null_string
